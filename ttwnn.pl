@@ -510,13 +510,12 @@ sub Chart{
     print $rfh "setwd(\"$Rdir\")
 results<-read.table(\"$filename\",header=TRUE,sep=\"\t\")
 results\$Class<-cut(results\$Zscore, breaks =c(min(results\$Zscore), 2.58, 3.39, max(results\$Zscore)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
-
+pdf(\"$chart\", width=22.4, height=7)
 palette(c(\"steelblue3\",\"pink2\",\"red\"))
 ymin1 = min(results\$Zscore, na.rm=TRUE)*1.1
 ymax1 = max(results\$Zscore, na.rm=TRUE)*1.1
 ymax = max(c(abs(ymin1),ymax1))
 ymin = -ymax
-pdf(\"$chart\", width=22.4, height=7)
 par(mar=c(9,4,3,1)+0.1)
 plot(results\$Zscore,ylab=\"Z score\",xlab=\"\",main=\"Proportion of SNPs, DNase1 sites (probably TF sites) which are present in cell lines for $label\",ylim=c(ymin,ymax), las=2, las=2, pch=19,col=results\$Class, xaxt='n')
 axis(1, seq(1,length(results\$Cell)),labels=results\$Cell, las=2, cex.axis=0.7)
