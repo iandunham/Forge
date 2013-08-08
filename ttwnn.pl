@@ -488,7 +488,8 @@ sub Chart{
     }
 
     my $length = scalar @tissue_txt;
-    while ( my( $index, $value ) = each @lines) {
+    my $index =0;
+    foreach my $value (@lines) {
         if (defined $lines[$index+1]){
             my $pos = $value + ($lines[$index+1]-$value)/2;
             push @label_pos, $pos;
@@ -497,6 +498,7 @@ sub Chart{
             my $pos = $value + ($length-$value)/2;
             push @label_pos, $pos;
         }
+        $index++;
     }
 
     open my $rfh, ">", "$rfile";
@@ -527,9 +529,10 @@ palette(\"default\")\n";
     foreach my $pos (@lines){
         print $rfh "lines(c($pos,$pos),c(-5,22),lty=6,col=\"#00000070\")\n" unless $pos == 0.5;
     }
-
-    while ( my( $index, $tissue ) = each @labels){
+    $index = 0;
+    foreach my $tissue (@labels){
         print $rfh "text(c(" . $label_pos[$index] . "),ymax,c(\"" . $tissue . "\"),col=\"burlywood3\",adj=1,srt=90,cex=0.8)\n";
+        $index++;
     }
 
     print $rfh "dev.off()\n";
