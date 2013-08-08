@@ -83,7 +83,9 @@ use Sort::Naturally;
 use Cwd;
 use Storable;
 use Getopt::Long;
-#use Data::Dumper;
+use File::Basename;
+use Config::IniFiles;
+
 
 my $cwd = getcwd;
 
@@ -110,8 +112,11 @@ $lab = "$lab.$data";
 unless (defined $format){
     $format = 'rsid';
 }
+my $dirname = dirname(__FILE__);
 
-my $datadir = "/Users/ian/Data/GWAS/shiny/";
+my $cfg = Config::IniFiles->new( -file => "$dirname/ttwnn.ini" );
+my $datadir = $cfg->val('Files', 'datadir');
+
 # percentile bins for the bkgrd calculations. This is hard coded so there are enough SNPs to choose from, but could later be altered.
 my $per = 10;
 # number of sets to analyse for bkgrd. Again currently hardcoded to 100
