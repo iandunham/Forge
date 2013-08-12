@@ -10,7 +10,7 @@ ttwnn.pl options (-f file) (-snps snplist)
 
 =head1 DESCRIPTION
 
-Analyse a set of SNPs for their overlap with DNase 1 hotspots compared to matched background SNPs. Identified Enrichemnt in DHS by tissue.
+Analyse a set of SNPs for their overlap with DNase 1 hotspots compared to matched background SNPs. Identifies enrichment in DHS by tissue and plots graphs and table to display.
 
 
 =head1 OPTIONS
