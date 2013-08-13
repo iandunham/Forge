@@ -254,7 +254,7 @@ my $resultsdir = "$cwd/$lab.$time";
 mkdir $resultsdir;
 my $filename = "$lab.$time.chart.tsv";
 open my $ofh, ">", "$resultsdir/$filename" or die "Cannot open $resultsdir/$filename: $!"; #should grab a process number for unique name here
-print $ofh join("\t", "Zscore", "Cell", "Tissue", "File", "SNPs", "Number") ."\n";
+print $ofh join("\t", "Zscore", "Cell", "Tissue", "File", "SNPs", "Number", "Accession") ."\n";
 my $n =1;
 
 foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) || ncmp($a,$b)} @$cells){ # sort by the tissues alphabetically (from $tissues hash values)
@@ -272,7 +272,7 @@ foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) ||
     my $snp_string = "";
     $snp_string = join(",", @{$$test{'CELLS'}{$cell}{'SNPS'}}) if defined $$test{'CELLS'}{$cell}{'SNPS'}; # This gives the list of overlapping SNPs for use in the tooltips. If there are a lot of them this can be a little useless
     my ($shortcell, undef) = split('\|', $cell); # undo the concatenation from earlier to deal with identical cell names.
-    print $ofh join("\t", $zscore, $shortcell, $$tissues{$cell}{'tissue'}, $$tissues{$cell}{'file'}, $snp_string, $n) . "\n";
+    print $ofh join("\t", $zscore, $shortcell, $$tissues{$cell}{'tissue'}, $$tissues{$cell}{'file'}, $snp_string, $n, $$tissues{$cell}{'acc'}) . "\n";
     $n++;
 }
 
@@ -391,20 +391,22 @@ sub get_cells{
     my $data = shift;
     my $dbh = shift;
     my $table = join('_', "cells", $data);
-    my $sth = $dbh->prepare("SELECT shortcell,tissue,file FROM $table");
+    my $sth = $dbh->prepare("SELECT shortcell,tissue,file,acc FROM $table");
     $sth->execute();
     my $ver = $sth->fetchall_arrayref();
     $sth->finish();
-    my ($cells, $tissues);
+    my ($cells, $tissues, $acc);
     foreach my $row (@$ver){
         my $cell = shift @$row;
         my $tissue = shift @$row;
         my $file = shift @$row;
+        my $acc = shift @$row;
 
         $cell = "$cell|$file"; # Sometimes the same cell is used twice, with a differnt file so need to record separately (e.g. WI-38).
         push @$cells, $cell;
         $$tissues{$cell}{'tissue'} = $tissue; # this is the hash that is used to connect cells and tissues and ultimately provide the sorting order
         $$tissues{$cell}{'file'} = $file;
+        $$tissues{$cell}{'acc'} = $acc;
     }
     #print Dumper %$tissues;
     return ($cells, $tissues); # return
@@ -558,7 +560,7 @@ sub rChart{
 results<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
 results\$Colour<- 0 + (results\$Zscore < 3.39) + (results\$Zscore < 2.58)  # 99.9 and 99% CIs
 require(rCharts)
-r1 <- rPlot(Zscore ~ Cell, data=results, color=\"bin(Colour, 0.25)\", type=\"point\", tooltip = \"function(item){ return (item.Zscore + '\\n' + item.Cell + '\\n' + item.Tissue + '\\n' + item.File + '\\n' + item.SNPs + '\\n' )}\")
+r1 <- rPlot(Zscore ~ Cell, data=results, color=\"bin(Colour, 0.25)\", type=\"point\", tooltip = \"function(item){ return (item.Zscore + '\\n' + item.Cell + '\\n' + item.Tissue + '\\n' + item.File + '\\n' + item.SNPs + '\\n' + item.Accession + '\\n')}\")
 #r1\$guides(color=list(scale = list(type = \'gradient\', lower = \'\#CCC\', upper = \'\#000\'))) # optional code to make a grey scale
 r1\$addParams(width = 2000, height=600, title=\"$label overlaps with $data DHS\")
 ymin1 = min(results\$Zscore, na.rm=TRUE)*1.2
@@ -585,7 +587,7 @@ results\$Class<-cut(results\$Zscore, breaks =c(min(results\$Zscore), 2.58, 3.39,
 require(rCharts)
 d1 <- dPlot(
   y = \"Zscore\",
-  x = c(\"Cell\", \"Tissue\", \"SNPs\", \"Number\"),
+  x = c(\"Cell\", \"Tissue\", \"SNPs\", \"Number\", \"Accession\"),
   groups = \"Class\",
   data = results,
   type = \"bubble\",
