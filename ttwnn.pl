@@ -10,8 +10,19 @@ ttwnn.pl options (-f file) (-snps snplist)
 
 =head1 DESCRIPTION
 
-Analyse a set of SNPs for their overlap with DNase 1 hotspots compared to matched background SNPs. Identifies enrichment in DHS by tissue and plots graphs and table to display.
+Analyse a set of SNPs for their overlap with DNase 1 hotspots compared to matched background SNPs. Identifies enrichment in DHS by tissue and plots graphs and table to display. Arbitrarily a minumum of 20 SNPs is required.  Note that if no SNPs are given the script will run on Pulmonary funciotn GWAS as an example output.
 
+Several outputs are made.
+
+A straight base R graphics pdf chart of the data.
+
+A polychart (https://github.com/Polychart/polychart2) interactive javascript graphic using rCharts (http://ramnathv.github.io/rCharts/).
+
+A dimple (http://dimplejs.org) d3 interactive graphic using rCharts.
+
+A table using the Datatables (https://datatables.net) plug-in for the jQuery Javascript library, again accessed through rCharts.
+
+In each opf the graphics the colouring should be consistent. Blue (Z < 2.58), light red or pink (2.58 =< Z < 3.39), red or dark red (Z >= 3.39 ) for the 99% and 99.9% cIs.
 
 =head1 OPTIONS
 
@@ -35,25 +46,27 @@ Illumina_Cardio_Metabo
 Illumina_Human1M-duoV3
 Illumina_Human660W-quad
 
-Defaults to 'gwas'. In both cases SNPs have to be on the arrays AND in the 1000 genomes phase 1 integrated call data set at phase1/analysis_results/integrated_call_sets
+Defaults to 'gwas'. In both cases SNPs have to be on the arrays AND in the 1000 genomes phase 1 integrated call data set at phase1/analysis_results/integrated_call_sets.
 
 =item B<label>
 
-Supply a label that you want to use for the plotting titles, and filenames
+Supply a label that you want to use for the plotting titles, and filenames.
 
 =item B<f>
 
-Supply the name of a file containing a list of SNPs currently in format chr\tbeg\tend\trsid\tpval. If not supplied the analysis is performed either on snps provided as rsids in a comma separated list through the snps option or on a set of data from a gwas study on Pulmonary_function (http://www.ncbi.nlm.nih.gov/pubmed/21946350, http://www.ncbi.nlm.nih.gov/pubmed/20010835 and http://www.ncbi.nlm.nih.gov/pubmed/20010834)
+Supply the name of a file containing a list of SNPs currently in format chr\tbeg\tend\trsid\tpval. If not supplied the analysis is performed either on snps provided as rsids in a comma separated list through the snps option or on a set of data from a gwas study on Pulmonary_function (http://www.ncbi.nlm.nih.gov/pubmed/21946350, http://www.ncbi.nlm.nih.gov/pubmed/20010835 and http://www.ncbi.nlm.nih.gov/pubmed/20010834). Note that 20 SNPs are required at a minimum.
 
 =item B<snps>
 
-Can provide the snps as a comma separated list.
+Can provide the snps as rsids in a comma separated list.
 
 =item B<format>
 
+if f is specified, specify the file format as follow:
+
 bed  = File given is a bed file of locations (chr\tbeg\tend) aka Personal Genome SNP format.  bed format should be 0 based and the chromosome should be given as chrN. Hoever will also accept chomosomes as just N (ensembl) and 1-based format where beg and end are the same
 
-vcf = File given is a vcf file
+vcf = File given is a vcf file.
 
 tabix = File contains SNPs in tabix format.
 
@@ -71,8 +84,20 @@ Print this perldoc and exit.
 
 =head1 LICENCE
 
-This code is distributed under an Apache style licence. Please see
-http://www.ensembl.org/info/about/code_licence.html for details.
+ttwnn.pl Functional analysis of GWAS SNPs
+
+Copyright (C) 2013  EMBL - European Bioinformatics Institute
+
+This program is free software: you can redistribute it and/or modify it under the terms of
+the GNU General Public License as published by the Free Software Foundation, either version 3
+of the License, or (at your option) any later version. This program is distributed in the hope
+that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. Neither
+the institution name nor the name ttwnn.pl can be used to endorse or promote products derived from
+this software without prior written permission. For written permission, please contact
+dunham@ebi.ac.uk. Products derived from this software may not be called ttwnn.pl nor may ttwnn.pl
+appear in their names without prior written permission of the developers. You should have received
+a copy of the GNU General Public License along with this program.  If not, see http://www.gnu.org/licenses/.
 
 =head1 AUTHOR
 
@@ -97,7 +122,7 @@ use Pod::Usage;
 
 my $cwd = getcwd;
 
-my ($bkgd, $data, $label, $file, $format, $help, $man, @snplist);
+my ($bkgd, $data, $label, $file, $format, $help, $man,  @snplist);
 
 GetOptions (
     'data=s'    => \$data,
@@ -105,7 +130,7 @@ GetOptions (
     'label=s'   => \$label,
     'f=s'       => \$file,
     'format=s'  => \$format,
-    'snp=s'     => \@snplist,
+    'snps=s'     => \@snplist,
     'help|h|?'  => \$help,
     'man|m'     => \$man,
 
@@ -212,15 +237,15 @@ else{
     @snps = qw(rs2865531 rs2395730 rs12914385 rs11168048 rs1529672 rs357394 rs13147758 rs3769124 rs2647044 rs12504628 rs1541374 rs2869967 rs1928168 rs3094548 rs3867498 rs9978142 rs4762767 rs6903823 rs11172113 rs9310995 rs2571445 rs2070600 rs11727189 rs3734729 rs2906966 rs1036429 rs16909898 rs3995090 rs12477314 rs2544527 rs2284746 rs993925 rs2277027 rs1344555 rs1455782 rs2855812 rs2838815 rs11001819 rs12716852 rs2798641 rs4129267 rs7068966 rs12899618 rs153916 rs1551943 rs730532 rs1980057 rs3820928 rs2036527 rs10516526 rs2857595 rs3817928 rs310558 rs808225 rs12447804);
 }
 
+# Check we have enough SNPs
 if (scalar @snps < 20){
-    die "Fewer than 20 SNPs provided. Analysis not run";
+    pod2usage(-verbose => 2, -message => "Fewer than 20 SNPs provided. Analysis not run\n\n", -noperldoc => 1);
 }
-#Connect to the sqlite database file which contains the tables for each data
 
+# Connect to the sqlite database file which contains the tables for each data
 my $sth = $dbh->prepare("SELECT * FROM bits WHERE rsid IN (?)");
 
 # get the cell list array and the hash that connects the cells and tissues
-
 my ($cells, $tissues) = get_cells($data, $dbh);
 
 # get the bit strings for the test snps from the database file
@@ -229,6 +254,7 @@ my $rows = get_bits(\@snps, $sth);
 # unpack the bitstrings and store the overlaps by cell.
 my $test = process_bits($rows, $cells, $data);
 
+# Identify SNPs that weren't found and warn about them.
 my @missing;
 foreach my $rsid (@snps){
     unless (exists $$test{'SNPS'}{$rsid}){
@@ -236,11 +262,11 @@ foreach my $rsid (@snps){
     }
 }
 if (scalar @missing > 0) {
-    print "The following SNPs have not been analysed\n";
+    print "The following SNPs have not been analysed because they were not found in the 1000 genomes phase 1 integrated call data\n";
     print join("\n", @missing) . "\n";
 }
 
-# only pick background snps matching snps that were found originally.
+# only pick background snps matching snps that had bitstrings originally.
 my @foundsnps = keys %{$$test{'SNPS'}};
 print "Test SNPs analysed " . scalar @foundsnps . "\n";
 
@@ -249,17 +275,15 @@ my $picks = match(\%$test, $sth, $bkgd);
 
 # for bgrd set need to get distribution of counts instead
 # make a hash of data -> cell -> bkgrd-Set -> overlap counts
-
 my %bkgrd; #this hash is going to store the bkgrd overlaps
 
+# Get the bits for the background sets and process
 foreach my $bkgrd (keys %{$picks}){
     $rows = get_bits(\@{$$picks{$bkgrd}}, $sth);
     unless (scalar @$rows == scalar @foundsnps){
         print "Background " . $bkgrd . " only " . scalar @$rows . " SNPs out of " . scalar @foundsnps . "\n";
     }
-    #print Dumper $rows;
     my $result = process_bits($rows, $cells, $data);
-    #print Dumper $result;
     foreach my $cell (keys %{$$result{'CELLS'}}){
         push @{$bkgrd{$cell}}, $$result{'CELLS'}{$cell}{'COUNT'}; # accumulate the overlap counts by cell
     }
@@ -267,10 +291,10 @@ foreach my $bkgrd (keys %{$picks}){
 $dbh->disconnect();
 
 #Having got the test overlaps and the bkgd overlaps now calculate Zscores and output the table to be read into R for plotting.
-my $time = time();
+my $time = time(); # time is used to label the output directories.
 my $resultsdir = "$cwd/$lab.$time";
 mkdir $resultsdir;
-my $filename = "$lab.$time.chart.tsv";
+my $filename = "$lab.chart.tsv";
 open my $ofh, ">", "$resultsdir/$filename" or die "Cannot open $resultsdir/$filename: $!"; #should grab a process number for unique name here
 print $ofh join("\t", "Zscore", "Cell", "Tissue", "File", "SNPs", "Number", "Accession") ."\n";
 my $n =1;
@@ -294,10 +318,11 @@ foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) ||
     $n++;
 }
 
-Chart($filename, $lab, $time, $resultsdir); # basic pdf plot
-rChart($filename, $lab, $time, $resultsdir); # rCharts polychart plot
-dChart($filename, $lab, $time, $resultsdir); # rCharts Dimple chart
-table($filename, $lab, $time, $resultsdir);
+#Plotting and table routines
+Chart($filename, $lab, $resultsdir); # basic pdf plot
+rChart($filename, $lab, $resultsdir); # rCharts polychart plot
+dChart($filename, $lab, $resultsdir); # rCharts Dimple chart
+table($filename, $lab, $resultsdir); # Datatables chart
 #hChart("$lab.chart.tsv", $label);
 
 
@@ -348,10 +373,10 @@ sub match{
 }
 
 sub process_bits{
+    # Processes the bitstrings to get a count of overlaps for each cell type.
     my ($rows, $cells, $data) = @_;
     my %test;
     foreach my $row (@{$rows}){
-
         my ($location, $rsid, $sum, $bit, $maf, $tss, $gc);
         if ($data =~ /erc/){
             ($location, $rsid, undef, undef, $bit, $sum, $maf, $tss, $gc) = split("\t", join("\t", @$row));
@@ -359,7 +384,6 @@ sub process_bits{
         else{
             ($location, $rsid, $bit, $sum, undef, undef, $maf, $tss, $gc) = split("\t", join("\t", @$row));
         }
-
         $test{'SNPS'}{$rsid}{'SUM'} = $sum;
         $test{'SNPS'}{$rsid}{'PARAMS'} = join("\t", $maf, $tss, $gc);
         my @bits = split "", $bit;
@@ -374,7 +398,8 @@ sub process_bits{
 }
 
 sub get_bits{
-    my ($snps, $sth) = @_; #get an array of snps and the db to look at
+    #get the bitstrings for an array of snps from the sqlite db
+    my ($snps, $sth) = @_;
     my @results;
     foreach my $snp (@$snps){
         $sth->execute($snp);
@@ -388,6 +413,7 @@ sub get_bits{
 }
 
 sub fetch_rsid{
+    #gets the rsid for a SNP where a location is given
     my ($loc, $sth) = @_;
     $sth->execute($loc);
     my $result = $sth->fetchall_arrayref();
@@ -397,7 +423,6 @@ sub fetch_rsid{
     }
     $sth->finish();
     if (defined $rsid &&$rsid =~ /^rs\d+/){
-
         return $rsid;
     }
     else{
@@ -406,6 +431,7 @@ sub fetch_rsid{
 }
 
 sub get_cells{
+    # read the correct cell list based on data (erc -encode). Also gets the tissue names for the cells.
     my $data = shift;
     my $dbh = shift;
     my $table = join('_', "cells", $data);
@@ -419,7 +445,6 @@ sub get_cells{
         my $tissue = shift @$row;
         my $file = shift @$row;
         my $acc = shift @$row;
-
         $cell = "$cell|$file"; # Sometimes the same cell is used twice, with a differnt file so need to record separately (e.g. WI-38).
         push @$cells, $cell;
         $$tissues{$cell}{'tissue'} = $tissue; # this is the hash that is used to connect cells and tissues and ultimately provide the sorting order
@@ -431,7 +456,7 @@ sub get_cells{
 }
 
 sub assign{
-    #sub routine to assign any maf, gc, tss values to the percentile bin
+    #sub routine to assign any maf, gc, tss values to the percentile bins
     my ($gc, $tss, $maf, $params) = @_;
     my ($i, $j, $k);
     my $n = 1;
@@ -468,7 +493,7 @@ sub mean {
     # calculates the biased mean of an array
     #
     # pass it a float array and it will return the mean
-    #
+    # reused from Ben Brown
     my $sum = 0;
     foreach (@_){
         $sum+= $_;
@@ -480,7 +505,7 @@ sub var {
     # calculates the biased variance of an array
     #
     # pass it a float array and it will return the variance
-    #
+    # reused from Ben Brown
     my $ev = mean(@_);
     my $sum = 0;
     foreach (@_) { $sum += ($_ - $ev)**2 };
@@ -494,13 +519,12 @@ sub std { sqrt(var(@_)) }
 sub Chart{
     # This is the original code using standard R plot to generate a static pdf.
     print "Making static chart.\n";
-    my ($filename, $lab, $time, $resultsdir) = @_;
+    my ($filename, $lab, $resultsdir) = @_;
     my $Rdir = $resultsdir;
-    my $chart = "$lab.$time.chart.pdf";
-    my $rfile = "$Rdir/$lab.$time.chart.R";
+    my $chart = "$lab.chart.pdf";
+    my $rfile = "$Rdir/$lab.chart.R";
 
     # make plot, first calculate where dividing lines are:
-
     my (@lines, @label_pos, @labels, @tissue_txt);
     my $n =1;
     my $last = '0';
@@ -561,18 +585,18 @@ palette(\"default\")\n";
         print $rfh "text(c(" . $label_pos[$index] . "),ymax,c(\"" . $tissue . "\"),col=\"burlywood3\",adj=1,srt=90,cex=0.8)\n";
         $index++;
     }
-
     print $rfh "dev.off()\n";
-
+#run the R code
     system "R --no-save --quiet --slave < $rfile";
 }
 
 sub rChart{
+    # Makes a polcharts plot : note X axis labelling is problematical
     print "Making rChart.\n";
-    my ($filename, $lab, $time, $resultsdir) = @_;
-    my $chart = "$lab.$time.rchart.html";
+    my ($filename, $lab, $resultsdir) = @_;
+    my $chart = "$lab.rchart.html";
     my $Rdir = $resultsdir;
-    my $rfile = "$Rdir/$lab.$time.rChart.R";
+    my $rfile = "$Rdir/$lab.rChart.R";
     open my $rcfh, ">", "$rfile";
     print $rcfh "setwd(\"$Rdir\")
 results<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
@@ -593,11 +617,12 @@ system "R --no-save --quiet --slave < $rfile";
 }
 
 sub dChart{
+    # Make dimple interactive chart.
     print "Making dChart.\n";
-    my ($filename, $lab, $time, $resultsdir) = @_;
-    my $chart = "$lab.$time.dchart.html";
+    my ($filename, $lab, $resultsdir) = @_;
+    my $chart = "$lab.dchart.html";
     my $Rdir = $resultsdir;
-    my $rfile = "$Rdir/$lab.$time.dChart.R";
+    my $rfile = "$Rdir/$lab.dChart.R";
    open my $rcfh, ">", "$rfile";
     print $rcfh "setwd(\"$Rdir\")
 results<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
@@ -633,11 +658,12 @@ system "R --no-save --quiet --slave < $rfile";
 }
 
 sub table{
+    # Make Datatables table
     print "Making Table.\n";
-    my ($filename, $lab, $time, $resultsdir) = @_;
-    my $chart = "$lab.$time.table.html";
+    my ($filename, $lab, $resultsdir) = @_;
+    my $chart = "$lab.table.html";
     my $Rdir = $resultsdir;
-    my $rfile = "$Rdir/$lab.$time.table.R";
+    my $rfile = "$Rdir/$lab.table.R";
     open my $rcfh, ">", "$rfile";
     print $rcfh "setwd(\"$Rdir\")
     data<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
