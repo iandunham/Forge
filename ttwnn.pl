@@ -59,6 +59,14 @@ tabix = File contains SNPs in tabix format.
 
 ian = 1-based chr\tbeg\tend\trsid\tpval
 
+=item B<help|h|?>
+
+Print a brief help message and exits.
+
+=item B<man|m>
+
+Print this perldoc and exit.
+
 =back
 
 =head1 LICENCE
@@ -85,20 +93,27 @@ use Storable;
 use Getopt::Long;
 use File::Basename;
 use Config::IniFiles;
-
+use Pod::Usage;
 
 my $cwd = getcwd;
 
-my ($bkgd, $data, $label, $file, $format, @snplist);
+my ($bkgd, $data, $label, $file, $format, $help, $man, @snplist);
 
 GetOptions (
     'data=s'    => \$data,
-    'bkgd=s'      => \$bkgd,
+    'bkgd=s'    => \$bkgd,
     'label=s'   => \$label,
     'f=s'       => \$file,
     'format=s'  => \$format,
     'snp=s'     => \@snplist,
+    'help|h|?'  => \$help,
+    'man|m'     => \$man,
+
 );
+
+
+pod2usage(1) if ($help);
+pod2usage(-verbose => 2) if ($man);
 
 unless (defined $data ){
     $data = "erc"; # define which data we are dealing with for the bitstrings.
@@ -130,7 +145,6 @@ my $dsn = "dbi:SQLite:dbname=" . $datadir . "ttwnn.db";
 my $dbh = DBI->connect($dsn, "", "") or die $DBI::errstr;
 # snps need to come either from a file or a list
 my @snps;
-
 
 # A series of data file formats to accept.
 
@@ -194,7 +208,7 @@ elsif (@snplist){
 else{
 # Test SNPs from gwascatalog_21_03_2012  Pulmonary_function.snps.bed
 # If no options are given it will run on the default set of SNPs
-    warn "No SNPs given, so running for example on Pulmonary function set form the GWAS catalogue.";
+    warn "No SNPs given, so running for example on Pulmonary function set from the GWAS catalogue.";
     @snps = qw(rs2865531 rs2395730 rs12914385 rs11168048 rs1529672 rs357394 rs13147758 rs3769124 rs2647044 rs12504628 rs1541374 rs2869967 rs1928168 rs3094548 rs3867498 rs9978142 rs4762767 rs6903823 rs11172113 rs9310995 rs2571445 rs2070600 rs11727189 rs3734729 rs2906966 rs1036429 rs16909898 rs3995090 rs12477314 rs2544527 rs2284746 rs993925 rs2277027 rs1344555 rs1455782 rs2855812 rs2838815 rs11001819 rs12716852 rs2798641 rs4129267 rs7068966 rs12899618 rs153916 rs1551943 rs730532 rs1980057 rs3820928 rs2036527 rs10516526 rs2857595 rs3817928 rs310558 rs808225 rs12447804);
 }
 
