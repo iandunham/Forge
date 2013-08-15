@@ -32,6 +32,10 @@ In each opf the graphics the colouring should be consistent. Blue (Z < 2.58), li
 
 Data set to analyse. Either ENCODE data ('encode') or Roadmap Epigenome data ('erc'). erc by default.
 
+=item B<peaks>
+
+Use peaks instead of hotspots. Peaks are more stringent DNase1 peaks calls representing DNase hypersensitive sites, rather than hotspots which are regions of generalised DNAs1 sensitivity or open chromatin. Default is to use hotspots.
+
 =item B<bkgd>
 
 Specify whether the background matches should be picked from general set of arrays used in GWAS ('gwas') or from the Illumina_HumanOmni2.5 ('omni'). General GWAS arrays include
@@ -54,7 +58,7 @@ Supply a label that you want to use for the plotting titles, and filenames.
 
 =item B<f>
 
-Supply the name of a file containing a list of SNPs currently in format chr\tbeg\tend\trsid\tpval. If not supplied the analysis is performed either on snps provided as rsids in a comma separated list through the snps option or on a set of data from a gwas study on Pulmonary_function (http://www.ncbi.nlm.nih.gov/pubmed/21946350, http://www.ncbi.nlm.nih.gov/pubmed/20010835 and http://www.ncbi.nlm.nih.gov/pubmed/20010834). Note that 20 SNPs are required at a minimum.
+Supply the name of a file containing a list of SNPs. Format must be given by the -format flag. If not supplied the analysis is performed either on snps provided as rsids in a comma separated list through the snps option or on a set of data from a gwas study on Pulmonary_function (http://www.ncbi.nlm.nih.gov/pubmed/21946350, http://www.ncbi.nlm.nih.gov/pubmed/20010835 and http://www.ncbi.nlm.nih.gov/pubmed/20010834). Note that 20 SNPs are required at a minimum.
 
 =item B<snps>
 
@@ -63,6 +67,8 @@ Can provide the snps as rsids in a comma separated list.
 =item B<format>
 
 if f is specified, specify the file format as follow:
+
+rsid = list of snps as rsids each on a separate line
 
 bed  = File given is a bed file of locations (chr\tbeg\tend) aka Personal Genome SNP format.  bed format should be 0 based and the chromosome should be given as chrN. Hoever will also accept chomosomes as just N (ensembl) and 1-based format where beg and end are the same
 
@@ -122,10 +128,11 @@ use Pod::Usage;
 
 my $cwd = getcwd;
 
-my ($bkgd, $data, $label, $file, $format, $help, $man,  @snplist);
+my ($bkgd, $data, $peaks, $label, $file, $format, $help, $man,  @snplist);
 
 GetOptions (
     'data=s'    => \$data,
+    'peaks'     => \$peaks,
     'bkgd=s'    => \$bkgd,
     'label=s'   => \$label,
     'f=s'       => \$file,
@@ -166,7 +173,13 @@ unless (defined $bkgd){
     $bkgd = "gwas";
 }
 
-my $dsn = "dbi:SQLite:dbname=" . $datadir . "ttwnn.db";
+my $dsn;
+if (defined $peaks){
+    $dsn = "dbi:SQLite:dbname=" . $datadir . "ttwnn_peaks.db";
+}
+else{
+    $dsn = "dbi:SQLite:dbname=" . $datadir . "ttwnn.db";
+}
 my $dbh = DBI->connect($dsn, "", "") or die $DBI::errstr;
 # snps need to come either from a file or a list
 my @snps;
@@ -292,7 +305,13 @@ $dbh->disconnect();
 
 #Having got the test overlaps and the bkgd overlaps now calculate Zscores and output the table to be read into R for plotting.
 my $time = time(); # time is used to label the output directories.
-my $resultsdir = "$cwd/$lab.$time";
+my $resultsdir;
+if (defined $peaks){
+    $resultsdir = "$cwd/$lab.peaks.$time";
+}
+else{
+    $resultsdir = "$cwd/$lab.$time";
+}
 mkdir $resultsdir;
 my $filename = "$lab.chart.tsv";
 open my $ofh, ">", "$resultsdir/$filename" or die "Cannot open $resultsdir/$filename: $!"; #should grab a process number for unique name here
