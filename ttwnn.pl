@@ -193,12 +193,16 @@ if (defined $file){
     if ($format =~ /rsid/){
         while (<$fh>){
             chomp;
-            push @snps, $_;
+            my @rsid = split /:/, $_;
+            $rsid = pop @$rsid; # take the last one for want of a better idea.
+            push @snps, $rsid;
         }
     }
     elsif ($format =~ /ian/){
         while (<$fh>){
             my ($chr, $beg, $end, $rsid, undef) = split "\t", $_;
+            my @rsid = split /:/, $rsid; # to deal with multiple rsids
+            $rsid = pop @$rsid; # take the last one for want of a better idea. Can't take all as they are the same thing.
             push @snps, $rsid;
         }
     }
