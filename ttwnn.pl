@@ -78,6 +78,10 @@ tabix = File contains SNPs in tabix format.
 
 ian = 1-based chr\tbeg\tend\trsid\tpval
 
+=item B<bkgrd>
+
+Output background stats for investigation.
+
 =item B<help|h|?>
 
 Print a brief help message and exits.
@@ -128,12 +132,12 @@ use Pod::Usage;
 
 my $cwd = getcwd;
 
-my ($bkgd, $data, $peaks, $label, $file, $format, $help, $man,  @snplist);
+my ($bkgd, $data, $peaks, $label, $file, $format, $bkgrdstat, $help, $man,  @snplist);
 
 GetOptions (
     'data=s'    => \$data,
     'peaks'     => \$peaks,
-    'bkgd=s'    => \$bkgd,
+    'bkgrd'      => \$bkgrdstat,
     'label=s'   => \$label,
     'f=s'       => \$file,
     'format=s'  => \$format,
@@ -142,7 +146,6 @@ GetOptions (
     'man|m'     => \$man,
 
 );
-
 
 pod2usage(1) if ($help);
 pod2usage(-verbose => 2) if ($man);
@@ -271,6 +274,20 @@ my $rows = get_bits(\@snps, $sth);
 
 # unpack the bitstrings and store the overlaps by cell.
 my $test = process_bits($rows, $cells, $data);
+if (defined $bkgrdstat){
+    open my $bfh, ">", "$lab.bkgrd.stats" or die "cannot open $lab.bkgrd.stats";
+        my (@maf, @tss, @gc);
+        foreach my $rsid (keys %{$$test{'SNPS'}}){
+            my ($maf, $tss, $gc) = split "\t", $$test{'SNPS'}{$rsid}{'PARAMS'};
+            push @maf, $maf;
+            push @tss, $tss;
+            push @gc, $gc;
+        }
+    say $bfh join("\t", "test", "maf", @maf);
+    say $bfh join("\t", "test", "tss", @tss);
+    say $bfh join("\t", "test", "gc", @gc);
+}
+
 
 # Identify SNPs that weren't found and warn about them.
 my @missing;
@@ -280,7 +297,7 @@ foreach my $rsid (@snps){
     }
 }
 if (scalar @missing > 0) {
-    print "The following SNPs have not been analysed because they were not found in the 1000 genomes phase 1 integrated call data\n";
+    print "The following " . scalar @missing . " SNPs have not been analysed because they were not found in the 1000 genomes phase 1 integrated call data\n";
     print join("\n", @missing) . "\n";
 }
 
@@ -296,6 +313,7 @@ my $picks = match(\%$test, $sth, $bkgd);
 my %bkgrd; #this hash is going to store the bkgrd overlaps
 
 # Get the bits for the background sets and process
+
 foreach my $bkgrd (keys %{$picks}){
     $rows = get_bits(\@{$$picks{$bkgrd}}, $sth);
     unless (scalar @$rows == scalar @foundsnps){
@@ -304,6 +322,19 @@ foreach my $bkgrd (keys %{$picks}){
     my $result = process_bits($rows, $cells, $data);
     foreach my $cell (keys %{$$result{'CELLS'}}){
         push @{$bkgrd{$cell}}, $$result{'CELLS'}{$cell}{'COUNT'}; # accumulate the overlap counts by cell
+    }
+    if (defined $bkgrdstat){
+        open my $bfh, ">>", "$lab.bkgrd.stats" or die "cannot open $lab.bkgrd.stats";
+        my (@maf, @tss, @gc);
+        foreach my $rsid (keys %{$$result{'SNPS'}}){
+            my ($maf, $tss, $gc) = split "\t", $$result{'SNPS'}{$rsid}{'PARAMS'};
+            push @maf, $maf;
+            push @tss, $tss;
+            push @gc, $gc;
+        }
+        say $bfh join("\t", $bkgrd, "maf", @maf);
+        say $bfh join("\t", $bkgrd, "tss", @tss);
+        say $bfh join("\t", $bkgrd, "gc", @gc);
     }
 }
 $dbh->disconnect();
