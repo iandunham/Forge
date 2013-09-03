@@ -64,6 +64,10 @@ Supply the name of a file containing a list of SNPs. Format must be given by the
 
 Can provide the snps as rsids in a comma separated list.
 
+=item B<min_snps>
+
+Specify the minimum number of SNPs to be allowed. Default is 20.
+
 =item B<format>
 
 if f is specified, specify the file format as follow:
@@ -132,7 +136,7 @@ use Pod::Usage;
 
 my $cwd = getcwd;
 
-my ($bkgd, $data, $peaks, $label, $file, $format, $bkgrdstat, $help, $man,  @snplist);
+my ($bkgd, $data, $peaks, $label, $file, $format, $min_snps, $bkgrdstat, $help, $man,  @snplist);
 
 GetOptions (
     'data=s'    => \$data,
@@ -142,6 +146,7 @@ GetOptions (
     'f=s'       => \$file,
     'format=s'  => \$format,
     'snps=s'     => \@snplist,
+    'min_snps=i' => \$min_snps,
     'help|h|?'  => \$help,
     'man|m'     => \$man,
 
@@ -149,6 +154,10 @@ GetOptions (
 
 pod2usage(1) if ($help);
 pod2usage(-verbose => 2) if ($man);
+
+unless (defined $min_snps){
+    $min_snps = 20; # the minimum number of snps allowed for test.
+}
 
 unless (defined $data ){
     $data = "erc"; # define which data we are dealing with for the bitstrings.
@@ -259,8 +268,8 @@ else{
 
 
 # Check we have enough SNPs
-if (scalar @snps < 20){
-    pod2usage(-verbose => 2, -message => "Fewer than 20 SNPs provided. Analysis not run\n\n", -noperldoc => 1);
+if (scalar @snps < $min_snps){
+    pod2usage(-verbose => 2, -message => "Fewer than $min_snps SNPs provided. Analysis not run\n\n", -noperldoc => 1);
 }
 
 # Connect to the sqlite database file which contains the tables for each data
