@@ -86,6 +86,10 @@ ian = 1-based chr\tbeg\tend\trsid\tpval
 
 Output background stats for investigation.
 
+=item B<noplot>
+
+Just make the data file, don't plot.
+
 =item B<help|h|?>
 
 Print a brief help message and exits.
@@ -136,19 +140,20 @@ use Pod::Usage;
 
 my $cwd = getcwd;
 
-my ($bkgd, $data, $peaks, $label, $file, $format, $min_snps, $bkgrdstat, $help, $man,  @snplist);
+my ($bkgd, $data, $peaks, $label, $file, $format, $min_snps, $bkgrdstat, $noplot, $help, $man,  @snplist);
 
 GetOptions (
-    'data=s'    => \$data,
-    'peaks'     => \$peaks,
+    'data=s'     => \$data,
+    'peaks'      => \$peaks,
     'bkgrd'      => \$bkgrdstat,
-    'label=s'   => \$label,
-    'f=s'       => \$file,
-    'format=s'  => \$format,
+    'label=s'    => \$label,
+    'f=s'        => \$file,
+    'format=s'   => \$format,
     'snps=s'     => \@snplist,
     'min_snps=i' => \$min_snps,
-    'help|h|?'  => \$help,
-    'man|m'     => \$man,
+    'noplot'     => \$noplot,
+    'help|h|?'   => \$help,
+    'man|m'      => \$man,
 
 );
 
@@ -382,13 +387,14 @@ foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) ||
     $n++;
 }
 
-#Plotting and table routines
-Chart($filename, $lab, $resultsdir); # basic pdf plot
-rChart($filename, $lab, $resultsdir); # rCharts polychart plot
-dChart($filename, $lab, $resultsdir); # rCharts Dimple chart
-table($filename, $lab, $resultsdir); # Datatables chart
-#hChart("$lab.chart.tsv", $label);
-
+unless (defined $noplot){
+    #Plotting and table routines
+    Chart($filename, $lab, $resultsdir); # basic pdf plot
+    rChart($filename, $lab, $resultsdir); # rCharts polychart plot
+    dChart($filename, $lab, $resultsdir); # rCharts Dimple chart
+    table($filename, $lab, $resultsdir); # Datatables chart
+    #hChart("$lab.chart.tsv", $label);
+}
 
 ### Subroutines ###
 
