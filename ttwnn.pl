@@ -738,7 +738,7 @@ sub table{
     print $rcfh "setwd(\"$Rdir\")
     data<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
     results<-data.frame(data\$Cell, data\$Tissue, data\$Accession, data\$Zscore, data\$SNPs)
-    names(results)<-c(\"Cell\", \"Tissue\", \"Zscore\", \"SNPs\")
+    names(results)<-c(\"Cell\", \"Tissue\", \"Accession\", \"Zscore\", \"SNPs\")
     require(rCharts)
     dt <- dTable(
       results,
