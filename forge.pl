@@ -2,11 +2,11 @@
 
 =head1 NAME
 
-ttwnn.pl - the tool with no name.
+forge.pl - Functional element Overlap analysis of the Results of GWAS Experiments.
 
 =head1 SYNOPSIS
 
-ttwnn.pl options (-f file) (-snps snplist)
+forge.pl options (-f file) (-snps snplist)
 
 =head1 DESCRIPTION
 
@@ -102,7 +102,7 @@ Print this perldoc and exit.
 
 =head1 LICENCE
 
-ttwnn.pl Functional analysis of GWAS SNPs
+forge.pl Functional analysis of GWAS SNPs
 
 Copyright (C) 2013  EMBL - European Bioinformatics Institute
 
@@ -111,9 +111,9 @@ the GNU General Public License as published by the Free Software Foundation, eit
 of the License, or (at your option) any later version. This program is distributed in the hope
 that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
 or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. Neither
-the institution name nor the name ttwnn.pl can be used to endorse or promote products derived from
+the institution name nor the name forge.pl can be used to endorse or promote products derived from
 this software without prior written permission. For written permission, please contact
-dunham@ebi.ac.uk. Products derived from this software may not be called ttwnn.pl nor may ttwnn.pl
+dunham@ebi.ac.uk. Products derived from this software may not be called forge.pl nor may forge.pl
 appear in their names without prior written permission of the developers. You should have received
 a copy of the GNU General Public License along with this program.  If not, see http://www.gnu.org/licenses/.
 
@@ -178,7 +178,7 @@ unless (defined $format){
 }
 my $dirname = dirname(__FILE__);
 
-my $cfg = Config::IniFiles->new( -file => "$dirname/ttwnn.ini" );
+my $cfg = Config::IniFiles->new( -file => "$dirname/forge.ini" );
 my $datadir = $cfg->val('Files', 'datadir');
 
 # percentile bins for the bkgrd calculations. This is hard coded so there are enough SNPs to choose from, but could later be altered.
@@ -192,10 +192,10 @@ unless (defined $bkgd){
 
 my $dsn;
 if (defined $peaks){
-    $dsn = "dbi:SQLite:dbname=" . $datadir . "ttwnn_peaks.db";
+    $dsn = "dbi:SQLite:dbname=" . $datadir . "forge_peaks.db";
 }
 else{
-    $dsn = "dbi:SQLite:dbname=" . $datadir . "ttwnn.db";
+    $dsn = "dbi:SQLite:dbname=" . $datadir . "forge.db";
 }
 my $dbh = DBI->connect($dsn, "", "") or die $DBI::errstr;
 # snps need to come either from a file or a list
