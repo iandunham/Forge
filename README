@@ -1,0 +1,69 @@
+1. The script itself currently called forge.pl written in perl. It has
+the following perl dependencies.
+
+use 5.012;
+use warnings;
+use DBI;
+use Sort::Naturally;
+use Cwd;
+use Storable;
+use Getopt::Long;
+
+2. The sqlite3 db file that stores the bitstrings. This is a 21Gbfile.
+Called forge.db currently.
+
+3. Four stored hashes containing the parameters for the background selection.
+two files each for either the omni genotyping array, or all the other GWAS
+snp arrays.
+76M omni.snp_bins.10
+231B omni.snp_params.10
+63M snp_bins.10
+231B snp_params.10
+
+4. An R 3.0 installation with the "devtools" and "rCharts" packages installed.
+
+The input data is one of several options.
+
+a. A list of rsids for SNPs
+b. a pseudobed format of chr\tbeg\tend\rsid
+c. bed format of locations
+d. vcf2.
+
+The analysis requires a minimum of 20 SNPs (this is not a strict limit but
+operationally is best).
+
+To work SNPs have to be in phase 1 of 1000 genomes. The script gives warnings
+on SNPs not found.
+
+It also warns for background sets that do not have the right number of SNPs
+chosen, but this is really for information only.
+
+It takes a series of command line options as follows
+
+-f : the file to run on
+-data : whether to analyse ENCODE (encode) or EpigenomeRoadmap (erc) data
+-label : a name for the files that are generated and for the plot titles
+       where there is a title.
+- format : for the input data formats. If this is location data e.g.
+         bed or tabix or some vcf lines, the rsid is obtained from
+         the sqlite3 database.
+-bkgd : whether the background selection should be from Omniarray SNPs
+         (omni) or the a general set of GWAS typing arrays (gwas).
+
+Some of these default as described in the perldoc.6. Minimally the command
+line is
+
+forge.pl -f rsidfile -label Some_label
+
+which will by default run on Epigenome Roadmap data with the gwas
+background
+
+OUTPUT
+======
+there are 3 outputs generated
+
+1. A pdf static chart, that would be good for download.
+2. Two alternate d3 interactive charts.  the *dchart.html are the best
+in terms of axis labelling but have some minor quirks
+3. A Datatables table.
+4. There's also a tsv file of the results.
