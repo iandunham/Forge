@@ -672,7 +672,7 @@ sub rChart{
 results<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
 results\$Colour<- 0 + (results\$Zscore < 3.39) + (results\$Zscore < 2.58)  # 99.9 and 99% CIs
 require(rCharts)
-r1 <- rPlot(Zscore ~ Cell, data=results, color=\"bin(Colour, 0.25)\", type=\"point\", tooltip = \"function(item){ return (item.Zscore + '\\n' + item.Cell + '\\n' + item.Tissue + '\\n' + item.File + '\\n' + item.SNPs + '\\n' + item.Accession + '\\n')}\")
+r1 <- rPlot(Zscore ~ Cell, data=results, color=\"bin(Colour, 0.25)\", type=\"point\", tooltip = \"function(item){ return (item.Zscore + '\\\\n' + item.Cell + '\\\\n' + item.Tissue + '\\\\n' + item.File + '\\\\n' + item.SNPs + '\\\\n' + item.Accession + '\\\\n')}\")
 #r1\$guides(color=list(scale = list(type = \'gradient\', lower = \'\#CCC\', upper = \'\#000\'))) # optional code to make a grey scale
 r1\$addParams(width = 2000, height=600, title=\"$label overlaps with $data DHS\")
 ymin1 = min(results\$Zscore, na.rm=TRUE)*1.2
