@@ -278,7 +278,7 @@ if (scalar @snps < $min_snps){
 }
 
 # Connect to the sqlite database file which contains the tables for each data
-#my $sth = $dbh->prepare("SELECT * FROM bits WHERE rsid IN (?)");
+#my $sth = $dbh->prepare("SELECT * FROM bits WHERE rsid IN (?)"); # ideally we could prepare once with the right number of placeholders and then execute on each SNP set, providing they were the same length. Problem is that sometimes fail to find a match for 1 SNP. 
 
 # get the cell list array and the hash that connects the cells and tissues
 my ($cells, $tissues) = get_cells($data, $dbh);
