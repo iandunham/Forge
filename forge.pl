@@ -278,13 +278,14 @@ if (scalar @snps < $min_snps){
 }
 
 # Connect to the sqlite database file which contains the tables for each data
-my $sth = $dbh->prepare("SELECT * FROM bits WHERE rsid IN (?)");
+#my $sth = $dbh->prepare("SELECT * FROM bits WHERE rsid IN (?)");
 
 # get the cell list array and the hash that connects the cells and tissues
 my ($cells, $tissues) = get_cells($data, $dbh);
 
 # get the bit strings for the test snps from the database file
-my $rows = get_bits(\@snps, $sth);
+#my $rows = get_bits(\@snps, $sth);
+my $rows = get_bits(\@snps, $dbh);
 
 # unpack the bitstrings and store the overlaps by cell.
 my $test = process_bits($rows, $cells, $data);
@@ -320,7 +321,7 @@ my @foundsnps = keys %{$$test{'SNPS'}};
 print "Test SNPs analysed " . scalar @foundsnps . "\n";
 
 # identify the gc, maf and tss, and then make bkgrd picks
-my $picks = match(\%$test, $sth, $bkgd);
+my $picks = match(\%$test, $bkgd);
 
 # for bgrd set need to get distribution of counts instead
 # make a hash of data -> cell -> bkgrd-Set -> overlap counts
@@ -329,7 +330,8 @@ my %bkgrd; #this hash is going to store the bkgrd overlaps
 # Get the bits for the background sets and process
 
 foreach my $bkgrd (keys %{$picks}){
-    $rows = get_bits(\@{$$picks{$bkgrd}}, $sth);
+    #$rows = get_bits(\@{$$picks{$bkgrd}}, $sth);
+    $rows = get_bits(\@{$$picks{$bkgrd}}, $dbh);
     unless (scalar @$rows == scalar @foundsnps){
         print "Background " . $bkgrd . " only " . scalar @$rows . " SNPs out of " . scalar @foundsnps . "\n";
     }
@@ -401,7 +403,6 @@ unless (defined $noplot){
 sub match{
     # identifies the bins that each of the snps lies in, and then picks 100 matching SNPs.
     my $snps = shift; # ahash that contians the found snps
-    my $sth = shift;
     my $bkgd = shift;
     my ($bins, $params, %bins, %params);
     # load up the stored hashes that contain the bins of snps by gc, maf, and tss distance. There is one for each of the bkgd set possibilities(gwas or omni).
@@ -469,18 +470,19 @@ sub process_bits{
 
 sub get_bits{
     #get the bitstrings for an array of snps from the sqlite db
-    my ($snps, $sth) = @_;
+    my ($snps, $dbh) = @_;
     my @results;
-    foreach my $snp (@$snps){
-        $sth->execute($snp);
-        my $result = $sth->fetchall_arrayref();
-        foreach my $row (@{$result}){
-            push @results, $row;
-        }
+    my $args = join ("','", @$snps);
+    my $sth = $dbh->prepare("SELECT * FROM bits WHERE rsid IN ('$args')");
+    $sth->execute();
+    my $result = $sth->fetchall_arrayref();
+    foreach my $row (@{$result}){
+      push @results, $row;
     }
     $sth->finish();
     return \@results;# return the bitstring line from the database
 }
+
 
 sub fetch_rsid{
     #gets the rsid for a SNP where a location is given
