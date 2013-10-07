@@ -354,6 +354,7 @@ foreach my $bkgrd (keys %{$picks}){
         say $bfh join("\t", $bkgrd, "gc", @gc);
     }
 }
+
 $dbh->disconnect();
 
 #Having got the test overlaps and the bkgd overlaps now calculate Zscores and output the table to be read into R for plotting.
