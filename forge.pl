@@ -394,7 +394,7 @@ foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) ||
 unless (defined $noplot){
     #Plotting and table routines
     Chart($filename, $lab, $resultsdir); # basic pdf plot
-    rChart($filename, $lab, $resultsdir); # rCharts polychart plot
+    #rChart($filename, $lab, $resultsdir); # rCharts polychart plot
     dChart($filename, $lab, $resultsdir); # rCharts Dimple chart
     table($filename, $lab, $resultsdir); # Datatables chart
     #hChart("$lab.chart.tsv", $label);
@@ -451,11 +451,11 @@ sub process_bits{
     my %test;
     foreach my $row (@{$rows}){
         my ($location, $rsid, $sum, $bit, $maf, $tss, $gc);
-        if ($data =~ /erc/){
-            ($location, $rsid, undef, undef, $bit, $sum, $maf, $tss, $gc) = split("\t", join("\t", @$row));
+        if ($data eq "erc"){
+            ($location, $rsid, undef, undef, $bit, $sum, $maf, $tss, $gc) =  @$row;
         }
         else{
-            ($location, $rsid, $bit, $sum, undef, undef, $maf, $tss, $gc) = split("\t", join("\t", @$row));
+            ($location, $rsid, $bit, $sum, undef, undef, $maf, $tss, $gc) = @$row;
         }
         $test{'SNPS'}{$rsid}{'SUM'} = $sum;
         $test{'SNPS'}{$rsid}{'PARAMS'} = join("\t", $maf, $tss, $gc);
@@ -478,10 +478,10 @@ sub get_bits{
     my $sth = $dbh->prepare("SELECT * FROM bits WHERE rsid IN ('$args')");
     $sth->execute();
     my $result = $sth->fetchall_arrayref();
+    $sth->finish();
     foreach my $row (@{$result}){
       push @results, $row;
     }
-    $sth->finish();
     return \@results;# return the bitstring line from the database
 }
 
