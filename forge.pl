@@ -319,7 +319,8 @@ if (scalar @missing > 0) {
 
 # only pick background snps matching snps that had bitstrings originally.
 my @foundsnps = keys %{$$test{'SNPS'}};
-print "Test SNPs analysed " . scalar @foundsnps . "\n";
+my $snpcount = scalar @foundsnps;
+print "Test SNPs analysed $snpcount\n";
 
 # identify the gc, maf and tss, and then make bkgrd picks
 my $picks = match(\%$test, $bkgd);
@@ -372,6 +373,7 @@ open my $ofh, ">", "$resultsdir/$filename" or die "Cannot open $resultsdir/$file
 print $ofh join("\t", "Zscore", "Cell", "Tissue", "File", "SNPs", "Number", "Accession") ."\n";
 my $n =1;
 
+my $pos = 0;
 foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) || ncmp($a,$b)} @$cells){ # sort by the tissues alphabetically (from $tissues hash values)
     # ultimately want a data frame of names(results)<-c("Zscore", "Cell", "Tissue", "File", "SNPs")
     my $mean = mean(@{$bkgrd{$cell}});
@@ -384,12 +386,19 @@ foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) ||
     else{
         $zscore = sprintf("%.3f", ($teststat-$mean)/$sd);
     }
+    if ($zscore >=3.39){
+        $pos++;
+    }
     my $snp_string = "";
     $snp_string = join(",", @{$$test{'CELLS'}{$cell}{'SNPS'}}) if defined $$test{'CELLS'}{$cell}{'SNPS'}; # This gives the list of overlapping SNPs for use in the tooltips. If there are a lot of them this can be a little useless
     my ($shortcell, undef) = split('\|', $cell); # undo the concatenation from earlier to deal with identical cell names.
     print $ofh join("\t", $zscore, $shortcell, $$tissues{$cell}{'tissue'}, $$tissues{$cell}{'file'}, $snp_string, $n, $$tissues{$cell}{'acc'}) . "\n";
     $n++;
 }
+
+my $cellcount = scalar @$cells;
+my $fdr = fdr($pos, $snpcount, $cellcount);
+say "$filename\t$pos positive lines at FDR = $fdr";
 
 unless (defined $noplot){
     #Plotting and table routines
@@ -589,6 +598,18 @@ sub var {
 
 # calulates the standard deviation of an array: this is just the sqrt of the var
 sub std { sqrt(var(@_)) }
+
+sub fdr{
+    my ($tp, $snps, $cells) = @_;
+    if ($tp == 0){
+        return "NA";
+    }
+    else{
+        my $fpr = 0.031 * exp(-0.15 * $snps) + 0.0002; # from simulations of random data
+        my $fdr = ($cells * $fpr) / $tp;
+        return $fdr;
+    }
+}
 
 sub Chart{
     # This is the original code using standard R plot to generate a static pdf.
