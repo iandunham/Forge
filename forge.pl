@@ -436,7 +436,7 @@ sub match{
     foreach my $rs (keys %{$$snps{'SNPS'}}){
         srand;
         my ($maf, $tss, $gc) = split("\t", join("\t", $$snps{'SNPS'}{$rs}{'PARAMS'}));
-        #$rs is the test snp, $rsid os the matched snp.
+        #$rs is the test snp, $rsid is the matched snp.
         my ($i, $j, $k) = assign ($gc, $tss, $maf, \%params);
 
         my $range = scalar @{$bins{$i}{$j}{$k}};
@@ -448,7 +448,7 @@ sub match{
                 (undef, undef, undef, $rsid) = split /\t/,  $snp_string;
                 last unless $rsid eq $rs; # must not pick the test snp itself.
             }
-            push @{$picks{$n}}, $rsid; # each $n array is a set of snps matching the test set/
+            push @{$picks{$n}}, $rsid; # each $n array is a set of snps matching the test set/ it is allowed to pick the same SNP more than once in this backgrouns selection
         }
     }
     return \%picks;
