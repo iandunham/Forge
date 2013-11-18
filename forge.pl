@@ -374,8 +374,12 @@ print $ofh join("\t", "Zscore", "Cell", "Tissue", "File", "SNPs", "Number", "Acc
 my $n =1;
 
 my $pos = 0;
+
+open my $bfh, ">", "background.tsv" or die "Cannot open background.tsv";
+
 foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) || ncmp($a,$b)} @$cells){ # sort by the tissues alphabetically (from $tissues hash values)
     # ultimately want a data frame of names(results)<-c("Zscore", "Cell", "Tissue", "File", "SNPs")
+    say $bfh join("\t", @{$bkgrd{$cell}});
     my $mean = mean(@{$bkgrd{$cell}});
     my $sd = std(@{$bkgrd{$cell}});
     my $teststat = $$test{'CELLS'}{$cell}{'COUNT'};

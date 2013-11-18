@@ -1,0 +1,126 @@
+Zscore	Cell	Tissue	File	SNPs	Number	Accession
+0.729	HTR8svn	Blastula	wgEncodeOpenChromDnaseHtr8AlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs1862471,rs7617480,rs1364063	1	GSM816644
+-0.817	Adult_CD4+	Blood	Adult_Th0_AllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs1862471,rs6589964	2	Lookup
+0.613	CD14+	Blood	CD14-DS18065.hg19.twopass.merge150.wgt10.zgt2.wig	rs6575793,rs757647,rs1364063	3	Lookup
+-0.658	CD20+	Blood	CD20-DS17541.hg19.twopass.merge150.wgt10.zgt2.wig	rs16938437	4	Lookup
+0.073	CD34+	Blood	CD34-DS16814.hg19.twopass.merge150.wgt10.zgt2.wig	rs314280,rs1364063	5	Lookup
+-0.944	CLL	Blood	wgEncodeOpenChromDnaseCllAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs7617480	6	GSM816664
+0.503	CMK	Blood	CMK-DS12393.twopass.merge150.wgt10.zgt2.wig	rs10899489,rs1364063	7	GSM736607
+-0.255	GM06990	Blood	GM06990-DS7748.twopass.merge150.wgt10.zgt2.wig	rs3914188	8	GSM736558,GSM736635
+0.138	GM12864	Blood	GM12864-DS12431.twopass.merge150.wgt10.zgt2.wig	rs9635759,rs757647	9	GSM736525
+0.943	GM12865	Blood	GM12865-DS12436.twopass.merge150.wgt10.zgt2.wig	rs4929923,rs757647,rs1364063	10	GSM736512,GSM736561
+-0.006	GM12878	Blood	GM12878-all.twopass.merge150.wgt10.zgt2.wig	rs1398217,rs7617480,rs1364063	11	GSM816665,GSM736496,GSM736620
+-0.419	GM12891	Blood	wgEncodeOpenChromDnaseGm12891AlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs3914188,rs7617480	12	GSM816656
+0.710	GM12892	Blood	wgEncodeOpenChromDnaseGm12892AlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs1862471,rs3914188,rs757647,rs1364063	13	GSM816657
+-1.550	GM18507	Blood	wgEncodeOpenChromDnaseGm18507AlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig		14	GSM816653
+-0.404	GM19238	Blood	wgEncodeOpenChromDnaseGm19238AlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs7617480,rs1364063	15	GSM816658
+-1.656	GM19239	Blood	wgEncodeOpenChromDnaseGm19239AlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig		16	GSM816659
+-0.728	GM19240	Blood	wgEncodeOpenChromDnaseGm19240AlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs6575793,rs2947411	17	GSM816648
+0.107	HL-60	Blood	HL60-DS11809.twopass.merge150.wgt10.zgt2.wig	rs757647,rs1364063	18	GSM736626,GSM736595
+0.658	Jurkat	Blood	Jurkat-DS12659.twopass.merge150.wgt10.zgt2.wig	rs2687729,rs7359257,rs1364063	19	GSM736501,GSM736492
+0.685	K562	Blood	K562-all.twopass.merge150.wgt10.zgt2.wig	rs314280,rs757647,rs7617480,rs1364063,rs2002675	20	GSM816655,GSM1008602,GSM1008567,GSM1008601,GSM1008558,GSM1008580,GSM736629,GSM736566
+-0.597	NB4	Blood	NB4-DS12543.twopass.merge150.wgt10.zgt2.wig	rs1364063	21	GSM736604,GSM736529
+-1.154	Th1	Blood	hTH1-all.twopass.merge150.wgt10.zgt2.wig	rs7617480	22	GSM736592,GSM1024760
+-1.260	Th2	Blood	hTH2-DS7842.twopass.merge150.wgt10.zgt2.wig		23	GSM736502,GSM1024792
+-0.581	AoAF	Blood vessel	AoAF-DS13523.twopass.merge150.wgt10.zgt2.wig	rs2687729	24	GSM736583,GSM736505
+-0.670	AoSMC	Blood vessel	wgEncodeOpenChromDnaseAosmcSerumfreeAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs7359257	25	GSM816638
+0.447	HBMEC	Blood vessel	HBMEC-DS13817.twopass.merge150.wgt10.zgt2.wig	rs2090409,rs7821178,rs7617480	26	GSM736509,GSM736554
+-0.506	HMVEC-dAd	Blood vessel	HMVEC_dAd-DS12957.hg19.twopass.merge150.wgt10.zgt2.wig	rs1862471	27	GSM1024745,GSM1024747
+0.275	HMVEC-dBl-Ad	Blood vessel	HMVEC_dBlAd-DS13337.twopass.merge150.wgt10.zgt2.wig	rs17268785,rs7617480	28	GSM736609,GSM736523
+-1.560	HMVEC-dBl-Neo	Blood vessel	HMVEC_dBlNeo-DS13242.twopass.merge150.wgt10.zgt2.wig		29	GSM736571,GSM736521
+-1.067	HMVEC-dLy-Ad	Blood vessel	HMVEC_dLyAd-DS13261.twopass.merge150.wgt10.zgt2.wig		30	GSM736599,GSM736591
+-0.410	HMVEC-dLy-Neo	Blood vessel	HMVEC_dLyNeo-DS13150.twopass.merge150.wgt10.zgt2.wig	rs7617480	31	GSM736577,GSM736573
+-1.197	HMVEC-dNeo	Blood vessel	HMVEC_dNeo-DS12937.twopass.merge150.wgt10.zgt2.wig		32	GSM736611,GSM736624
+-0.781	HMVEC-LBl	Blood vessel	HMVEC_LBl-DS13372.twopass.merge150.wgt10.zgt2.wig	rs17268785	33	GSM736542,GSM736511
+-1.315	HMVEC-LLy	Blood vessel	HMVEC_LLy-DS13185.twopass.merge150.wgt10.zgt2.wig		34	GSM736507,GSM736627
+-1.523	HPAEC	Blood vessel	HPAEC-DS12916.hg19.twopass.merge150.wgt10.zgt2.wig		35	GSM1024763
+-1.509	HPAF	Blood vessel	HPAF-DS13411.twopass.merge150.wgt10.zgt2.wig		36	GSM736555,GSM736614
+-1.372	HUVEC	Blood vessel	HUVEC-all.twopass.merge150.wgt10.zgt2.wig	rs7617480	37	GSM816646,GSM736575,GSM736533
+1.399	Osteobl	Bone	wgEncodeOpenChromDnaseOsteoblAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs1862471,rs3743266,rs2947411,rs3914188,rs757647,rs7617480,rs1364063	38	Lookup
+1.283	BE2_C	Brain	BE_2_C-DS14625.twopass.merge150.wgt10.zgt2.wig	rs2687729,rs1361108,rs7617480,rs1364063	39	Lookup
+-1.866	Gliobla	Brain	wgEncodeOpenChromDnaseGlioblaAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig		40	GSM816668
+-0.401	Medullo	Brain	wgEncodeOpenChromDnaseMedulloAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs1862471,rs633715,rs314280	41	GSM816636
+1.640	SK-N-MC	Brain	SK_N_MC-DS14408.twopass.merge150.wgt10.zgt2.wig	rs852069,rs2687729,rs16938437,rs1361108	42	GSM736522,GSM736570
+1.264	SK-N-SH	Brain	SKNSH-DS8482.twopass.merge150.wgt10.zgt2.wig	rs2687729,rs1361108	43	GSM1008585
+-1.199	HA-h	Brain hippocampus	HAh-DS15192.twopass.merge150.wgt10.zgt2.wig	rs7617480	44	GSM736594,GSM736535
+-0.710	HMEC	Breast	HMEC-all.twopass.merge150.wgt10.zgt2.wig	rs17188434,rs7617480	45	GSM816669,GSM736634,GSM736552
+-0.540	HMF	Breast	HMF-DS13363.twopass.merge150.wgt10.zgt2.wig	rs7821178	46	GSM736628,GSM736541
+-1.370	MCF-7	Breast	MCF7-all.twopass.merge150.wgt10.zgt2.wig	rs7617480	47	GSM816627,GSM1008581,GSM816670,GSM1008565,GSM1008603,GSM1024784,GSM1024783,GSM1024764,GSM1024767,GSM736581,GSM736588
+-0.321	MCF-7	Breast	wgEncodeOpenChromDnaseMcf7HypoxlacAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs314280,rs16938437	48	GSM816627,GSM1008581,GSM816670,GSM1008565,GSM1008603,GSM1024784,GSM1024783,GSM1024764,GSM1024767,GSM736581,GSM736588
+-1.013	T-47D	Breast	wgEncodeOpenChromDnaseT47dAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs6589964	49	GSM816673,GSM1008576,GSM1024762,GSM1024761
+-0.866	HAc	Cerebellar	HAc-DS14765.twopass.merge150.wgt10.zgt2.wig	rs7821178	50	GSM736586,GSM736538
+-0.872	HeLa-S3	Cervix	Hela-all.twopass.merge150.wgt10.zgt2.wig	rs7617480,rs1364063	51	GSM816633,GSM816643,GSM736564,GSM736510
+0.246	HeLa-S3	Cervix	wgEncodeOpenChromDnaseHelas3Ifna4hAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs466639,rs7617480	52	GSM816633,GSM816643,GSM736564,GSM736510
+1.205	Caco-2	Colon	CACO2-DS8235.twopass.merge150.wgt10.zgt2.wig	rs1659127,rs3914188,rs2002675	53	GSM736500,GSM736587
+0.646	HCT-116	Colon	HCT116-DS13551.twopass.merge150.wgt10.zgt2.wig	rs16938437,rs1364063	54	GSM736600,GSM736493
+-0.683	HVMF	Connective	HVMF-DS13981.twopass.merge150.wgt10.zgt2.wig	rs314280	55	GSM736534,GSM736491
+-1.554	WI-38	Embryonic lung	WI_38-DS14315.twopass.merge150.wgt10.zgt2.wig		56	GSM736613,GSM736526,GSM736613,GSM736526
+-1.762	WI-38	Embryonic lung	WI_38_TAM-DS14323.twopass.merge150.wgt10.zgt2.wig		57	GSM736613,GSM736526,GSM736613,GSM736526
+-0.797	A549	Epithelium	A549-all.twopass.merge150.wgt10.zgt2.wig	rs7617480,rs1364063	58	GSM816649,GSM736580,GSM736506
+-1.461	HAEpiC	Epithelium	HAEpiC-DS12663.twopass.merge150.wgt10.zgt2.wig		59	GSM736631,GSM736606
+-1.526	HCPEpiC	Epithelium	HCPEpiC-DS12447.twopass.merge150.wgt10.zgt2.wig		60	GSM736569,GSM736597
+-0.810	HEEpiC	Epithelium	HEEpiC-DS12763.twopass.merge150.wgt10.zgt2.wig	rs757647	61	GSM736585,GSM736532
+-0.890	HIPEpiC	Epithelium	HIPEpiC-DS12684.twopass.merge150.wgt10.zgt2.wig	rs7821178	62	GSM736589,GSM736615
+-0.871	HNPCEpiC	Epithelium	HNPCEpiC-DS12467.twopass.merge150.wgt10.zgt2.wig	rs7821178	63	GSM736621,GSM736550
+0.025	HPdLF	Epithelium	HPdLF-DS13573.twopass.merge150.wgt10.zgt2.wig	rs7821178,rs2687729	64	GSM736632,GSM736528
+-1.497	HRCEpiC	Epithelium	HRCE-DS10666.twopass.merge150.wgt10.zgt2.wig		65	GSM736549,GSM736557
+-1.430	HRE	Epithelium	HRE-DS10641.twopass.merge150.wgt10.zgt2.wig		66	GSM736527,GSM736548
+0.534	HRPEpiC	Epithelium	HRPEpiC-DS12583.twopass.merge150.wgt10.zgt2.wig	rs7821178,rs1361108,rs7617480	67	GSM736630,GSM736623
+-0.900	pHTE	Epithelium	wgEncodeOpenChromDnasePhteAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs3914188,rs7617480	68	GSM816647
+-0.881	RPTEC	Epithelium	RPTEC-DS14061.twopass.merge150.wgt10.zgt2.wig	rs633715	69	GSM736543,GSM736539
+-1.531	SAEC	Epithelium	SAEC-DS10518.twopass.merge150.wgt10.zgt2.wig		70	GSM736608,GSM736617
+1.436	HESC	ES Cell	HESC-all.twopass.merge150.wgt10.zgt2.wig	rs314280,rs3914188,rs757647,rs7617480,rs1364063,rs2002675	71	Lookup
+-0.470	hESCT0	ES Cell	hESCT0-DS11909.twopass.merge150.wgt10.zgt2.wig	rs314280,rs2002675	72	Lookup
+0.843	H9ES	ES Cell	wgEncodeOpenChromDnaseH9esAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs314280,rs3914188,rs1364063	73	GSM816629
+-0.525	HConF	Eye	HConF-DS11642.twopass.merge150.wgt10.zgt2.wig	rs7821178	74	GSM736547,GSM736515
+-0.178	WERI-Rb-1	Eye	WERI_Rb1-DS13681.twopass.merge150.wgt10.zgt2.wig	rs3914188,rs1361108	75	GSM736495,GSM736636
+-0.167	Chorion	Fetal membrane	wgEncodeOpenChromDnaseChorionAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs1659127,rs3914188,rs7617480	76	GSM816628
+-0.896	HFF	Foreskin	HFF-DS15115.twopass.merge150.wgt10.zgt2.wig	rs757647	77	GSM736602,GSM736572
+1.158	HFF-Myc	Foreskin	HFF_MyC-DS15079.twopass.merge150.wgt10.zgt2.wig	rs7821178,rs757647,rs7359257,rs1364063	78	GSM736524,GSM736605
+-1.303	AG09319	Gingival	AG09319-DS12291.twopass.merge150.wgt10.zgt2.wig		79	GSM736531,GSM736619
+-1.329	HGF	Gingival	HGF-DS11752.twopass.merge150.wgt10.zgt2.wig		80	GSM736579,GSM736576
+-0.959	HCFaa	Heart	HCFaa-DS13480.twopass.merge150.wgt10.zgt2.wig	rs7821178	81	GSM736494,GSM736601
+-1.546	HCF	Heart	HCF-DS12501.twopass.merge150.wgt10.zgt2.wig		82	GSM736568,GSM736540
+-0.704	HCM	Heart	HCM-DS12599.twopass.merge150.wgt10.zgt2.wig	rs7617480	83	GSM736516,GSM736504
+1.848	iPS	IPS	wgEncodeOpenChromDnaseIpsAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs1862471,rs1659127,rs314280,rs3914188,rs7617480,rs1364063	84	GSM816642
+-0.813	HRGEC	Kidney	HRGEC-DS13716.twopass.merge150.wgt10.zgt2.wig	rs6438424	85	GSM736499,GSM736618
+0.378	8988T	Liver	wgEncodeOpenChromDnase8988tAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs2947411,rs3914188,rs7617480,rs1364063	86	GSM816667
+-1.408	Hepatocytes	Liver	wgEncodeOpenChromDnaseHepatocytesAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs7617480	87	GSM816663
+-1.060	HepG2	Liver	HepG2-all.twopass.merge150.wgt10.zgt2.wig	rs7617480	88	GSM816662,GSM736637,GSM736639
+1.174	Huh-7.5	Liver	wgEncodeOpenChromDnaseHuh75AlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs7759938,rs314280,rs9939609,rs7359257,rs7617480	89	GSM816671
+0.210	Huh-7	Liver	wgEncodeOpenChromDnaseHuh7AlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs314280,rs7617480,rs1364063	90	GSM816641
+-1.239	Stellate	Liver	wgEncodeOpenChromDnaseStellateAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs7617480	91	GSM816672
+-0.557	AG04450	Lung	AG04450-DS12270.twopass.merge150.wgt10.zgt2.wig	rs7642134	92	GSM736514,GSM736563
+-1.352	HPF	Lung	HPF-DS13390.twopass.merge150.wgt10.zgt2.wig		93	GSM736574,GSM736503
+-0.911	NHLF	Lung	NHLF-DS12829.twopass.merge150.wgt10.zgt2.wig	rs7821178	94	GSM736612,GSM736536
+-1.638	E_myoblast	Muscle	E_myoblast_AllReps.30000000.twopass.merge150.wgt10.zgt2.wig		95	Lookup
+-1.151	HSMM	Muscle	HSMM-all.twopass.merge150.wgt10.zgt2.wig	rs7821178,rs7617480	96	GSM816650,GSM736560,GSM736553
+-0.544	HSMM	Muscle	HSMM_D-all.twopass.merge150.wgt10.zgt2.wig	rs7821178,rs2687729,rs7617480	97	GSM816650,GSM736560,GSM736553
+-1.444	SKMC	Muscle	SkMC-DS11949.twopass.merge150.wgt10.zgt2.wig		98	Lookup
+-1.131	Myometr	Myometrium	wgEncodeOpenChromDnaseMyometrAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs6575793	99	GSM816630
+-0.795	NH-A	Nervous	NHA-DS12800.twopass.merge150.wgt10.zgt2.wig	rs7821178	100	GSM736544,GSM736584
+-1.519	PANC-1	Pancreas	PANC1-DS9955.twopass.merge150.wgt10.zgt2.wig		101	GSM736517,GSM736519
+-1.307	PanIsletD	Pancreas	wgEncodeOpenChromDnasePanisdAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs7617480	102	GSM816666
+-1.098	PanIslets	Pancreas	wgEncodeOpenChromDnasePanisletsAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs7617480	103	GSM816660
+-0.819	HPDE6-E6E7	Pancreatic duct	wgEncodeOpenChromDnaseHpde6e6e7AlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs1862471	104	GSM816639
+0.364	LNCaP	Prostate	LNCap-all.twopass.merge150.wgt10.zgt2.wig	rs7821178,rs16938437,rs7642134,rs7617480	105	GSM816637,GSM816634,GSM736565,GSM736603
+-0.308	LNCaP	Prostate	wgEncodeOpenChromDnaseLncapAndroAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs2687729,rs16938437	106	GSM816637,GSM816634,GSM736565,GSM736603
+-1.500	PrEC	Prostate	PrEC-DS12098.hg19.twopass.merge150.wgt10.zgt2.wig		107	GSM1024742,GSM1024743
+-1.512	RWPE1	Prostate	RWPE_AllReps.30000000.twopass.merge150.wgt10.zgt2.wig		108	GSM1008595
+-1.475	AG04449	Skin	AG04449-DS12319.twopass.merge150.wgt10.zgt2.wig		109	GSM736562,GSM736590
+-1.477	AG09309	Skin	AG09309-DS12352.twopass.merge150.wgt10.zgt2.wig		110	GSM736551,GSM736616
+-1.353	AG10803	Skin	AG10803-DS12384.twopass.merge150.wgt10.zgt2.wig		111	GSM736598,GSM736633
+-0.587	BJ	Skin	BJ-DS10081.twopass.merge150.wgt10.zgt2.wig	rs7821178	112	GSM736518,GSM736596
+-0.433	Fibrobl	Skin	wgEncodeOpenChromDnaseFibroblAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs6575793,rs466639,rs7617480	113	GSM816652
+-0.913	FibroP	Skin	wgEncodeOpenChromDnaseFibropAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs9555810,rs7617480	114	GSM816626
+0.175	Melano	Skin	wgEncodeOpenChromDnaseMelanoAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs2947411,rs3914188,rs2243803,rs7617480	115	GSM816631
+-0.237	NHDF-Ad	Skin	NHDF_Ad-DS12863.twopass.merge150.wgt10.zgt2.wig	rs757647,rs10423674	116	GSM736567,GSM736520
+-0.560	NHDF-neo	Skin	NHDF_Neo-DS11923.twopass.merge150.wgt10.zgt2.wig	rs10423674	117	GSM736498,GSM736546
+-0.874	NHEK	Skin	NHEK-all.twopass.merge150.wgt10.zgt2.wig	rs1862471,rs7617480	118	GSM816635,GSM736545,GSM736556
+-0.713	ProgFib	Skin	wgEncodeOpenChromDnaseProgfibAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs1862471,rs7617480	119	GSM816661
+-1.844	HA-sp	Spinal cord	HAsp-DS14790.twopass.merge150.wgt10.zgt2.wig		120	GSM736537,GSM736625
+0.836	NT2-D1	Testis	NT2_D1-DS14575.hg19.twopass.merge150.wgt10.zgt2.wig	rs7759938,rs314280,rs3914188,rs7617480	121	GSM1024751,GSM1024795
+-1.055	Urothelia	Urothelium	wgEncodeOpenChromDnaseUrotsaAlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs3914188	122	GSM1008606,GSM1008605
+0.017	Urothelia	Urothelium	wgEncodeOpenChromDnaseUrotsaUt189AlnAllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs3914188,rs7359257,rs7617480	123	GSM1008606,GSM1008605
+0.285	Ishikawa	Uterus	Ishikawa_E_AllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs1398217,rs7617480	124	GSM1008594,GSM1008593
+-0.817	Ishikawa	Uterus	Ishikawa_T_AllReps.30000000.twopass.merge150.wgt10.zgt2.wig	rs1364063	125	GSM1008594,GSM1008593
