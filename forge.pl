@@ -86,6 +86,10 @@ ian = 1-based chr\tbeg\tend\trsid\tpval
 
 Output background stats for investigation.
 
+=item B<reps>
+
+THe number of background matching sets to pick and analyse. Default 100.
+
 =item B<noplot>
 
 Just make the data file, don't plot.
@@ -127,6 +131,7 @@ Ian Dunham <dunham@ebi.ac.uk>
 
 =cut
 
+use strict;
 use 5.010;
 use warnings;
 use DBI;
@@ -140,7 +145,7 @@ use Pod::Usage;
 
 my $cwd = getcwd;
 
-my ($bkgd, $data, $peaks, $label, $file, $format, $min_snps, $bkgrdstat, $noplot, $help, $man,  @snplist);
+my ($bkgd, $data, $peaks, $label, $file, $format, $min_snps, $bkgrdstat, $noplot, $reps, $help, $man,  @snplist);
 
 GetOptions (
     'data=s'     => \$data,
@@ -152,6 +157,7 @@ GetOptions (
     'snps=s'     => \@snplist,
     'min_snps=i' => \$min_snps,
     'noplot'     => \$noplot,
+    'reps=i'      => \$reps,
     'help|h|?'   => \$help,
     'man|m'      => \$man,
 
@@ -184,7 +190,10 @@ my $datadir = $cfg->val('Files', 'datadir');
 # percentile bins for the bkgrd calculations. This is hard coded so there are enough SNPs to choose from, but could later be altered.
 my $per = 10;
 # number of sets to analyse for bkgrd. Again currently hardcoded to 100
-my $reps = 100;
+
+unless (defined $reps){
+    $reps = 100;
+}
 
 unless (defined $bkgd){
     $bkgd = "gwas";
@@ -211,7 +220,7 @@ if (defined $file){
         while (<$fh>){
             chomp;
             my @rsid = split /\:/, $_;
-            $rsid = pop @rsid; # take the last one for want of a better idea.
+            my $rsid = pop @rsid; # take the last one for want of a better idea.
             push @snps, $rsid;
         }
     }
@@ -609,7 +618,8 @@ sub fdr{
         return "NA";
     }
     else{
-        my $fpr = 0.031 * exp(-0.15 * $snps) + 0.0002; # from simulations of random data
+
+        my $fpr = 0.0085 * exp(-0.04201 * $snps) + 0.00187; # from simulations of random data  0.0085*exp(-0.04201. SNPs) + 0.00187
         my $fdr = ($cells * $fpr) / $tp;
         return $fdr;
     }
