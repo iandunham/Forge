@@ -676,14 +676,14 @@ par(mar=c(9,4,3,1)+0.1)
 plot(results\$Zscore,ylab=\"Z score\",xlab=\"\",main=\"Proportion of SNPs, DNase1 sites (probably TF sites) which are present in cell lines for $label\",ylim=c(ymin,ymax), las=2, las=2, pch=19,col=results\$Class, xaxt='n')
 axis(1, seq(1,length(results\$Cell)),labels=results\$Cell, las=2, cex.axis=0.7)
 mtext(1,text=\"Cell\",line=7,cex=1.2)
-abline(h=-2.58, col=\"lightpink1\") # Z score of 2.58 = 99 % probability
-abline(h=2.58, col=\"lightpink1\")
+#abline(h=-2.58, col=\"lightpink1\") # Z score of 2.58 = 99 % probability
+#abline(h=2.58, col=\"lightpink1\")
 abline(h=3.39, col=\"lightpink1\", lty=2)
 abline(h=3.39, col=\"lightpink1\", lty=2)
-text(c(-2),2.58+0.14,c(\"99%\"),col=\"lightpink1\",adj=1,cex=0.8)
-text(c(-2),-2.58+0.14,c(\"1%\"),col=\"lightpink1\",adj=1,cex=0.8)
-text(c(-1),3.39+0.14,c(\"99.9%\"),col=\"lightpink1\",adj=1,cex=0.8)
-text(c(-1),-3.39+0.14,c(\"0.1%\"),col=\"lightpink1\",adj=1,cex=0.8)
+text(c(-2),2.58+0.14,c(\"Z = 2.58\"),col=\"lightpink1\",adj=1,cex=0.8)
+#text(c(-2),-2.58+0.14,c(\"1%\"),col=\"lightpink1\",adj=1,cex=0.8)
+text(c(-1),3.39+0.14,c(\"Z = 3.39\"),col=\"lightpink1\",adj=1,cex=0.8)
+#text(c(-1),-3.39+0.14,c(\"0.1%\"),col=\"lightpink1\",adj=1,cex=0.8)
 palette(\"default\")\n";
 
     foreach my $pos (@lines){
