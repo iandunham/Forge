@@ -22,7 +22,7 @@ A dimple (http://dimplejs.org) d3 interactive graphic using rCharts.
 
 A table using the Datatables (https://datatables.net) plug-in for the jQuery Javascript library, again accessed through rCharts.
 
-In each opf the graphics the colouring should be consistent. Blue (Z < 2.58), light red or pink (2.58 =< Z < 3.39), red or dark red (Z >= 3.39 ) for the 99% and 99.9% cIs.
+In each of the graphics the colouring should be consistent. Blue (Z < 2.58), light red or pink (2.58 =< Z < 3.39), red or dark red (Z >= 3.39 ) for the 99% and 99.9% cIs. Or whatever other thresholds are specified.
 
 =head1 OPTIONS
 
@@ -67,6 +67,10 @@ Can provide the snps as rsids in a comma separated list.
 =item B<min_snps>
 
 Specify the minimum number of SNPs to be allowed. Default is 20.
+
+=item B<thresh>
+
+Alter the default Z score thresholds. Give a comma separate list of two e.g.2.58,3.39 for the defaults
 
 =item B<format>
 
@@ -142,10 +146,11 @@ use Getopt::Long;
 use File::Basename;
 use Config::IniFiles;
 use Pod::Usage;
+use Scalar::Util qw(looks_like_number);
 
 my $cwd = getcwd;
 
-my ($bkgd, $data, $peaks, $label, $file, $format, $min_snps, $bkgrdstat, $noplot, $reps, $help, $man,  @snplist);
+my ($bkgd, $data, $peaks, $label, $file, $format, $min_snps, $bkgrdstat, $noplot, $reps, $help, $man, $thresh, @snplist);
 
 GetOptions (
     'data=s'     => \$data,
@@ -157,7 +162,8 @@ GetOptions (
     'snps=s'     => \@snplist,
     'min_snps=i' => \$min_snps,
     'noplot'     => \$noplot,
-    'reps=i'      => \$reps,
+    'reps=i'     => \$reps,
+    'thresh=s'   => \$thresh,
     'help|h|?'   => \$help,
     'man|m'      => \$man,
 
@@ -198,7 +204,18 @@ unless (defined $reps){
 unless (defined $bkgd){
     $bkgd = "gwas";
 }
+my ($t1, $t2);
 
+if (defined $thresh){
+    ($t1, $t2) = split(",", $thresh);
+    unless (looks_like_number($t1) && looks_like_number($t2)){
+        die "You must specify numerical thersholds in a comma separated list";
+    }
+}
+else{
+    $t1 = 2.58;
+    $t2 = 3.39;
+}
 my $dsn;
 if (defined $peaks){
     $dsn = "dbi:SQLite:dbname=" . $datadir . "forge_peaks.db";
@@ -399,7 +416,7 @@ foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) ||
     else{
         $zscore = sprintf("%.3f", ($teststat-$mean)/$sd);
     }
-    if ($zscore >=3.39){
+    if ($zscore >=$t2){
         $pos++;
     }
     my $snp_string = "";
@@ -665,7 +682,7 @@ sub Chart{
     open my $rfh, ">", "$rfile";
     print $rfh "setwd(\"$Rdir\")
 results<-read.table(\"$filename\",header=TRUE,sep=\"\t\")
-results\$Class<-cut(results\$Zscore, breaks =c(min(results\$Zscore), 2.58, 3.39, max(results\$Zscore)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
+results\$Class<-cut(results\$Zscore, breaks =c(min(results\$Zscore), $t1, $t2, max(results\$Zscore)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
 pdf(\"$chart\", width=22.4, height=7)
 palette(c(\"steelblue3\",\"pink2\",\"red\"))
 ymin1 = min(results\$Zscore, na.rm=TRUE)*1.1
@@ -676,14 +693,14 @@ par(mar=c(9,4,3,1)+0.1)
 plot(results\$Zscore,ylab=\"Z score\",xlab=\"\",main=\"Proportion of SNPs, DNase1 sites (probably TF sites) which are present in cell lines for $label\",ylim=c(ymin,ymax), las=2, las=2, pch=19,col=results\$Class, xaxt='n')
 axis(1, seq(1,length(results\$Cell)),labels=results\$Cell, las=2, cex.axis=0.7)
 mtext(1,text=\"Cell\",line=7,cex=1.2)
-#abline(h=-2.58, col=\"lightpink1\") # Z score of 2.58 = 99 % probability
-#abline(h=2.58, col=\"lightpink1\")
-abline(h=3.39, col=\"lightpink1\", lty=2)
-abline(h=3.39, col=\"lightpink1\", lty=2)
-text(c(-2),2.58+0.14,c(\"Z = 2.58\"),col=\"lightpink1\",adj=1,cex=0.8)
-#text(c(-2),-2.58+0.14,c(\"1%\"),col=\"lightpink1\",adj=1,cex=0.8)
-text(c(-1),3.39+0.14,c(\"Z = 3.39\"),col=\"lightpink1\",adj=1,cex=0.8)
-#text(c(-1),-3.39+0.14,c(\"0.1%\"),col=\"lightpink1\",adj=1,cex=0.8)
+#abline(h=-$t1, col=\"lightpink1\") # Z score of 2.58 = 99 % probability
+abline(h=$t1, col=\"lightpink1\")
+#abline(h=-$t2, col=\"lightpink1\", lty=2)
+abline(h=$t2, col=\"lightpink1\", lty=2)
+text(c(-1),$t1+0.2,c(\"Z = $t1\"),col=\"lightpink1\",adj=1,cex=0.8)
+#text(c(-1),-$t1+0.16,c(\"1%\"),col=\"lightpink1\",adj=1,cex=0.8)
+text(c(-1),$t2+0.2,c(\"Z = $t2\"),col=\"lightpink1\",adj=1,cex=0.8)
+#text(c(-1),-$t2+0.16,c(\"0.1%\"),col=\"lightpink1\",adj=1,cex=0.8)
 palette(\"default\")\n";
 
     foreach my $pos (@lines){
@@ -709,7 +726,7 @@ sub rChart{
     open my $rcfh, ">", "$rfile";
     print $rcfh "setwd(\"$Rdir\")
 results<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
-results\$Colour<- 0 + (results\$Zscore < 3.39) + (results\$Zscore < 2.58)  # 99.9 and 99% CIs
+results\$Colour<- 0 + (results\$Zscore < $t2) + (results\$Zscore < $t1)  # 99.9 and 99% CIs
 require(rCharts)
 r1 <- rPlot(Zscore ~ Cell, data=results, color=\"bin(Colour, 0.25)\", type=\"point\", tooltip = \"function(item){ return (item.Zscore + '\\\\n' + item.Cell + '\\\\n' + item.Tissue + '\\\\n' + item.File + '\\\\n' + item.SNPs + '\\\\n' + item.Accession + '\\\\n')}\")
 #r1\$guides(color=list(scale = list(type = \'gradient\', lower = \'\#CCC\', upper = \'\#000\'))) # optional code to make a grey scale
@@ -735,7 +752,7 @@ sub dChart{
    open my $rcfh, ">", "$rfile";
     print $rcfh "setwd(\"$Rdir\")
 results<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
-results\$Class<-cut(results\$Zscore, breaks =c(min(results\$Zscore), 2.58, 3.39, max(results\$Zscore)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
+results\$Class<-cut(results\$Zscore, breaks =c(min(results\$Zscore), $t1, $t2, max(results\$Zscore)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
 require(rCharts)
 d1 <- dPlot(
   y = \"Zscore\",
@@ -800,7 +817,7 @@ sub table{
 #    open my $rcfh, ">", "$Rdir/$rfile";
 #    print $rcfh "setwd(\"$Rdir\")
 #results<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
-#results\$Class<-cut(results\$Zscore, breaks =c(min(results\$Zscore), 2.58, 3.39, max(results\$Zscore)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
+#results\$Class<-cut(results\$Zscore, breaks =c(min(results\$Zscore), $t1, $t2, max(results\$Zscore)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
 #require(rCharts)
 #h1 <- hPlot(Zscore ~ Number, data=results, type=\"scatter\", radius=5)
 #h1\$addParams(width = 2000, height=600, title=list(\"$label overlaps with $data DHS\"))
