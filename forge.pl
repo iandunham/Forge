@@ -704,7 +704,7 @@ text(c(-1),$t2+0.2,c(\"Z = $t2\"),col=\"lightpink1\",adj=1,cex=0.8)
 palette(\"default\")\n";
 
     foreach my $pos (@lines){
-        print $rfh "lines(c($pos,$pos),c(-5,22),lty=6,col=\"#00000070\")\n" unless $pos == 0.5;
+        print $rfh "lines(c($pos,$pos),c(-22,22),lty=6,col=\"#00000070\")\n" unless $pos == 0.5;
     }
     $index = 0;
     foreach my $tissue (@labels){
