@@ -1,6 +1,6 @@
 For details of the analysis approach see documentation in the web version at
 
-http://www.1000genomes.org/node/959
+http://www.1000genomes.org/forge-analysis
 
 1. The script itself currently called forge.pl written in perl. It has
 the following perl dependencies.
