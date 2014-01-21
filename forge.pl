@@ -428,7 +428,7 @@ foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) ||
 
 my $cellcount = scalar @$cells;
 my $fdr = fdr($pos, $snpcount, $cellcount);
-say "$filename\t$pos positive lines at FDR = $fdr";
+say "$filename\t$pos positive lines at FDR = $fdr at Z >= 3.39";
 
 unless (defined $noplot){
     #Plotting and table routines
