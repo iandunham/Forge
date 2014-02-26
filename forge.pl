@@ -147,6 +147,8 @@ use File::Basename;
 use Config::IniFiles;
 use Pod::Usage;
 use Scalar::Util qw(looks_like_number);
+use PDL::Stats::Basic;
+use PDL::LiteF;
 
 my $cwd = getcwd;
 
@@ -356,10 +358,12 @@ my $picks = match(\%$test, $bkgd);
 my %bkgrd; #this hash is going to store the bkgrd overlaps
 
 # Get the bits for the background sets and process
+my $backsnps;
 
 foreach my $bkgrd (keys %{$picks}){
     #$rows = get_bits(\@{$$picks{$bkgrd}}, $sth);
     $rows = get_bits(\@{$$picks{$bkgrd}}, $dbh);
+    $backsnps += scalar @$rows;
     unless (scalar @$rows == scalar @foundsnps){
         print "Background " . $bkgrd . " only " . scalar @$rows . " SNPs out of " . scalar @foundsnps . "\n";
     }
@@ -396,7 +400,7 @@ else{
 mkdir $resultsdir;
 my $filename = "$lab.chart.tsv";
 open my $ofh, ">", "$resultsdir/$filename" or die "Cannot open $resultsdir/$filename: $!"; #should grab a process number for unique name here
-print $ofh join("\t", "Zscore", "Cell", "Tissue", "File", "SNPs", "Number", "Accession") ."\n";
+print $ofh join("\t", "Zscore", "Pvalue", "Cell", "Tissue", "File", "SNPs", "Number", "Accession") ."\n";
 my $n =1;
 
 my $pos = 0;
@@ -406,9 +410,20 @@ open my $bfh, ">", "background.tsv" or die "Cannot open background.tsv";
 foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) || ncmp($a,$b)} @$cells){ # sort by the tissues alphabetically (from $tissues hash values)
     # ultimately want a data frame of names(results)<-c("Zscore", "Cell", "Tissue", "File", "SNPs")
     say $bfh join("\t", @{$bkgrd{$cell}});
+    my $teststat = $$test{'CELLS'}{$cell}{'COUNT'}; #number of overlaps for the test SNPs
+    # binomial pvalue
+    # probability of success is the background overlaps over the test for this cell
+    my $tests;
+    foreach (@{$bkgrd{$cell}}){
+        $tests+= $_;
+    }
+    my $p = sprintf("%.6f", $tests/$backsnps);
+    my $x = pdl($teststat);
+    my $pbinom =  binomial_test($x, $snpcount, $p);
+
+    # Z score calculation
     my $mean = mean(@{$bkgrd{$cell}});
     my $sd = std(@{$bkgrd{$cell}});
-    my $teststat = $$test{'CELLS'}{$cell}{'COUNT'};
     my $zscore;
     if ($sd == 0){
         $zscore = "NA";
@@ -422,7 +437,7 @@ foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) ||
     my $snp_string = "";
     $snp_string = join(",", @{$$test{'CELLS'}{$cell}{'SNPS'}}) if defined $$test{'CELLS'}{$cell}{'SNPS'}; # This gives the list of overlapping SNPs for use in the tooltips. If there are a lot of them this can be a little useless
     my ($shortcell, undef) = split('\|', $cell); # undo the concatenation from earlier to deal with identical cell names.
-    print $ofh join("\t", $zscore, $shortcell, $$tissues{$cell}{'tissue'}, $$tissues{$cell}{'file'}, $snp_string, $n, $$tissues{$cell}{'acc'}) . "\n";
+    print $ofh join("\t", $zscore, $pbinom, $shortcell, $$tissues{$cell}{'tissue'}, $$tissues{$cell}{'file'}, $snp_string, $n, $$tissues{$cell}{'acc'}) . "\n";
     $n++;
 }
 
@@ -614,7 +629,7 @@ sub mean {
     return $sum/($#_+1);
 }
 
-sub var {
+sub variance {
     # calculates the biased variance of an array
     #
     # pass it a float array and it will return the variance
@@ -627,7 +642,7 @@ sub var {
 }
 
 # calulates the standard deviation of an array: this is just the sqrt of the var
-sub std { sqrt(var(@_)) }
+sub std { sqrt(variance(@_)) }
 
 sub fdr{
     my ($tp, $snps, $cells) = @_;
@@ -717,7 +732,7 @@ palette(\"default\")\n";
 }
 
 sub rChart{
-    # Makes a polcharts plot : note X axis labelling is problematical
+    # Makes a polycharts plot : note X axis labelling is problematical
     print "Making rChart.\n";
     my ($filename, $lab, $resultsdir) = @_;
     my $chart = "$lab.rchart.html";
