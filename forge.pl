@@ -147,8 +147,9 @@ use File::Basename;
 use Config::IniFiles;
 use Pod::Usage;
 use Scalar::Util qw(looks_like_number);
-use PDL::Stats::Basic;
-use PDL::LiteF;
+#use PDL::Stats::Basic;
+#use PDL::LiteF;
+
 
 my $cwd = getcwd;
 
@@ -211,11 +212,11 @@ my ($t1, $t2);
 if (defined $thresh){
     ($t1, $t2) = split(",", $thresh);
     unless (looks_like_number($t1) && looks_like_number($t2)){
-        die "You must specify numerical thersholds in a comma separated list";
+        die "You must specify numerical thresholds in a comma separated list";
     }
 }
 else{
-    $t1 = 2.58;
+    $t1 = 2.58; # two tailed 99% cI
     $t2 = 3.39;
 }
 my $dsn;
@@ -407,19 +408,39 @@ my $pos = 0;
 
 open my $bfh, ">", "background.tsv" or die "Cannot open background.tsv";
 
+open my $binfh, ">", "pbinom.tsv" or die "Cannot open pvalue file";
+say $binfh "Zscore\tPvalue";
+
 foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) || ncmp($a,$b)} @$cells){ # sort by the tissues alphabetically (from $tissues hash values)
     # ultimately want a data frame of names(results)<-c("Zscore", "Cell", "Tissue", "File", "SNPs")
     say $bfh join("\t", @{$bkgrd{$cell}});
     my $teststat = $$test{'CELLS'}{$cell}{'COUNT'}; #number of overlaps for the test SNPs
+
     # binomial pvalue
-    # probability of success is the background overlaps over the test for this cell
+    # probability of success is derived from the background overlaps over the tests for this cell
     my $tests;
     foreach (@{$bkgrd{$cell}}){
         $tests+= $_;
     }
     my $p = sprintf("%.6f", $tests/$backsnps);
-    my $x = pdl($teststat);
-    my $pbinom =  binomial_test($x, $snpcount, $p);
+    # pdl binomial pvalue
+    #my $x = pdl($teststat);
+    #my $pdlbinom =  binomial_test($x, $snpcount, $p);
+
+    # binomial probability for $teststat or more hits out of $snpcount snps
+    # sum the binomial for each k out of n above $teststat
+    my $pbinom;
+
+    if ($snpcount >= 170) {#conditions for normal approximation to binomial $snpcount * $p >= 10 &&  $snpcount * ( 1 - $p) >= 10 &&
+        foreach my $k ($teststat .. $snpcount){
+            $pbinom += binomial_normal($k, $snpcount, $p);
+        }
+    }
+    else{
+        foreach my $k ($teststat .. $snpcount){
+            $pbinom += binomial($k, $snpcount, $p);
+        }
+    }
 
     # Z score calculation
     my $mean = mean(@{$bkgrd{$cell}});
@@ -431,6 +452,9 @@ foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) ||
     else{
         $zscore = sprintf("%.3f", ($teststat-$mean)/$sd);
     }
+    say $binfh "$zscore\t$pbinom";
+    #say $binfh "$zscore\t$pbinom\t$pdlbinom";
+
     if ($zscore >=$t2){
         $pos++;
     }
@@ -644,6 +668,40 @@ sub variance {
 # calulates the standard deviation of an array: this is just the sqrt of the var
 sub std { sqrt(variance(@_)) }
 
+# Subroutines for binomial probability from http://www.halotype.com/RKM/figures/TJF/binomial.txt
+# Normal approximation of binomial distribution for large n.
+sub binomial_normal {
+    my ($k, $n, $p) = @_;
+    my ($sigma, $mu, $pi, $const, $exponent, $prob);
+    $mu = $n * $p;
+    $sigma = sqrt($mu * (1 - $p));
+    $pi = atan2(1, 1) * 4;
+    $const = 1 / ($sigma * sqrt(2 * $pi));
+    $exponent = -0.5 * (($k - $mu) / $sigma)**2;
+    $prob = $const * exp($exponent);
+    return $prob;
+}
+
+sub binomial {
+    #binomial probability for k picks out of n, for n or greater need to sum for each k up to n
+    my ($k, $n, $p) = @_;
+    my $prob;
+    $prob = ($p**$k) * ((1 - $p)**($n - $k)) * factorial($n) / (factorial($k) * factorial($n - $k));
+    return $prob;
+}
+
+sub factorial {
+    my $n = shift;
+    my $fact = 1;
+    if (($n < 0) || (170 < $n)) {
+	die "Factorial out of range";
+    }
+    for (my $i = 1; $i <= $n; $i++) {
+	$fact *= $i;
+    }
+    return $fact;
+}
+
 sub fdr{
     my ($tp, $snps, $cells) = @_;
     if ($tp == 0){
@@ -771,7 +829,7 @@ results\$Class<-cut(results\$Zscore, breaks =c(min(results\$Zscore), $t1, $t2, m
 require(rCharts)
 d1 <- dPlot(
   y = \"Zscore\",
-  x = c(\"Cell\", \"Tissue\", \"SNPs\", \"Number\", \"Accession\"),
+  x = c(\"Cell\", \"Tissue\", \"SNPs\", \"Number\", \"Accession\", \"Pvalue\"),
   groups = \"Class\",
   data = results,
   type = \"bubble\",
