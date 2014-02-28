@@ -408,8 +408,8 @@ my $pos = 0;
 
 open my $bfh, ">", "background.tsv" or die "Cannot open background.tsv";
 
-open my $binfh, ">", "pbinom.tsv" or die "Cannot open pvalue file";
-say $binfh "Zscore\tPvalue";
+#open my $binfh, ">", "pbinom.tsv" or die "Cannot open pvalue file";
+#say $binfh "Zscore\tPvalue";
 
 foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) || ncmp($a,$b)} @$cells){ # sort by the tissues alphabetically (from $tissues hash values)
     # ultimately want a data frame of names(results)<-c("Zscore", "Cell", "Tissue", "File", "SNPs")
@@ -452,7 +452,6 @@ foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) ||
     else{
         $zscore = sprintf("%.3f", ($teststat-$mean)/$sd);
     }
-    say $binfh "$zscore\t$pbinom";
     #say $binfh "$zscore\t$pbinom\t$pdlbinom";
 
     if ($zscore >=$t2){
