@@ -78,7 +78,7 @@ Alter the default binomial p value thresholds. Give a comma separate list of two
 
 if f is specified, specify the file format as follow:
 
-rsid = list of snps as rsids each on a separate line
+rsid = list of snps as rsids each on a separate line. Optionally can add other fields after the rsid which are ignored, unless the pvalue filter is specified, in which case Forge assumes that thesecond field is the minus log10 pvalue
 
 bed  = File given is a bed file of locations (chr\tbeg\tend) aka Personal Genome SNP format.  bed format should be 0 based and the chromosome should be given as chrN. Hoever will also accept chomosomes as just N (ensembl) and 1-based format where beg and end are the same
 
@@ -86,7 +86,11 @@ vcf = File given is a vcf file.
 
 tabix = File contains SNPs in tabix format.
 
-ian = 1-based chr\tbeg\tend\trsid\tpval
+ian = 1-based chr\tbeg\tend\trsid\tpval\tminuslog10pval
+
+=item B<filter>
+
+Set a filter on the SNPs based on the -log10 pvalue.  This works for files in the 'ian' or 'rsid' format. Give a value as the lower threshols and only SNPs with -log10 pvalues >= to the threshold will be analysed. Defaiult is no filtering.
 
 =item B<bkgrd>
 
@@ -164,7 +168,7 @@ use Forge::Forge;
 
 my $cwd = getcwd;
 
-my ($bkgd, $data, $peaks, $label, $file, $format, $min_snps, $bkgrdstat, $noplot, $reps, $help, $man, $thresh, $ld, $nold, @snplist);
+my ($bkgd, $data, $peaks, $label, $file, $format, $min_snps, $bkgrdstat, $noplot, $reps, $help, $man, $thresh, $ld, $nold, $filter, @snplist);
 
 GetOptions (
     'data=s'     => \$data,
@@ -180,6 +184,7 @@ GetOptions (
     'thresh=s'   => \$thresh,
     'ld=f'       => \$ld,
     'nold'       => \$nold,
+    'filter=f'   => \$filter,
     'help|h|?'   => \$help,
     'man|m'      => \$man,
 
@@ -227,20 +232,21 @@ my ($t1, $t2);
 if (defined $thresh){
     ($t1, $t2) = split(",", $thresh);
     unless (looks_like_number($t1) && looks_like_number($t2)){
-        die "You must specify numerical pvalue thresholds thresholds in a comma separated list";
+        die "You must specify numerical pvalue thresholds in a comma separated list";
     }
 }
 else{
-    $t1 = 0.005; # set binomial p values, bonferroni is applied later based on number of samples (cells)
-    $t2 = 0.001;
+    $t1 = 0.05; # set binomial p values, bonferroni is applied later based on number of samples (cells)
+    $t2 = 0.01;
 }
 
+# Set r2 LD thresholds
 my $r2;
 unless (defined $nold){
     unless (defined $ld){
         $ld = 0.8;
     }
-    unless ($ld eq 0.1 || $ld eq 0.8){
+    unless ($ld == 0.1 || $ld == 0.8){
         die "You have specified LD filtering, but given an invalid value $ld. the format is ld 0.0, ld 0.8, or ld 0.1";
     }
     ($r2 = $ld) =~ s /\.//;
@@ -261,9 +267,14 @@ my @snps;
 # A series of data file formats to accept.
 
 if (defined $file){
+    if (defined $filter) {
+        unless ($format eq "ian" or $format eq "rsid"){
+            warn "You have specified pvalue fitlering, but this isn't implemented for files of format $format. No filtering will happen."
+        }
+    }
     my $sth = $dbh->prepare("SELECT rsid FROM bits WHERE location = ?");
     open my $fh, "<", $file or die "cannot open file $file : $!";
-    @snps = process_file($fh, $format, $sth);
+    @snps = process_file($fh, $format, $sth, $filter);
 }
 elsif (@snplist){
     @snps = split(/,/,join(',',@snplist));
@@ -335,7 +346,7 @@ if (scalar @missing > 0) {
 }
 if (defined $ld) {
     if ($output < $input) {
-        say "$input SNPs provided, " . scalar @snps . " retained, " . scalar(keys %$ld_excluded) . " LD filtered at $ld";
+        say "$input SNPs provided, " . scalar @snps . " retained, " . scalar @missing . " not analysed, "  . scalar(keys %$ld_excluded) . " LD filtered at $ld,";
     }
 }
 
@@ -389,9 +400,15 @@ print $ofh join("\t", "Zscore", "Pvalue", "Cell", "Tissue", "File", "SNPs", "Num
 my $n = 1;
 my $pos = 0;
 
-#my $tissuecount = scalar @$tissues;
-#$t1 = $t1/$tissuecount; # bonferroni correction
-#$t2 = $t2/$tissuecount;
+my %tissuecount;
+foreach my $cell (keys %$tissues){
+    my $tissue = $$tissues{$cell}{'tissue'};
+    $tissuecount{$tissue}++;
+}
+
+my $tissuecount = scalar keys %tissuecount;
+$t1 = $t1/$tissuecount; # bonferroni correction by number of tissues
+$t2 = $t2/$tissuecount;
 
 $t1 = -log10($t1);
 $t2 = -log10($t2);

@@ -74,12 +74,20 @@ Processes various file formats.
 =cut
 
 sub process_file {
-    my ($fh, $format, $sth) = @_;
+    my ($fh, $format, $sth, $filter) = @_;
     my @snps;
     if ($format =~ /rsid/){
         while (<$fh>){
             chomp;
-            my ($rs, undef) = split /\s+/, $_; # remove anything that is not supposed to be there :-)
+            my $rs;
+            if (defined $filter) {
+                my $pval;
+                ($rs, $pval) = split /\s+/, $_;
+                next unless $pval >= $filter;
+            }
+            else{
+                ($rs, undef) = split /\s+/, $_; # remove anything that is not supposed to be there :-)
+            }
             my @rsid = split /\:/, $rs;
             my $rsid = pop @rsid; # take the last one for want of a better idea.
             push @snps, $rsid;
@@ -87,7 +95,10 @@ sub process_file {
     }
     elsif ($format =~ /ian/){
         while (<$fh>){
-            my ($chr, $beg, $end, $rsid, undef) = split "\t", $_;
+            my ($chr, $beg, $end, $rsid, $p, $pval) = split "\t", $_;
+            if (defined $filter) {
+                next unless $pval >= $filter;
+            }
             my @rsid = split /\:/, $rsid; # to deal with multiple rsids
             $rsid = pop @rsid; # take the last one for want of a better idea. Can't take all as they are the same thing.
             push @snps, $rsid;
@@ -286,7 +297,7 @@ sub ld_filter{
         foreach my $ldsnp (@block){
             if (exists $snps{$ldsnp}) {
                 $ld_excluded{$ldsnp} = $snp; #Add to the excluded snps, if itis in an LD block with the current snp, and it its one of the test snps.
-                say "$ldsnp excluded for LD at $r2 for $snp";
+                say "$ldsnp excluded for LD at >= $r2 with $snp";
             }
         }
     }

@@ -48,6 +48,8 @@ sub Chart{
     my $Rdir = $resultsdir;
     my $chart = "$lab.chart.pdf";
     my $rfile = "$Rdir/$lab.chart.R";
+    #set some colors
+    my ($sig, $msig, $ns, $abline, $tline) = qw(red palevioletred1 steelblue3 lightpink1 burlywood3); #alternate msig = pink2
 
     # make plot, first calculate where dividing lines are:
     my (@lines, @label_pos, @labels, @tissue_txt);
@@ -79,15 +81,15 @@ sub Chart{
     }
 
     open my $rfh, ">", "$rfile";
-#results\$Class<-cut(results\$Zscore, breaks =c(min(results\$Zscore), $t1, $t2, max(results\$Zscore)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
+#results\$Class<-cut(results\$Pvalue, breaks =c(min(results\$Pvalue), $t1, $t2, max(results\$Pvalue)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
 $t1 = sprintf("%.2f", $t1);
 $t2 = sprintf("%.2f", $t2);
     print $rfh "setwd(\"$Rdir\")
 results<-read.table(\"$filename\",header=TRUE,sep=\"\t\")
 results\$Class<-cut(results\$Pvalue, breaks =c(min(results\$Pvalue), $t1, $t2, max(results\$Pvalue)), labels=FALSE, include.lowest=TRUE)
 pdf(\"$chart\", width=22.4, height=7)
-palette(c(\"steelblue3\",\"pink2\",\"red\"))
-#ymin1 = min(results\$Zscore, na.rm=TRUE)*1.1
+palette(c(\"$ns\",\"$msig\",\"$sig\"))
+#ymin1 = min(results\$Pvalue, na.rm=TRUE)*1.1
 ymin1= min(results\$Pvalue, na.rm=TRUE)*1.1
 ymax1 = max(results\$Pvalue, na.rm=TRUE)*1.1
 ymax = max(c(abs(ymin1),ymax1))
@@ -96,13 +98,13 @@ par(mar=c(9,4,3,1)+0.1)
 plot(results\$Pvalue,ylab=\"-log10 binomial P\",xlab=\"\",main=\"SNPs in DNase1 sites (probably TF sites) in cell lines for $data $label\",ylim=c(ymin,ymax), las=2, las=2, pch=19,col=results\$Class, xaxt='n')
 axis(1, seq(1,length(results\$Cell)),labels=results\$Cell, las=2, cex.axis=0.7)
 mtext(1,text=\"Cell\",line=7,cex=1.2)
-abline(h=$t1, col=\"lightpink1\")
-#abline(h=-$t2, col=\"lightpink1\", lty=2)
-abline(h=$t2, col=\"lightpink1\", lty=2)
-text(c(-0.5),$t1+0.2,c(\"P = $t1\"),col=\"lightpink1\",adj=1,cex=0.8)
-#text(c(-0.5),-$t1+0.16,c(\"1%\"),col=\"lightpink1\",adj=1,cex=0.8)
-text(c(-0.5),$t2+0.2,c(\"P = $t2\"),col=\"lightpink1\",adj=1,cex=0.8)
-#text(c(-0.5),-$t2+0.16,c(\"0.1%\"),col=\"lightpink1\",adj=1,cex=0.8)
+abline(h=$t1, col=\"$abline\")
+#abline(h=-$t2, col=\"$abline\", lty=2)
+abline(h=$t2, col=\"$abline\", lty=2)
+text(c(-0.5),$t1+0.2,c(\"P = $t1\"),col=\"$abline\",adj=1,cex=0.8)
+#text(c(-0.5),-$t1+0.16,c(\"1%\"),col=\"$abline\",adj=1,cex=0.8)
+text(c(-0.5),$t2+0.2,c(\"P = $t2\"),col=\"$abline\",adj=1,cex=0.8)
+#text(c(-0.5),-$t2+0.16,c(\"0.1%\"),col=\"$abline\",adj=1,cex=0.8)
 palette(\"default\")\n";
 
     foreach my $pos (@lines){
@@ -110,7 +112,7 @@ palette(\"default\")\n";
     }
     $index = 0;
     foreach my $tissue (@labels){
-        print $rfh "text(c(" . $label_pos[$index] . "),ymax,c(\"" . $tissue . "\"),col=\"burlywood3\",adj=1,srt=90,cex=0.8)\n";
+        print $rfh "text(c(" . $label_pos[$index] . "),ymax,c(\"" . $tissue . "\"),col=\"$tline\",adj=1,srt=90,cex=0.8)\n";
         $index++;
     }
     print $rfh "dev.off()\n";
@@ -136,13 +138,13 @@ sub rChart{
     open my $rcfh, ">", "$rfile";
     print $rcfh "setwd(\"$Rdir\")
 results<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
-results\$Colour<- 0 + (results\$Zscore < $t2) + (results\$Zscore < $t1)  # 99.9 and 99% CIs
+results\$Colour<- 0 + (results\$Pvalue < $t2) + (results\$Pvalue < $t1)  # 99.9 and 99% CIs
 require(rCharts)
-r1 <- rPlot(Zscore ~ Cell, data=results, color=\"bin(Colour, 0.25)\", type=\"point\", tooltip = \"function(item){ return (item.Zscore + '\\\\n' + item.Cell + '\\\\n' + item.Tissue + '\\\\n' + item.File + '\\\\n' + item.SNPs + '\\\\n' + item.Accession + '\\\\n')}\")
+r1 <- rPlot(Pvalue ~ Cell, data=results, color=\"bin(Colour, 0.25)\", type=\"point\", tooltip = \"function(item){ return (item.Pvalue + '\\\\n' + item.Cell + '\\\\n' + item.Tissue + '\\\\n' + item.File + '\\\\n' + item.SNPs + '\\\\n' + item.Accession + '\\\\n')}\")
 #r1\$guides(color=list(scale = list(type = \'gradient\', lower = \'\#CCC\', upper = \'\#000\'))) # optional code to make a grey scale
 r1\$addParams(width = 2000, height=600, title=\"$label overlaps with $data DHS\")
-ymin1 = min(results\$Zscore, na.rm=TRUE)*1.2
-ymax1 = max(results\$Zscore, na.rm=TRUE)*1.2
+ymin1 = min(results\$Pvalue, na.rm=TRUE)*1.2
+ymax1 = max(results\$Pvalue, na.rm=TRUE)*1.2
 ymax = max(c(abs(ymin1),ymax1))
 ymin = -ymax
 r1\$guides(x = list(numticks = length(unique(results\$Cell)), levels=results\$Cell), y = list(min = ymin, max = ymax))
@@ -170,10 +172,10 @@ sub dChart{
    open my $rcfh, ">", "$rfile";
     print $rcfh "setwd(\"$Rdir\")
 results<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
-results\$Class<-cut(results\$Zscore, breaks =c(min(results\$Zscore), $t1, $t2, max(results\$Zscore)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
+results\$Class<-cut(results\$Pvalue, breaks =c(min(results\$Pvalue), $t1, $t2, max(results\$Pvalue)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
 require(rCharts)
 d1 <- dPlot(
-  y = \"Zscore\",
+  y = \"Pvalue\",
   x = c(\"Cell\", \"Tissue\", \"SNPs\", \"Number\", \"Accession\", \"Pvalue\"),
   groups = \"Class\",
   data = results,
@@ -217,8 +219,8 @@ sub table{
     open my $rcfh, ">", "$rfile";
     print $rcfh "setwd(\"$Rdir\")
     data<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
-    results<-data.frame(data\$Cell, data\$Tissue, data\$Accession, data\$Zscore, data\$SNPs)
-    names(results)<-c(\"Cell\", \"Tissue\", \"Accession\", \"Zscore\", \"SNPs\")
+    results<-data.frame(data\$Cell, data\$Tissue, data\$Accession, data\$Pvalue, data\$SNPs)
+    names(results)<-c(\"Cell\", \"Tissue\", \"Accession\", \"Pvalue\", \"SNPs\")
     require(rCharts)
     dt <- dTable(
       results,
@@ -249,9 +251,9 @@ highcharts interface has problems with plotting - not used
 #    open my $rcfh, ">", "$Rdir/$rfile";
 #    print $rcfh "setwd(\"$Rdir\")
 #results<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
-#results\$Class<-cut(results\$Zscore, breaks =c(min(results\$Zscore), $t1, $t2, max(results\$Zscore)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
+#results\$Class<-cut(results\$Pvalue, breaks =c(min(results\$Pvalue), $t1, $t2, max(results\$Pvalue)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
 #require(rCharts)
-#h1 <- hPlot(Zscore ~ Number, data=results, type=\"scatter\", radius=5)
+#h1 <- hPlot(Pvalue ~ Number, data=results, type=\"scatter\", radius=5)
 #h1\$addParams(width = 2000, height=600, title=list(\"$label overlaps with $data DHS\"))
 #h1\$xAxis(title = list(text = \"Cell\"), labels = list(rotation=-90, align=\"right\"), categories = results\$Cell\)
 #h1\$save('$chart', cdn = F)";
