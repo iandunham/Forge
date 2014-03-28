@@ -79,7 +79,8 @@ sub process_file {
     if ($format =~ /rsid/){
         while (<$fh>){
             chomp;
-            my @rsid = split /\:/, $_;
+            my ($rs, undef) = split /\s+/, $_; # remove anything that is not supposed to be there :-)
+            my @rsid = split /\:/, $rs;
             my $rsid = pop @rsid; # take the last one for want of a better idea.
             push @snps, $rsid;
         }

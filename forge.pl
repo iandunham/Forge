@@ -98,7 +98,13 @@ THe number of background matching sets to pick and analyse. Default 100.
 
 =item B<ld>
 
-Apply filter for SNPs in LD at eithr r2 >= 0.8 ("high LD"), or r2 >= 0.1 ("independent SNPs"). Specify ld 0.8, or ld 0.1. Default is to do no filtering.  With ld filter specified, forge will report SNPs removed due to LD with another SNPO in the list and will randomly pick one for each LD block.
+Apply filter for SNPs in LD at eithr r2 >= 0.8 ("high LD"), or r2 >= 0.1 ("independent SNPs"). Specify ld 0.8, or ld 0.1. Default is to filter at r2 >= 0.8.  With ld filter specified, forge will report SNPs removed due to LD with another SNP in the list and will randomly pick one for each LD block.
+
+To turn off LD fitlering specify -nold
+
+=item B<nold>
+
+Turn off LD filtering.
 
 =item B<noplot>
 
@@ -158,7 +164,7 @@ use Forge::Forge;
 
 my $cwd = getcwd;
 
-my ($bkgd, $data, $peaks, $label, $file, $format, $min_snps, $bkgrdstat, $noplot, $reps, $help, $man, $thresh, $ld, @snplist);
+my ($bkgd, $data, $peaks, $label, $file, $format, $min_snps, $bkgrdstat, $noplot, $reps, $help, $man, $thresh, $ld, $nold, @snplist);
 
 GetOptions (
     'data=s'     => \$data,
@@ -173,6 +179,7 @@ GetOptions (
     'reps=i'     => \$reps,
     'thresh=s'   => \$thresh,
     'ld=f'       => \$ld,
+    'nold'       => \$nold,
     'help|h|?'   => \$help,
     'man|m'      => \$man,
 
@@ -229,9 +236,12 @@ else{
 }
 
 my $r2;
-if (defined $ld) {
+unless (defined $nold){
+    unless (defined $ld){
+        $ld = 0.8;
+    }
     unless ($ld eq 0.1 || $ld eq 0.8){
-        die "You have specified LD filtering, but given an invalid value $ld. the format is ld=0.8, or ld=0.1";
+        die "You have specified LD filtering, but given an invalid value $ld. the format is ld 0.0, ld 0.8, or ld 0.1";
     }
     ($r2 = $ld) =~ s /\.//;
     $r2 = "r".$r2;
@@ -278,9 +288,11 @@ foreach my $snp (keys %nonredundant){
 }
 @snps = keys %nonredundant;
 my @origsnps = @snps;
-#Perform ld filter if specified.
+
+# Perform ld filter unless -nold is specified.
+
 my ($ld_excluded, $output, $input);
-if (defined $ld) {
+unless (defined $nold) {
     $input = scalar @snps;
     ($ld_excluded, @snps) = ld_filter(\@snps, $r2, $dbh);
     $output = scalar @snps;
