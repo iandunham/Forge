@@ -98,7 +98,7 @@ Output background stats for investigation.
 
 =item B<reps>
 
-THe number of background matching sets to pick and analyse. Default 100.
+THe number of background matching sets to pick and analyse. Default 1000.
 
 =item B<ld>
 
@@ -221,7 +221,7 @@ my $datadir = $cfg->val('Files', 'datadir');
 my $per = 10;
 # number of sets to analyse for bkgrd.
 unless (defined $reps){
-    $reps = 100;
+    $reps = 1000;
 }
 # Which arrays to use for background
 unless (defined $bkgd){
@@ -269,7 +269,7 @@ my @snps;
 if (defined $file){
     if (defined $filter) {
         unless ($format eq "ian" or $format eq "rsid"){
-            warn "You have specified pvalue fitlering, but this isn't implemented for files of format $format. No filtering will happen."
+            warn "You have specified pvalue filtering, but this isn't implemented for files of format $format. No filtering will happen."
         }
     }
     my $sth = $dbh->prepare("SELECT rsid FROM bits WHERE location = ?");
@@ -346,7 +346,7 @@ if (scalar @missing > 0) {
 }
 if (defined $ld) {
     if ($output < $input) {
-        say "$input SNPs provided, " . scalar @snps . " retained, " . scalar @missing . " not analysed, "  . scalar(keys %$ld_excluded) . " LD filtered at $ld,";
+        say "For $label, $input SNPs provided, " . scalar @snps . " retained, " . scalar @missing . " not analysed, "  . scalar(keys %$ld_excluded) . " LD filtered at $ld,";
     }
 }
 
