@@ -22,7 +22,7 @@ A dimple (http://dimplejs.org) d3 interactive graphic using rCharts.
 
 A table using the Datatables (https://datatables.net) plug-in for the jQuery Javascript library, again accessed through rCharts.
 
-In each of the graphics the colouring should be consistent. Blue (Z < 2.58), light red or pink (2.58 =< Z < 3.39), red or dark red (Z >= 3.39 ) for the 99% and 99.9% cIs. Or whatever other thresholds are specified.
+In each of the graphics the colouring should be consistent. Blue (p > 0.05, light red or pink (0.05 >= p > 0.01), red or dark red (p <= 0.01 ) for the 95% and 99% cIs after Boonferroni correction. Or whatever other thresholds are specified.
 
 Forge functions, plotting options and stats are provided by Forge::Forge, Forge::Plot and Forge::Stats modules.
 
