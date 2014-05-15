@@ -72,7 +72,7 @@ Specify the minimum number of SNPs to be allowed. Default is 5 now are using bin
 
 =item B<thresh>
 
-Alter the default binomial p value thresholds. Give a comma separate list of two e.g. 2.58,3.39 for the defaults
+Alter the default binomial p value thresholds. Give a comma separate list of two e.g. 0.05, 0.01 for the defaults
 
 =item B<format>
 
@@ -247,7 +247,7 @@ unless (defined $nold){
         $ld = 0.8;
     }
     unless ($ld == 0.1 || $ld == 0.8){
-        die "You have specified LD filtering, but given an invalid value $ld. the format is ld 0.0, ld 0.8, or ld 0.1";
+        die "You have specified LD filtering, but given an invalid value $ld. the format is ld 0.8, or ld 0.1";
     }
     ($r2 = $ld) =~ s /\.//;
     $r2 = "r".$r2;
@@ -383,7 +383,7 @@ foreach my $bkgrd (keys %{$picks}){
 
 $dbh->disconnect();
 
-#Having got the test overlaps and the bkgd overlaps now calculate Zscores and output the table to be read into R for plotting.
+#Having got the test overlaps and the bkgd overlaps now calculate Zscores, pvalue and output the table to be read into R for plotting.
 my $time = time(); # time is used to label the output directories.
 my $resultsdir;
 if (defined $peaks){
