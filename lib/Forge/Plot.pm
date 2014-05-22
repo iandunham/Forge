@@ -172,11 +172,10 @@ sub dChart{
    open my $rcfh, ">", "$rfile";
     print $rcfh "setwd(\"$Rdir\")
 results<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
-results\$Class<-cut(results\$Pvalue, breaks =c(min(results\$Pvalue), $t1, $t2, max(results\$Pvalue)), labels=FALSE, include.lowest=TRUE) # 99.9 and 99% CIs 1, 2, 3
-require(rCharts)
+results\$Class<-cut(results\$Pvalue, breaks =c(min(results\$Pvalue), $t1, $t2, max(results\$Pvalue)), labels=FALSE, include.lowest=TRUE)
 d1 <- dPlot(
   y = \"Pvalue\",
-  x = c(\"Cell\", \"Tissue\", \"SNPs\", \"Number\", \"Accession\", \"Pvalue\"),
+  x = c(\"Cell\", \"Tissue\", \"SNPs\", \"Number\", \"Accession\", \"Pvalue\", \"Zscore\"),
   groups = \"Class\",
   data = results,
   type = \"bubble\",
@@ -219,8 +218,8 @@ sub table{
     open my $rcfh, ">", "$rfile";
     print $rcfh "setwd(\"$Rdir\")
     data<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
-    results<-data.frame(data\$Cell, data\$Tissue, data\$Accession, data\$Pvalue, data\$SNPs)
-    names(results)<-c(\"Cell\", \"Tissue\", \"Accession\", \"Pvalue\", \"SNPs\")
+    results<-data.frame(data\$Cell, data\$Tissue, data\$Accession, data\$Pvalue, data\$Zscore, data\$SNPs)
+    names(results)<-c(\"Cell\", \"Tissue\", \"Accession\", \"Pvalue\", \"Zscore\", \"SNPs\")
     require(rCharts)
     dt <- dTable(
       results,

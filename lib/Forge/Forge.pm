@@ -124,6 +124,7 @@ sub process_file {
     }
     elsif ($format =~ /bed|tabix/){
         while (<$fh>){
+            chomp;
             my $loc;
             if ($format =~/bed/){
                 next if /^track/;
