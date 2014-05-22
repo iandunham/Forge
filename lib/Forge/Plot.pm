@@ -173,6 +173,7 @@ sub dChart{
     print $rcfh "setwd(\"$Rdir\")
 results<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
 results\$Class<-cut(results\$Pvalue, breaks =c(min(results\$Pvalue), $t1, $t2, max(results\$Pvalue)), labels=FALSE, include.lowest=TRUE)
+require(rCharts)
 d1 <- dPlot(
   y = \"Pvalue\",
   x = c(\"Cell\", \"Tissue\", \"SNPs\", \"Number\", \"Accession\", \"Pvalue\", \"Zscore\"),
