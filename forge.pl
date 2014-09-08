@@ -438,7 +438,7 @@ foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) ||
     $snp_string = join(",", @{$$test{'CELLS'}{$cell}{'SNPS'}}) if defined $$test{'CELLS'}{$cell}{'SNPS'}; # This gives the list of overlapping SNPs for use in the tooltips. If there are a lot of them this can be a little useless
     my ($shortcell, undef) = split('\|', $cell); # undo the concatenation from earlier to deal with identical cell names.
 
-    say $bfh join("\t", @{$bkgrd{$cell}});
+
     my $teststat = $$test{'CELLS'}{$cell}{'COUNT'}; #number of overlaps for the test SNPs
 
     # binomial pvalue, probability of success is derived from the background overlaps over the tests for this cell
@@ -448,6 +448,7 @@ foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) ||
         print $ofh join("\t", $shortcell, $$tissues{$cell}{'tissue'}, $$tissues{$cell}{'file'}, $snp_string, $n, $$tissues{$cell}{'acc'}) . "\n";
     }
     else{
+        say $bfh join("\t", @{$bkgrd{$cell}});
         my $tests;
         foreach (@{$bkgrd{$cell}}){
             $tests+= $_;
