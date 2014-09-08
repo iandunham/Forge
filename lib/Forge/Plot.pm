@@ -89,7 +89,6 @@ results<-read.table(\"$filename\",header=TRUE,sep=\"\t\")
 results\$Class<-cut(results\$Pvalue, breaks =c(min(results\$Pvalue), $t1, $t2, max(results\$Pvalue)), labels=FALSE, include.lowest=TRUE)
 pdf(\"$chart\", width=22.4, height=7)
 palette(c(\"$ns\",\"$msig\",\"$sig\"))
-#ymin1 = min(results\$Pvalue, na.rm=TRUE)*1.1
 ymin1= min(results\$Pvalue, na.rm=TRUE)*1.1
 ymax1 = max(results\$Pvalue, na.rm=TRUE)*1.1
 ymax = max(c(abs(ymin1),ymax1))
@@ -212,22 +211,28 @@ system "R --no-save --quiet --slave < $rfile";
 sub table{
     # Make Datatables table
     print "Making Table.\n";
-    my ($filename, $lab, $resultsdir) = @_;
+    my ($filename, $lab, $resultsdir, $overlap) = @_;
     my $chart = "$lab.table.html";
     my $Rdir = $resultsdir;
     my $rfile = "$Rdir/$lab.table.R";
     open my $rcfh, ">", "$rfile";
     print $rcfh "setwd(\"$Rdir\")
-    data<-read.table(\"$filename\", header = TRUE, sep=\"\t\")
-    results<-data.frame(data\$Cell, data\$Tissue, data\$Accession, data\$Pvalue, data\$Zscore, data\$SNPs)
-    names(results)<-c(\"Cell\", \"Tissue\", \"Accession\", \"Pvalue\", \"Zscore\", \"SNPs\")
-    require(rCharts)
+    data<-read.table(\"$filename\", header = TRUE, sep=\"\t\")\n";
+    if (defined $overlap){
+        print $rcfh "results<-data.frame(data\$Cell, data\$Tissue, data\$Accession, data\$SNPs)
+        names(results)<-c(\"Cell\", \"Tissue\", \"Accession\", \"SNPs\")\n";
+    }
+    else {
+        print $rcfh "results<-data.frame(data\$Cell, data\$Tissue, data\$Accession, data\$Pvalue, data\$Zscore, data\$SNPs)
+        names(results)<-c(\"Cell\", \"Tissue\", \"Accession\", \"Pvalue\", \"Zscore\", \"SNPs\")\n";
+    }
+    print $rcfh "require(rCharts)
     dt <- dTable(
-      results,
-      sScrollY= \"600\",
-      bPaginate= F,
-      sScrollX= \"100%\",
-      sScrollXInner= \"110%\"
+    results,
+    sScrollY= \"600\",
+    bPaginate= F,
+    sScrollX= \"100%\",
+    sScrollXInner= \"110%\"
     )
     dt\$save('$chart', cdn = F)";
     system "R --no-save --quiet --slave < $rfile";
