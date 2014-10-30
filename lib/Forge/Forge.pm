@@ -236,9 +236,9 @@ sub get_bits{
 
     my ($snps, $dbh) = @_;
     my @results;
-    my $args = join ("','", @$snps);
-    my $sth = $dbh->prepare("SELECT * FROM bits WHERE rsid IN ('$args')");
-    $sth->execute();
+    my $sql = "SELECT * FROM bits WHERE rsid IN (?". (",?" x (@$snps - 1)).")";
+    my $sth = $dbh->prepare($sql); #get the blocks form the ld table
+    $sth->execute(@$snps);
     my $result = $sth->fetchall_arrayref();
     $sth->finish();
     foreach my $row (@{$result}){
@@ -286,10 +286,9 @@ sub ld_filter{
     foreach my $snp (@$snps){
         $snps{$snp} = 1;
     }
-    my $args = join ("','", @$snps);
-
-    my $sth = $dbh->prepare("SELECT rsid,$r2 FROM ld WHERE rsid IN ('$args')"); #get the blocks form the ld table
-    $sth->execute();
+    my $sql = "SELECT rsid,$r2 FROM ld WHERE rsid IN (?". (",?" x (@$snps - 1)).")";
+    my $sth = $dbh->prepare($sql); #get the blocks form the ld table+
+    $sth->execute(@$snps);
     my $result = $sth->fetchall_arrayref();
     $sth->finish();
     foreach my $row (@{$result}){
@@ -318,7 +317,12 @@ Read the correct cell list based on data (erc -encode). Also gets the tissue nam
 sub get_cells{
     # read the correct cell list based on data (erc -encode). Also gets the tissue names for the cells.
     my ($data, $dbh) = @_;
-    my $table = join('_', "cells", $data);
+    my $table = "cells_".$data;
+    # Check that the table exists in the DB (note, some magic here that might be SQLite-specific)
+    my @tables = grep {/^cells_/} map {$_ =~ s/"//g; $_ =~ s/^main\.//; $_} $dbh->tables();
+    if (!grep {/$table/} @tables) {
+        die "The database does not contain information for the data background provided.\n";
+    }
     my $sth = $dbh->prepare("SELECT shortcell,tissue,file,acc FROM $table");
     $sth->execute();
     my $ver = $sth->fetchall_arrayref();
