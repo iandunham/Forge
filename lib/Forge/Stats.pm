@@ -114,15 +114,21 @@ sub binomial {
 
 =head2 factorial
 
-Calculate N!. Required for binomial
+Calculate N!. Required for binomial calculation.
+
+Uses a cache to speed up the calculation.
 
 =cut
+
+my %_factorial_cache;
 
 sub factorial{
     my ($n) = shift;
     return 1 if($n <=1 );
+    return $_factorial_cache{$n} if (exists($_factorial_cache{$n}));
     Math::BigInt->new($n);
-    return Math::BigInt->bfac($n);
+    $_factorial_cache{$n} = Math::BigInt->bfac($n);
+    return $_factorial_cache{$n};
 }
 
 =head2 fdr
