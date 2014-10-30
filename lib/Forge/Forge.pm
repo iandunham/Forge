@@ -203,20 +203,23 @@ sub process_bits{
     my ($rows, $cells, $data) = @_;
     my %test;
     foreach my $row (@{$rows}){
-        my ($location, $rsid, $sum, $bit, $maf, $tss, $gc);
+        my ($location, $rsid, $sum, $bit_string, $maf, $tss, $gc);
         if ($data eq "erc"){
-            ($location, $rsid, undef, undef, $bit, $sum, $maf, $tss, $gc) =  @$row;
+            ($location, $rsid, undef, undef, $bit_string, $sum, $maf, $tss, $gc) =  @$row;
         }
         else{
-            ($location, $rsid, $bit, $sum, undef, undef, $maf, $tss, $gc) = @$row;
+            ($location, $rsid, $bit_string, $sum, undef, undef, $maf, $tss, $gc) = @$row;
         }
         $test{'SNPS'}{$rsid}{'SUM'} = $sum;
         $test{'SNPS'}{$rsid}{'PARAMS'} = join("\t", $maf, $tss, $gc);
-        my @bits = split "", $bit;
+        die if (scalar(@$cells) ne length($bit_string));
         my $index = 0;
         foreach my $cell (@$cells){
-            $test{'CELLS'}{$cell}{'COUNT'} += $bits[$index];
-            push @{$test{'CELLS'}{$cell}{'SNPS'}}, $rsid if $bits[$index] == 1;
+            ## $bit_string is a string made of 0s and 1s. If it is a 1 for this position, count and push
+            if (substr($bit_string, $index, 1)) {
+                $test{'CELLS'}{$cell}{'COUNT'}++;
+                push @{$test{'CELLS'}{$cell}{'SNPS'}}, $rsid;
+            }
             $index++;
         }
     }
