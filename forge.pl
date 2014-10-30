@@ -104,7 +104,7 @@ THe number of background matching sets to pick and analyse. Default 1000.
 
 Apply filter for SNPs in LD at eithr r2 >= 0.8 ("high LD"), or r2 >= 0.1 ("independent SNPs"). Specify ld 0.8, or ld 0.1. Default is to filter at r2 >= 0.8.  With ld filter specified, forge will report SNPs removed due to LD with another SNP in the list and will randomly pick one for each LD block.
 
-To turn off LD fitlering specify -nold
+To turn off LD filtering specify -nold
 
 =item B<nold>
 
@@ -438,8 +438,7 @@ foreach my $cell (sort {ncmp($$tissues{$a}{'tissue'},$$tissues{$b}{'tissue'}) ||
     $snp_string = join(",", @{$$test{'CELLS'}{$cell}{'SNPS'}}) if defined $$test{'CELLS'}{$cell}{'SNPS'}; # This gives the list of overlapping SNPs for use in the tooltips. If there are a lot of them this can be a little useless
     my ($shortcell, undef) = split('\|', $cell); # undo the concatenation from earlier to deal with identical cell names.
 
-
-    my $teststat = $$test{'CELLS'}{$cell}{'COUNT'}; #number of overlaps for the test SNPs
+    my $teststat = ($$test{'CELLS'}{$cell}{'COUNT'} or 0); #number of overlaps for the test SNPs
 
     # binomial pvalue, probability of success is derived from the background overlaps over the tests for this cell
     # $backsnps is the total number of background SNPs analysed
