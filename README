@@ -26,9 +26,11 @@ snp arrays.
 
 Both the database and the hashes are downloadable from
 
-ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/browser/forge/
 
+ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/browser/forge_11/
 forge_20141112.tar.gz for forge1.1
+
+ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/browser/forge/
 forge_20131009.tar.gz for forge1.0
 
 4. a forge.ini file in the same drectory as the script. Edit this to provide the
