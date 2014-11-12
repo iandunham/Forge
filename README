@@ -13,8 +13,8 @@ use Cwd;
 use Storable;
 use Getopt::Long;
 
-2. The sqlite3 db file that stores the bitstrings. This is a 21Gb file.
-Called forge.db currently.
+2. The sqlite3 db file that stores the bitstrings. This is a 98Gb file for forge2.0
+Called forge.db.
 
 3. Four stored hashes containing the parameters for the background selection.
 two files each for either the omni genotyping array, or all the other GWAS
@@ -26,7 +26,10 @@ snp arrays.
 
 Both the database and the hashes are downloadable from
 
-ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/browser/forge
+ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/browser/forge/
+
+forge_20141112.tar.gz for forge1.1
+forge_20131009.tar.gz for forge1.0
 
 4. a forge.ini file in the same drectory as the script. Edit this to provide the
 directory in which the dartabase and hashes are stored.
