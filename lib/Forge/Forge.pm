@@ -15,6 +15,7 @@ Version 0.01
 
 =cut
 
+my $MAX_SQL_VARIABLES = 999;
 our $VERSION = '0.01';
 our (@ISA, @EXPORT);
 use Exporter;
@@ -202,6 +203,8 @@ Processes bitstrings to get a count of overlaps for each cell type.
 sub process_bits{
     my ($rows, $cells, $data) = @_;
     my %test;
+    my @test_cells;
+    my @indexes = 0..(@$cells-1);
     foreach my $row (@{$rows}){
         my ($location, $rsid, $sum, $bit_string, $maf, $tss, $gc);
         if ($data eq "erc"){
@@ -213,16 +216,21 @@ sub process_bits{
         $test{'SNPS'}{$rsid}{'SUM'} = $sum;
         $test{'SNPS'}{$rsid}{'PARAMS'} = join("\t", $maf, $tss, $gc);
         die if (scalar(@$cells) ne length($bit_string));
-        my $index = 0;
-        foreach my $cell (@$cells){
+        foreach my $index (@indexes) {
             ## $bit_string is a string made of 0s and 1s. If it is a 1 for this position, count and push
             if (substr($bit_string, $index, 1)) {
-                $test{'CELLS'}{$cell}{'COUNT'}++;
-                push @{$test{'CELLS'}{$cell}{'SNPS'}}, $rsid;
+                $test_cells[$index][0]++;
+                push @{$test_cells[$index][1]}, $rsid;
             }
-            $index++;
         }
     }
+    my $index = 0;
+    foreach my $cell (@$cells){
+        $test{'CELLS'}{$cell}{'COUNT'} = $test_cells[$index][0] if ($test_cells[$index][0]);
+        $test{'CELLS'}{$cell}{'MVPS'} = $test_cells[$index][1] if ($test_cells[$index][1]);
+        $index++;
+    }
+
     return \%test;
 }
 
@@ -236,14 +244,23 @@ sub get_bits{
 
     my ($snps, $dbh) = @_;
     my @results;
-    my $sql = "SELECT * FROM bits WHERE rsid IN (?". (",?" x (@$snps - 1)).")";
-    my $sth = $dbh->prepare($sql); #get the blocks form the ld table
-    $sth->execute(@$snps);
-    my $result = $sth->fetchall_arrayref();
-    $sth->finish();
-    foreach my $row (@{$result}){
-      push @results, $row;
+
+
+    for (my $loop = 0; $loop * $MAX_SQL_VARIABLES < @$snps; $loop++) {
+        my $start = $loop * $MAX_SQL_VARIABLES;
+        my $end = ($loop + 1) * $MAX_SQL_VARIABLES - 1;
+        $end = @$snps -1 if ($end >= @$snps);
+
+        my $sql = "SELECT * FROM bits WHERE rsid IN (?". (",?" x ($end - $start)).")";
+        my $sth = $dbh->prepare_cached($sql); #get the blocks form the ld table
+        $sth->execute(@$snps[$start..$end]);
+
+        while (my $row = $sth->fetchrow_arrayref()) {
+          push @results, [@$row];
+        }
+        $sth->finish();
     }
+
     return \@results;# return the bitstring line from the database
 }
 
@@ -286,24 +303,31 @@ sub ld_filter{
     foreach my $snp (@$snps){
         $snps{$snp} = 1;
     }
-    my $sql = "SELECT rsid,$r2 FROM ld WHERE rsid IN (?". (",?" x (@$snps - 1)).")";
-    my $sth = $dbh->prepare($sql); #get the blocks form the ld table+
-    $sth->execute(@$snps);
-    my $result = $sth->fetchall_arrayref();
-    $sth->finish();
-    foreach my $row (@{$result}){
-        my ($snp, $block) = @$row;
-        next if exists $ld_excluded{$snp}; # if the snp is in the ld filtered set already ignore it
-        push @snps_filtered, $snp; # if thisis the first time it is seen, add it to the filtered snps, and remove anything in LD with it
-        next if $block =~ /NONE/; # nothing is in LD
-        my (@block) = split (/\|/, $block);
-        foreach my $ldsnp (@block){
-            if (exists $snps{$ldsnp}) {
-                $ld_excluded{$ldsnp} = $snp; #Add to the excluded snps, if itis in an LD block with the current snp, and it its one of the test snps.
-                say "$ldsnp excluded for LD at >= $r2 with $snp";
+    for (my $loop = 0; $loop * $MAX_SQL_VARIABLES < @$snps; $loop++) {
+        my $start = $loop * $MAX_SQL_VARIABLES;
+        my $end = ($loop + 1) * $MAX_SQL_VARIABLES - 1;
+        $end = @$snps -1 if ($end >= @$snps);
+
+        my $sql = "SELECT rsid,$r2 FROM ld WHERE rsid IN (?". (",?" x ($end-$start)).")";
+        my $sth = $dbh->prepare($sql); #get the blocks form the ld table
+        $sth->execute(@$snps[$start..$end]);
+        my $result = $sth->fetchall_arrayref();
+        $sth->finish();
+        foreach my $row (@{$result}){
+            my ($snp, $block) = @$row;
+            next if exists $ld_excluded{$snp}; # if the snp is in the ld filtered set already ignore it
+            push @snps_filtered, $snp; # if thisis the first time it is seen, add it to the filtered snps, and remove anything in LD with it
+            next if $block =~ /NONE/; # nothing is in LD
+            my (@block) = split (/\|/, $block);
+            foreach my $ldsnp (@block){
+                if (exists $snps{$ldsnp}) {
+                    $ld_excluded{$ldsnp} = $snp; #Add to the excluded snps, if itis in an LD block with the current snp, and it its one of the test snps.
+                    say "$ldsnp excluded for LD at >= $r2 with $snp";
+                }
             }
         }
     }
+
     return (\%ld_excluded, @snps_filtered);#note that if a SNP doesn't exist in the ld file it will be rejected regardless, may need to add these back
 }
 

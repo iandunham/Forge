@@ -3,8 +3,6 @@ package Forge::Stats;
 use 5.010;
 use strict;
 use warnings FATAL => 'all';
-use Math::BigInt;
-use Math::BigFloat;
 
 =head1 NAME
 
@@ -107,28 +105,32 @@ Exact solution of binomial probability for k picks out of n, for n or greater ne
 sub binomial {
 
     my ($k, $n, $p) = @_;
-    my $prob = Math::BigFloat->new(($p**$k) * ((1 - $p)**($n - $k))) * factorial($n) / (factorial($k) * factorial($n - $k));
-    $prob = sprintf("%.10f", $prob);
+
+    my $prob = exp($k*log($p) + ($n-$k)*log(1 - $p) + log_factorial($n) - log_factorial($k) - log_factorial($n - $k));
+
     return $prob;
 }
 
-=head2 factorial
+=head2 log_factorial
 
-Calculate N!. Required for binomial calculation.
+Calculate log(N!). Required for binomial calculation.
 
 Uses a cache to speed up the calculation.
 
 =cut
 
-my %_factorial_cache;
+my %_log_factorial_cache;
 
-sub factorial{
+sub log_factorial{
     my ($n) = shift;
-    return 1 if($n <=1 );
-    return $_factorial_cache{$n} if (exists($_factorial_cache{$n}));
-    Math::BigInt->new($n);
-    $_factorial_cache{$n} = Math::BigInt->bfac($n);
-    return $_factorial_cache{$n};
+    return 0 if($n <=1 ); # log(1) = 0
+    return $_log_factorial_cache{$n} if (exists($_log_factorial_cache{$n}));
+    my $result = 0; # log(1) = 0;
+    for (my $i = $n; $i > 1; $i--) {
+        $result += log($i);
+    }
+    $_log_factorial_cache{$n} = $result;
+    return $_log_factorial_cache{$n};
 }
 
 =head2 fdr
