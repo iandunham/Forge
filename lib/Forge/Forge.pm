@@ -15,6 +15,7 @@ Version 0.01
 
 =cut
 
+my $MAX_SQL_VARIABLES = 999;
 our $VERSION = '0.01';
 our (@ISA, @EXPORT);
 use Exporter;
@@ -236,14 +237,24 @@ sub get_bits{
 
     my ($snps, $dbh) = @_;
     my @results;
-    my $sql = "SELECT * FROM bits WHERE rsid IN (?". (",?" x (@$snps - 1)).")";
-    my $sth = $dbh->prepare($sql); #get the blocks form the ld table
-    $sth->execute(@$snps);
-    my $result = $sth->fetchall_arrayref();
-    $sth->finish();
-    foreach my $row (@{$result}){
-      push @results, $row;
+
+
+    for (my $loop = 0; $loop * $MAX_SQL_VARIABLES < @$snps; $loop++) {
+        my $start = $loop * $MAX_SQL_VARIABLES;
+        my $end = ($loop + 1) * $MAX_SQL_VARIABLES - 1;
+        $end = @$snps -1 if ($end >= @$snps);
+
+        my $sql = "SELECT * FROM bits WHERE rsid IN (?". (",?" x ($end - $start)).")";
+        my $sth = $dbh->prepare($sql); #get the blocks form the ld table
+        $sth->execute(@$snps[$start..$end]);
+
+        my $result = $sth->fetchall_arrayref();
+        $sth->finish();
+        foreach my $row (@{$result}){
+            push @results, $row;
+        }
     }
+
     return \@results;# return the bitstring line from the database
 }
 
@@ -286,24 +297,31 @@ sub ld_filter{
     foreach my $snp (@$snps){
         $snps{$snp} = 1;
     }
-    my $sql = "SELECT rsid,$r2 FROM ld WHERE rsid IN (?". (",?" x (@$snps - 1)).")";
-    my $sth = $dbh->prepare($sql); #get the blocks form the ld table+
-    $sth->execute(@$snps);
-    my $result = $sth->fetchall_arrayref();
-    $sth->finish();
-    foreach my $row (@{$result}){
-        my ($snp, $block) = @$row;
-        next if exists $ld_excluded{$snp}; # if the snp is in the ld filtered set already ignore it
-        push @snps_filtered, $snp; # if thisis the first time it is seen, add it to the filtered snps, and remove anything in LD with it
-        next if $block =~ /NONE/; # nothing is in LD
-        my (@block) = split (/\|/, $block);
-        foreach my $ldsnp (@block){
-            if (exists $snps{$ldsnp}) {
-                $ld_excluded{$ldsnp} = $snp; #Add to the excluded snps, if itis in an LD block with the current snp, and it its one of the test snps.
-                say "$ldsnp excluded for LD at >= $r2 with $snp";
+    for (my $loop = 0; $loop * $MAX_SQL_VARIABLES < @$snps; $loop++) {
+        my $start = $loop * $MAX_SQL_VARIABLES;
+        my $end = ($loop + 1) * $MAX_SQL_VARIABLES - 1;
+        $end = @$snps -1 if ($end >= @$snps);
+
+        my $sql = "SELECT rsid,$r2 FROM ld WHERE rsid IN (?". (",?" x ($end-$start)).")";
+        my $sth = $dbh->prepare($sql); #get the blocks form the ld table
+        $sth->execute(@$snps[$start..$end]);
+        my $result = $sth->fetchall_arrayref();
+        $sth->finish();
+        foreach my $row (@{$result}){
+            my ($snp, $block) = @$row;
+            next if exists $ld_excluded{$snp}; # if the snp is in the ld filtered set already ignore it
+            push @snps_filtered, $snp; # if thisis the first time it is seen, add it to the filtered snps, and remove anything in LD with it
+            next if $block =~ /NONE/; # nothing is in LD
+            my (@block) = split (/\|/, $block);
+            foreach my $ldsnp (@block){
+                if (exists $snps{$ldsnp}) {
+                    $ld_excluded{$ldsnp} = $snp; #Add to the excluded snps, if itis in an LD block with the current snp, and it its one of the test snps.
+                    say "$ldsnp excluded for LD at >= $r2 with $snp";
+                }
             }
         }
     }
+
     return (\%ld_excluded, @snps_filtered);#note that if a SNP doesn't exist in the ld file it will be rejected regardless, may need to add these back
 }
 
