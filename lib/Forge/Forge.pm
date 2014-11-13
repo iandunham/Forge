@@ -245,14 +245,13 @@ sub get_bits{
         $end = @$snps -1 if ($end >= @$snps);
 
         my $sql = "SELECT * FROM bits WHERE rsid IN (?". (",?" x ($end - $start)).")";
-        my $sth = $dbh->prepare($sql); #get the blocks form the ld table
+        my $sth = $dbh->prepare_cached($sql); #get the blocks form the ld table
         $sth->execute(@$snps[$start..$end]);
 
-        my $result = $sth->fetchall_arrayref();
-        $sth->finish();
-        foreach my $row (@{$result}){
-            push @results, $row;
+        while (my $row = $sth->fetchrow_arrayref()) {
+          push @results, [@$row];
         }
+        $sth->finish();
     }
 
     return \@results;# return the bitstring line from the database
