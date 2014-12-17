@@ -92,7 +92,6 @@ log 10 since perl doesn't have
 
 sub log10 {
     my $n = shift;
-    return '-300' if $n <= 1e-300; # prevents divide by 0error for v. small p
     return log($n)/log(10);
 }
 
