@@ -1,0 +1,300 @@
+Zscore	Pvalue	Cell	Tissue	File	SNPs	Number	Accession
+0.527	0.405714519284789	CD3	Blood	UW.CD3_Primary_Cells.ChromatinAccessibility.CB1_1-3-2011.DS17702.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs6734238	1	GSM701525
+0.248	0.30732359098389	CD3	Blood	UW.CD3_Primary_Cells.ChromatinAccessibility.CB6_1-4-2011.DS17706.twopass.merge150.wgt10.zgt2.wig	rs12037222,rs13233571,rs769449	2	GSM701526
+0.410	0.362680458505847	CD3	Blood	UW.CD3_Primary_Cells.ChromatinAccessibility.RO_01679.DS17198.twopass.merge150.wgt10.zgt2.wig	rs1260326,rs13233571,rs4420638	3	GSM665837
+-1.541	0.00862835267885328	CD3	Blood	UW.CD3_Primary_Cells.ChromatinAccessibility.RO_01701.DS17534.twopass.merge150.wgt10.zgt2.wig	rs13233571	4	GSM701516
+0.701	0.491341881624265	CD4_Mobilised;	Blood	UW.Mobilized_CD4_Primary_Cells.ChromatinAccessibility.RO_01679.DS16955.twopass.merge150.wgt10.zgt2.wig	rs1160985,rs13233571,rs2075650,rs6734238,rs769449	5	GSM701489
+-0.022	0.225216324412797	CD4_Mobilised;	Blood	UW.Mobilized_CD4_Primary_Cells.ChromatinAccessibility.RO_01701.DS17175.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs6734238	6	GSM701491
+1.369	0.832585747742569	CD4	Blood	UW.CD4_Primary_Cells.ChromatinAccessibility.RO_01549.DS15947.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs4129267,rs6734238,rs769449	7	GSM665812
+1.479	0.886310748540587	CD4	Blood	UW.CD4_Primary_Cells.ChromatinAccessibility.RO_01679.DS17212.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs4129267,rs6734238,rs769449	8	GSM665839
+-0.480	0.121943809552546	CD4	Blood	UW.CD4_Primary_Cells.ChromatinAccessibility.RO_01689.DS17329.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2075650,rs6734238	9	GSM817166
+1.936	1.11053399042613	CD4	Blood	UW.CD4_Primary_Cells.ChromatinAccessibility.RO_01701.DS17881.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs1260326,rs13233571,rs2075650,rs4129267,rs6734238	10	GSM701539
+-0.784	0.0685350365873821	CD8_Mobilised;	Blood	UW.Mobilized_CD8_Primary_Cells.ChromatinAccessibility.RO_01679.DS16962.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2075650	11	GSM817160
+-0.989	0.0447901474845593	CD8	Blood	UW.CD8_Primary_Cells.ChromatinAccessibility.RO_01549.DS16012.twopass.merge150.wgt10.zgt2.wig	rs1160985,rs13233571	12	GSM665813
+0.437	0.36900492318884	CD8	Blood	UW.CD8_Primary_Cells.ChromatinAccessibility.RO_01679.DS17203.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs6734238,rs769449	13	GSM665838
+-0.624	0.0887351853384746	CD8	Blood	UW.CD8_Primary_Cells.ChromatinAccessibility.RO_01689.DS17332.twopass.merge150.wgt10.zgt2.wig	rs1160985,rs13233571	14	GSM701499
+0.309	0.325315141651311	CD8	Blood	UW.CD8_Primary_Cells.ChromatinAccessibility.RO_01701.DS17885.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2075650,rs769449	15	GSM701540
+0.926	0.584819192177016	CD14	Blood	UW.CD14_Primary_Cells.ChromatinAccessibility.RO_01689.DS17391.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs4129267,rs6734238	16	GSM701503
+0.600	0.431314458712872	CD14	Blood	UW.CD14_Primary_Cells.ChromatinAccessibility.RO_01701.DS17889.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs4129267,rs6734238	17	GSM701541
+-0.737	0.0706951548740618	CD19	Blood	UW.CD19_Primary_Cells.ChromatinAccessibility.RO_01679.DS17186.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs6734238	18	GSM701492
+-0.597	0.0911791915856969	CD19	Blood	UW.CD19_Primary_Cells.ChromatinAccessibility.RO_01689.DS17281.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2075650	19	GSM701493
+-0.155	0.189695861859691	CD19	Blood	UW.CD19_Primary_Cells.ChromatinAccessibility.RO_01701.DS17440.twopass.merge150.wgt10.zgt2.wig	rs1160985,rs1169310,rs13233571	20	GSM701507
+-0.234	0.172185721352575	CD20	Blood	UW.CD20_Primary_Cells.ChromatinAccessibility.RO_01778.DS17371.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	21	GSM701500
+-0.325	0.141287387221199	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_00738.DS13199.twopass.merge150.wgt10.zgt2.wig	rs1160985,rs13233571	22	GSM530664
+0.151	0.275305622164568	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_01480.DS12771.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs6734238,rs769449	23	GSM530658
+-0.396	0.129218418223807	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_01492.DS12774.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs6734238	24	GSM530659
+-1.073	0.0291656265155028	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_01492.DS14206.twopass.merge150.wgt10.zgt2.wig	rs13233571	25	GSM595919
+-1.097	0.0289706475001175	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_01508.DS11202.twopass.merge150.wgt10.zgt2.wig	rs13233571	26	GSM493386
+0.537	0.411881188812026	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_01517.DS14129.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs6734238	27	GSM595917
+-0.533	0.102374256178996	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_01520.DS12785.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs769449	28	GSM530660
+-0.394	0.126905676118218	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_01527.DS11666.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs6734238	29	GSM493387
+-0.381	0.132281151490648	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_01535.DS12274.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs6734238	30	GSM493384
+-0.312	0.144637183653824	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_01535.DS14197.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs6734238	31	GSM595918
+0.086	0.255832937726837	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_01536.DS12339.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs6734238	32	GSM530652
+-0.636	0.0863551776234291	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_01549.DS12734.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs6734238	33	GSM530657
+-0.510	0.106335796597806	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_01562.DS13196.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2075650	34	GSM530663
+-1.439	0.0114605357563864	CD34_Mobilised;	Blood	UW.Mobilized_CD34_Primary_Cells.ChromatinAccessibility.RO_01701.DS17112.twopass.merge150.wgt10.zgt2.wig	rs13233571	35	GSM774208
+-1.286	0.0170101047347089	CD56_Mobilised;	Blood	UW.Mobilized_CD56_Primary_Cells.ChromatinAccessibility.RO_01689.DS16376.twopass.merge150.wgt10.zgt2.wig	rs13233571	36	GSM665820
+0.674	0.469230262293086	CD56	Blood	UW.CD56_Primary_Cells.ChromatinAccessibility.RO_01679.DS17189.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs6734238	37	GSM665836
+-1.145	0.0244880442561894	CD56	Blood	UW.CD56_Primary_Cells.ChromatinAccessibility.RO_01701.DS17443.twopass.merge150.wgt10.zgt2.wig	rs13233571	38	GSM701508
+-0.469	0.114503592585225	Breast_vHMEC	Breast	UW.Breast_vHMEC.ChromatinAccessibility.RM035.DS18406.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267	39	GSM753973
+-1.107	0.0267539710386493	Breast_vHMEC	Breast	UW.Breast_vHMEC.ChromatinAccessibility.RM035.DS18438.twopass.merge150.wgt10.zgt2.wig	rs4129267	40	GSM753974
+-0.173	0.191060754182814	H1	ES Cell	UW.H1.ChromatinAccessibility.DS18873.twopass.merge150.wgt10.zgt2.wig	rs10521222,rs13233571,rs2847281,rs769449	41	GSM878616
+0.399	0.357004774775686	H1	ES Cell	UW.H1.ChromatinAccessibility.DS19100.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281,rs769449	42	GSM878621
+0.272	0.31595262164538	Mesenchymal_Stem_Cells	ES Cell	UW.H1_Derived_Mesenchymal_Stem_Cells.ChromatinAccessibility.DS20671.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	43	GSM906380
+-0.071	0.211593769736442	Mesenchymal_Stem_Cells	ES Cell	UW.H1_Derived_Mesenchymal_Stem_Cells.ChromatinAccessibility.DS21042.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	44	GSM906381
+0.574	0.4367852689774	Mesendoderm_Cultured_Cells	ES Cell	UW.H1_BMP4_Derived_Mesendoderm_Cultured_Cells.ChromatinAccessibility.DS18732.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281,rs4129267,rs4537545	45	GSM817198
+1.025	0.649353392723651	Mesendoderm_Cultured_Cells	ES Cell	UW.H1_BMP4_Derived_Mesendoderm_Cultured_Cells.ChromatinAccessibility.DS19310.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281,rs4129267,rs4537545,rs769449	46	GSM817215
+0.593	0.436226219513984	Neuronal_Progenitor_Cultured_Cells	ES Cell	UW.H1_Derived_Neuronal_Progenitor_Cultured_Cells.ChromatinAccessibility.DS18739.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs13233571,rs2847281,rs769449	47	GSM878615
+-0.461	0.127131514753403	Neuronal_Progenitor_Cultured_Cells	ES Cell	UW.H1_Derived_Neuronal_Progenitor_Cultured_Cells.ChromatinAccessibility.DS20153.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281,rs769449	48	GSM906379
+-0.347	0.138758260875733	Trophoblast_Cultured_Cells	ES Cell	UW.H1_BMP4_Derived_Trophoblast_Cultured_Cells.ChromatinAccessibility.DS18736.twopass.merge150.wgt10.zgt2.wig	rs2847281,rs769449	49	GSM878614
+1.027	0.636083561208127	Trophoblast_Cultured_Cells	ES Cell	UW.H1_BMP4_Derived_Trophoblast_Cultured_Cells.ChromatinAccessibility.DS19317.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281,rs4537545,rs769449	50	GSM878628
+0.405	0.367955772869758	H9	ES cell	UW.H9.ChromatinAccessibility.DS18517.twopass.merge150.wgt10.zgt2.wig	rs10521222,rs1183910,rs13233571,rs2847281,rs769449	51	GSM878612
+0.414	0.37344491415519	H9	ES cell	UW.H9.ChromatinAccessibility.DS18522.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281,rs4129267,rs769449	52	GSM878613
+0.183	0.291603175999943	Fetal_Adrenal_Gland	Fetal Adrenal	UW.Fetal_Adrenal_Gland.ChromatinAccessibility.H-22662.DS12528.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs13233571,rs1800961,rs769449	53	GSM530653
+-0.679	0.0825235344813589	Fetal_Adrenal_Gland	Fetal Adrenal	UW.Fetal_Adrenal_Gland.ChromatinAccessibility.H-23769.DS17319.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs769449	54	GSM817165
+-1.304	0.016557859984485	Fetal_Adrenal_Gland	Fetal Adrenal	UW.Fetal_Adrenal_Gland.ChromatinAccessibility.H-24409.DS20343.twopass.merge150.wgt10.zgt2.wig	rs13233571	55	GSM878658
+-1.591	0	Fetal_Brain	Fetal Brain	UW.Fetal_Brain.ChromatinAccessibility.H-22510.DS11872.twopass.merge150.wgt10.zgt2.wig		56	GSM530651
+-0.174	0.17644187975972	Fetal_Brain	Fetal Brain	UW.Fetal_Brain.ChromatinAccessibility.H-22510.DS11877.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281	57	GSM595913
+-0.339	0.142309353574517	Fetal_Brain	Fetal Brain	UW.Fetal_Brain.ChromatinAccessibility.H-22911.DS14464.twopass.merge150.wgt10.zgt2.wig	rs2847281,rs4129267	58	GSM595920
+-2.006	8.68588553597002e-11	Fetal_Brain	Fetal Brain	UW.Fetal_Brain.ChromatinAccessibility.H-23266.DS14717.twopass.merge150.wgt10.zgt2.wig		59	GSM595922
+-0.784	0.0709543484878685	Fetal_Brain	Fetal Brain	UW.Fetal_Brain.ChromatinAccessibility.H-23266.DS14718.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267	60	GSM595923
+-1.031	0.0349381617751368	Fetal_Brain	Fetal Brain	UW.Fetal_Brain.ChromatinAccessibility.H-23284.DS14803.twopass.merge150.wgt10.zgt2.wig	rs4129267	61	GSM595926
+-1.073	0.032994408125925	Fetal_Brain	Fetal Brain	UW.Fetal_Brain.ChromatinAccessibility.H-23284.DS14815.twopass.merge150.wgt10.zgt2.wig	rs4129267	62	GSM595928
+-0.305	0.155393424213211	Fetal_Brain	Fetal Brain	UW.Fetal_Brain.ChromatinAccessibility.H-23399.DS15453.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs16842559,rs4129267	63	GSM665804
+-0.786	0.0681593982071428	Fetal_Brain	Fetal Brain	UW.Fetal_Brain.ChromatinAccessibility.H-23548.DS16302.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281	64	GSM665819
+-1.568	0.00875666135631863	Fetal_Brain	Fetal Brain	UW.Fetal_Brain.ChromatinAccessibility.H-24279.DS20221.twopass.merge150.wgt10.zgt2.wig	rs13233571	65	GSM878650
+-1.349	0.018051892798808	Fetal_Brain	Fetal Brain	UW.Fetal_Brain.ChromatinAccessibility.H-24297.DS20226.twopass.merge150.wgt10.zgt2.wig	rs13233571	66	GSM878651
+-0.565	0.101179546077728	Fetal_Brain	Fetal Brain	UW.Fetal_Brain.ChromatinAccessibility.H-24381.DS20231.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs769449	67	GSM878652
+-1.349	0.0147979773090318	Fetal_Heart	Fetal Heart	UW.Fetal_Heart.ChromatinAccessibility.H-22662.DS12531.twopass.merge150.wgt10.zgt2.wig	rs13233571	68	GSM530654
+-1.042	0.0406954890522658	Fetal_Heart	Fetal Heart	UW.Fetal_Heart.ChromatinAccessibility.H-22727.DS12810.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545	69	GSM530661
+-2.018	0.00260006351064427	Fetal_Heart	Fetal Heart	UW.Fetal_Heart.ChromatinAccessibility.H-23468.DS15839.twopass.merge150.wgt10.zgt2.wig	rs13233571	70	GSM665811
+-1.604	0.00704063722136128	Fetal_Heart	Fetal Heart	UW.Fetal_Heart.ChromatinAccessibility.H-23500.DS16018.twopass.merge150.wgt10.zgt2.wig	rs13233571	71	GSM665814
+-1.696	0.00557202485536738	Fetal_Heart	Fetal Heart	UW.Fetal_Heart.ChromatinAccessibility.H-23524.DS16146.twopass.merge150.wgt10.zgt2.wig	rs13233571	72	GSM665817
+-1.762	0.00407232134476214	Fetal_Heart	Fetal Heart	UW.Fetal_Heart.ChromatinAccessibility.H-23589.DS16500.twopass.merge150.wgt10.zgt2.wig	rs13233571	73	GSM665824
+-1.199	0.0303266161241948	Fetal_Heart	Fetal Heart	UW.Fetal_Heart.ChromatinAccessibility.H-23604.DS16582.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267	74	GSM665830
+-1.753	0.00458504546880292	Fetal_Heart	Fetal Heart	UW.Fetal_Heart.ChromatinAccessibility.H-23617.DS16621.twopass.merge150.wgt10.zgt2.wig	rs13233571	75	GSM665831
+-0.941	0.0585851729041819	Fetal_Heart	Fetal Heart	UW.Fetal_Heart.ChromatinAccessibility.H-23663.DS16819.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs769449	76	GSM774203
+-1.225	0.0276337366627139	Fetal_Heart	Fetal Heart	UW.Fetal_Heart.ChromatinAccessibility.H-23744.DS19431.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267	77	GSM817220
+-0.580	0.102945514084538	Fetal_Heart	Fetal Heart	UW.Fetal_Heart.ChromatinAccessibility.H-24042.DS19427.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	78	GSM878630
+-0.966	0.04670091391024	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-23500.DS16027.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267	79	GSM665815
+0.577	0.450342719692721	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-23524.DS16164.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281,rs4129267,rs7305618,rs769449	80	GSM665818
+1.694	1.03401094508413	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-23604.DS16563.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs1183910,rs13233571,rs4129267,rs4537545,rs7305618,rs769449	81	GSM665826
+0.019	0.242796974693482	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-23744.DS17094.twopass.merge150.wgt10.zgt2.wig	rs10745954,rs13233571,rs4129267,rs769449	82	GSM817162
+0.157	0.277372882124401	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-23758.DS17157.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	83	GSM701490
+0.850	0.560953628548889	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-23769.DS17313.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs12239046,rs13233571,rs4129267,rs769449	84	GSM701495
+0.232	0.306506867472657	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-23808.DS17422.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs4129267,rs7305618	85	GSM774213
+0.585	0.443293192481837	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-23833.DS17462.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281,rs4129267,rs6734238,rs7979473	86	GSM774214
+-0.306	0.148071591227669	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-23855.DS17502.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2075650	87	GSM701514
+2.268	1.43992363847639	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-23887.DS17647.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs1183910,rs13233571,rs2075650,rs4129267,rs4537545,rs7305618,rs769449,rs9987289	88	GSM774217
+1.187	0.753595019258367	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-23914.DS17748.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs13233571,rs4129267,rs7305618,rs769449,rs7979473	89	GSM774220
+-0.030	0.222859685173712	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-23941.DS17785.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs13233571,rs4129267	90	GSM701531
+0.574	0.443560147939989	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-23964.DS17841.twopass.merge150.wgt10.zgt2.wig	rs1160985,rs13233571,rs4129267,rs4537545,rs6734238,rs7305618,rs769449	91	GSM774228
+0.680	0.479086082518795	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-24005.DS17990.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs7305618,rs769449	92	GSM774233
+1.784	1.12476350692477	Fetal_Intestine_Large	Fetal Intestine, Large	UW.Fetal_Intestine_Large.ChromatinAccessibility.H-24111.DS18499.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs12239046,rs13233571,rs2808634,rs4129267,rs4537545,rs7979473	93	GSM817188
+0.951	0.631120852233518	Fetal_Intestine_Small	Fetal Intestine, Small	UW.Fetal_Intestine_Small.ChromatinAccessibility.H-23604.DS16559.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281,rs4129267,rs4537545,rs7305618,rs769449	94	GSM665825
+-0.093	0.206249081344163	Fetal_Intestine_Small	Fetal Intestine, Small	UW.Fetal_Intestine_Small.ChromatinAccessibility.H-23640.DS16712.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs769449	95	GSM701487
+0.166	0.287105571361844	Fetal_Intestine_Small	Fetal Intestine, Small	UW.Fetal_Intestine_Small.ChromatinAccessibility.H-23663.DS16822.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs7305618	96	GSM665835
+0.032	0.246807214114956	Fetal_Intestine_Small	Fetal Intestine, Small	UW.Fetal_Intestine_Small.ChromatinAccessibility.H-23724.DS16975.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs4129267,rs7305618	97	GSM817161
+0.141	0.28028626379682	Fetal_Intestine_Small	Fetal Intestine, Small	UW.Fetal_Intestine_Small.ChromatinAccessibility.H-23744.DS17092.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs7305618,rs769449	98	GSM774205
+0.727	0.505018238082487	Fetal_Intestine_Small	Fetal Intestine, Small	UW.Fetal_Intestine_Small.ChromatinAccessibility.H-23758.DS17150.twopass.merge150.wgt10.zgt2.wig	rs10521222,rs13233571,rs2847281,rs4129267,rs4537545	99	GSM774210
+0.426	0.376811752843927	Fetal_Intestine_Small	Fetal Intestine, Small	UW.Fetal_Intestine_Small.ChromatinAccessibility.H-23769.DS17317.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs13233571,rs4129267,rs7305618	100	GSM701496
+-1.469	0.010892856136927	Fetal_Intestine_Small	Fetal Intestine, Small	UW.Fetal_Intestine_Small.ChromatinAccessibility.H-23808.DS17425.twopass.merge150.wgt10.zgt2.wig	rs13233571	101	GSM701504
+-0.261	0.171367119097021	Fetal_Intestine_Small	Fetal Intestine, Small	UW.Fetal_Intestine_Small.ChromatinAccessibility.H-23864.DS17844.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs13233571,rs4129267,rs769449	102	GSM774229
+1.093	0.682309505655419	Fetal_Intestine_Small	Fetal Intestine, Small	UW.Fetal_Intestine_Small.ChromatinAccessibility.H-23887.DS17643.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs12239046,rs13233571,rs4129267,rs7305618,rs769449	103	GSM774216
+1.683	1.05037912766538	Fetal_Intestine_Small	Fetal Intestine, Small	UW.Fetal_Intestine_Small.ChromatinAccessibility.H-23914.DS17763.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs12239046,rs13233571,rs4129267,rs769449,rs7979473	104	GSM701530
+1.292	0.785777395673705	Fetal_Intestine_Small	Fetal Intestine, Small	UW.Fetal_Intestine_Small.ChromatinAccessibility.H-23941.DS17808.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs1183910,rs13233571,rs4129267,rs4537545,rs6734238,rs769449	105	GSM774225
+-0.652	0.0820763318526474	Fetal_Intestine_Small	Fetal Intestine, Small	UW.Fetal_Intestine_Small.ChromatinAccessibility.H-24111.DS18495.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267	106	GSM817187
+-0.795	0.0639928210217644	Fetal_Kidney_Left	Fetal Kidney	UW.Fetal_Kidney_Left.ChromatinAccessibility.H-23589.DS16446.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs340029	107	GSM665822
+-1.282	0.0225428726377605	Fetal_Kidney_Left	Fetal Kidney	UW.Fetal_Kidney_Left.ChromatinAccessibility.H-23604.DS16579.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs7979473	108	GSM665829
+-0.095	0.211540364748294	Fetal_Kidney_Left	Fetal Kidney	UW.Fetal_Kidney_Left.ChromatinAccessibility.H-23640.DS16805.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs7305618,rs769449	109	GSM665834
+-1.085	0.034283584539003	Fetal_Kidney_Left	Fetal Kidney	UW.Fetal_Kidney_Left.ChromatinAccessibility.H-23758.DS17140.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs769449	110	GSM774209
+-1.244	0.0241551453288949	Fetal_Kidney_Left	Fetal Kidney	UW.Fetal_Kidney_Left.ChromatinAccessibility.H-24089.DS18466.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs7305618	111	GSM817181
+-0.838	0.0679458453836578	Fetal_Kidney_Right	Fetal Kidney	UW.Fetal_Kidney_Right.ChromatinAccessibility.H-23435.DS15651.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs13233571,rs7748513	112	GSM665810
+-0.263	0.169069884945449	Fetal_Kidney_Right	Fetal Kidney	UW.Fetal_Kidney_Right.ChromatinAccessibility.H-23589.DS16441.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs7310409,rs769449	113	GSM665821
+-1.431	0.0158366309894124	Fetal_Kidney_Right	Fetal Kidney	UW.Fetal_Kidney_Right.ChromatinAccessibility.H-23640.DS16801.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs13233571	114	GSM665833
+-1.666	0.00583953582063636	Fetal_Kidney_Right	Fetal Kidney	UW.Fetal_Kidney_Right.ChromatinAccessibility.H-23758.DS17144.twopass.merge150.wgt10.zgt2.wig	rs13233571	115	GSM817163
+-0.229	0.177478564999372	Fetal_Kidney_Right	Fetal Kidney	UW.Fetal_Kidney_Right.ChromatinAccessibility.H-24089.DS18463.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs13233571,rs4129267,rs7305618	116	GSM817180
+-0.261	0.164396090187947	Fetal_Kidney	Fetal Kidney	UW.Fetal_Kidney.ChromatinAccessibility.H-22337.DS10986.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	117	GSM493385
+-1.538	0.0105657842423379	Fetal_Kidney	Fetal Kidney	UW.Fetal_Kidney.ChromatinAccessibility.H-22676.DS12635.twopass.merge150.wgt10.zgt2.wig	rs13233571	118	GSM530655
+1.066	0.662636116855615	Fetal_Kidney	Fetal Kidney	UW.Fetal_Kidney.ChromatinAccessibility.H-23524.DS16139.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2075650,rs340029,rs4420638,rs7305618,rs769449	119	GSM665816
+-0.061	0.220837888653167	Fetal_Kidney	Fetal Kidney	UW.Fetal_Kidney.ChromatinAccessibility.H-23663.DS16837.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs7305618,rs769449	120	GSM817159
+-0.687	0.0825776925925314	Fetal_Kidney	Fetal Kidney	UW.Fetal_Kidney.ChromatinAccessibility.H-23855.DS17522.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs340029,rs769449	121	GSM701515
+-1.234	0.0296727505576069	Fetal_Kidney	Fetal Kidney	UW.Fetal_Kidney.ChromatinAccessibility.H-23914.DS17753.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs769449	122	GSM774221
+-0.218	0.175080439875591	Fetal_Kidney	Fetal Kidney	UW.Fetal_Kidney.ChromatinAccessibility.H-24507.DS20564.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs769449	123	GSM878666
+-0.457	0.125476182198781	Fetal_Lung_Left	Fetal Lung	UW.Fetal_Lung_Left.ChromatinAccessibility.H-23435.DS15637.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	124	GSM665808
+0.675	0.475604129903881	Fetal_Lung_Left	Fetal Lung	UW.Fetal_Lung_Left.ChromatinAccessibility.H-23604.DS16570.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238,rs769449	125	GSM665828
+0.225	0.308469362176074	Fetal_Lung_Left	Fetal Lung	UW.Fetal_Lung_Left.ChromatinAccessibility.H-23640.DS18170.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238,rs769449	126	GSM774237
+-0.094	0.211683417774153	Fetal_Lung_Left	Fetal Lung	UW.Fetal_Lung_Left.ChromatinAccessibility.H-23744.DS17105.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs6734238,rs769449	127	GSM774207
+-0.448	0.132115394351325	Fetal_Lung_Left	Fetal Lung	UW.Fetal_Lung_Left.ChromatinAccessibility.H-23758.DS17154.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281,rs4129267,rs4537545	128	GSM774211
+0.286	0.32762562703189	Fetal_Lung_Left	Fetal Lung	UW.Fetal_Lung_Left.ChromatinAccessibility.H-23833.DS17464.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238,rs769449	129	GSM701512
+1.302	0.762897224678147	Fetal_Lung_Left	Fetal Lung	UW.Fetal_Lung_Left.ChromatinAccessibility.H-23887.DS17674.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238,rs769449	130	GSM701524
+-0.049	0.217895033624839	Fetal_Lung_Left	Fetal Lung	UW.Fetal_Lung_Left.ChromatinAccessibility.H-23914.DS17739.twopass.merge150.wgt10.zgt2.wig	rs4537545,rs6734238,rs769449	131	GSM701527
+2.136	1.25174235496438	Fetal_Lung_Left	Fetal Lung	UW.Fetal_Lung_Left.ChromatinAccessibility.H-23964.DS17835.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs4129267,rs4537545,rs6734238,rs769449	132	GSM701534
+-0.567	0.105302791677984	Fetal_Lung_Left	Fetal Lung	UW.Fetal_Lung_Left.ChromatinAccessibility.H-24005.DS17959.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs769449	133	GSM817168
+-0.671	0.0886055497577144	Fetal_Lung_Left	Fetal Lung	UW.Fetal_Lung_Left.ChromatinAccessibility.H-24089.DS18421.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	134	GSM817175
+-0.645	0.0931160363082002	Fetal_Lung_Left	Fetal Lung	UW.Fetal_Lung_Left.ChromatinAccessibility.H-24111.DS18487.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	135	GSM817185
+-0.500	0.119054902176075	Fetal_Lung_Right	Fetal Lung	UW.Fetal_Lung_Right.ChromatinAccessibility.H-23435.DS15632.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs769449	136	GSM665807
+-1.013	0.0428754199729403	Fetal_Lung_Right	Fetal Lung	UW.Fetal_Lung_Right.ChromatinAccessibility.H-23604.DS16566.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545	137	GSM665827
+-0.706	0.0850350423577448	Fetal_Lung_Right	Fetal Lung	UW.Fetal_Lung_Right.ChromatinAccessibility.H-23640.DS16790.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	138	GSM665832
+-0.118	0.20627691766561	Fetal_Lung_Right	Fetal Lung	UW.Fetal_Lung_Right.ChromatinAccessibility.H-23744.DS17101.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs769449	139	GSM774206
+-0.428	0.130705477435635	Fetal_Lung_Right	Fetal Lung	UW.Fetal_Lung_Right.ChromatinAccessibility.H-23758.DS17162.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs6734238	140	GSM817164
+0.595	0.440791579982641	Fetal_Lung_Right	Fetal Lung	UW.Fetal_Lung_Right.ChromatinAccessibility.H-23887.DS17670.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238,rs769449	141	GSM701523
+-0.459	0.130390028819925	Fetal_Lung_Right	Fetal Lung	UW.Fetal_Lung_Right.ChromatinAccessibility.H-23964.DS17831.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs6734238,rs769449	142	GSM774227
+-0.300	0.162453898134442	Fetal_Lung_Right	Fetal Lung	UW.Fetal_Lung_Right.ChromatinAccessibility.H-24005.DS17954.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs769449	143	GSM774231
+-0.647	0.0929691940722843	Fetal_Lung_Right	Fetal Lung	UW.Fetal_Lung_Right.ChromatinAccessibility.H-24089.DS18418.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	144	GSM817174
+-0.638	0.0950396276267187	Fetal_Lung_Right	Fetal Lung	UW.Fetal_Lung_Right.ChromatinAccessibility.H-24111.DS18492.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	145	GSM817186
+0.090	0.256406846429676	Fetal_Lung	Fetal Lung	UW.Fetal_Lung.ChromatinAccessibility.H-22676.DS12646.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	146	GSM530656
+0.238	0.309294081895263	Fetal_Lung	Fetal Lung	UW.Fetal_Lung.ChromatinAccessibility.H-22727.DS12817.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs769449	147	GSM530662
+-0.557	0.105795391302767	Fetal_Lung	Fetal Lung	UW.Fetal_Lung.ChromatinAccessibility.H-22934B.DS13507.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	148	GSM595915
+-0.885	0.0533503563052822	Fetal_Lung	Fetal Lung	UW.Fetal_Lung.ChromatinAccessibility.H-23090.DS13985.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545	149	GSM595916
+-0.684	0.0777199063052436	Fetal_Lung	Fetal Lung	UW.Fetal_Lung.ChromatinAccessibility.H-23247.DS14666.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545	150	GSM595921
+0.530	0.405585118511231	Fetal_Lung	Fetal Lung	UW.Fetal_Lung.ChromatinAccessibility.H-23266.DS14724.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	151	GSM595924
+-0.767	0.0694796686267168	Fetal_Lung	Fetal Lung	UW.Fetal_Lung.ChromatinAccessibility.H-23266.DS14751.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545	152	GSM595925
+0.203	0.289677615529014	Fetal_Lung	Fetal Lung	UW.Fetal_Lung.ChromatinAccessibility.H-23284.DS14809.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	153	GSM595927
+-0.641	0.0890584147741898	Fetal_Lung	Fetal Lung	UW.Fetal_Lung.ChromatinAccessibility.H-23284.DS14820.twopass.merge150.wgt10.zgt2.wig	rs4129267,rs4537545	154	GSM595929
+-0.073	0.211280147960323	Fetal_Lung	Fetal Lung	UW.Fetal_Lung.ChromatinAccessibility.H-23365.DS15227.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs769449	155	GSM595930
+0.225	0.306311578573999	Fetal_Lung	Fetal Lung	UW.Fetal_Lung.ChromatinAccessibility.H-23399.DS15461.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	156	GSM665805
+-0.299	0.158141632375043	Fetal_Lung	Fetal Lung	UW.Fetal_Lung.ChromatinAccessibility.H-23419.DS15573.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs6901250	157	GSM665806
+0.248	0.316159414483425	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-23808.DS17432.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs4129267,rs4537545	158	GSM701506
+-0.668	0.101364868671738	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-23914.DS17765.twopass.merge150.wgt10.zgt2.wig	rs1160985,rs13233571,rs4129267,rs4537545,rs6734238	159	GSM774223
+-0.295	0.163667439626774	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-23941.DS17825.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	160	GSM774226
+0.608	0.457506012536793	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-23964.DS17848.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2075650,rs4129267,rs4537545,rs6734238	161	GSM701535
+0.100	0.273635104305192	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-24005.DS18080.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs2075650,rs4129267,rs4537545,rs6734238	162	GSM774234
+0.572	0.433632155485324	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-24042.DS18176.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2075650,rs4129267,rs4537545,rs6734238	163	GSM774239
+0.416	0.374406218281297	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-24078.DS18379.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs769449	164	GSM878610
+-0.753	0.0795511677243139	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-24089.DS18452.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	165	GSM817178
+-0.078	0.215788362003902	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-24111.DS18473.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	166	GSM817184
+-0.327	0.149806582080997	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-24125.DS18559.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	167	GSM817191
+0.464	0.387081165618835	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-24143.DS18992.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	168	GSM878618
+-0.271	0.16240729862958	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-24198.DS19051.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	169	GSM878619
+-0.043	0.225550819645523	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-24218.DS19053.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	170	GSM878620
+0.557	0.430949602909421	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-24244.DS19270.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs4129267,rs4537545,rs6734238	171	GSM878625
+0.768	0.518188400901678	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-24259.DS19295.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2075650,rs4129267,rs4537545,rs6734238	172	GSM817214
+-0.609	0.0992277927665119	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-24272.DS19380.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	173	GSM817216
+0.840	0.558767247965468	Fetal_Muscle_Arm	Fetal Muscle	UW.Fetal_Muscle_Arm.ChromatinAccessibility.H-24297.DS19646.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs2847281,rs4129267,rs4537545	174	GSM878638
+-1.341	0.0255224291816388	Fetal_Muscle_Back	Fetal Muscle	UW.Fetal_Muscle_Back.ChromatinAccessibility.H-23914.DS17767.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	175	GSM774224
+0.142	0.279921187671424	Fetal_Muscle_Back	Fetal Muscle	UW.Fetal_Muscle_Back.ChromatinAccessibility.H-23964.DS17850.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	176	GSM701536
+-0.312	0.162970601564276	Fetal_Muscle_Back	Fetal Muscle	UW.Fetal_Muscle_Back.ChromatinAccessibility.H-24005.DS18083.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238,rs769449	177	GSM774235
+0.194	0.294644854993086	Fetal_Muscle_Back	Fetal Muscle	UW.Fetal_Muscle_Back.ChromatinAccessibility.H-24078.DS18377.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	178	GSM817171
+0.092	0.265031387509248	Fetal_Muscle_Back	Fetal Muscle	UW.Fetal_Muscle_Back.ChromatinAccessibility.H-24089.DS18454.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	179	GSM878611
+-0.697	0.0859160930143377	Fetal_Muscle_Back	Fetal Muscle	UW.Fetal_Muscle_Back.ChromatinAccessibility.H-24111.DS18468.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	180	GSM817182
+0.724	0.495772927631772	Fetal_Muscle_Back	Fetal Muscle	UW.Fetal_Muscle_Back.ChromatinAccessibility.H-24143.DS18842.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs4129267,rs4537545,rs6734238	181	GSM817200
+0.245	0.312509850126727	Fetal_Muscle_Back	Fetal Muscle	UW.Fetal_Muscle_Back.ChromatinAccessibility.H-24218.DS19117.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	182	GSM817207
+0.300	0.333750146036552	Fetal_Muscle_Back	Fetal Muscle	UW.Fetal_Muscle_Back.ChromatinAccessibility.H-24244.DS19283.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs4129267,rs4537545	183	GSM817212
+-0.116	0.205727979195772	Fetal_Muscle_Back	Fetal Muscle	UW.Fetal_Muscle_Back.ChromatinAccessibility.H-24272.DS19384.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs769449	184	GSM817217
+0.107	0.268858278422342	Fetal_Muscle_Back	Fetal Muscle	UW.Fetal_Muscle_Back.ChromatinAccessibility.H-24279.DS19441.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	185	GSM878632
+-0.167	0.19259895350242	Fetal_Muscle_Back	Fetal Muscle	UW.Fetal_Muscle_Back.ChromatinAccessibility.H-24297.DS19648.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	186	GSM878639
+-0.488	0.118960970487911	Fetal_Muscle_Back	Fetal Muscle	UW.Fetal_Muscle_Back.ChromatinAccessibility.H-24409.DS20244.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	187	GSM878655
+0.353	0.353629093758896	Fetal_Muscle_Leg	Fetal Muscle	UW.Fetal_Muscle_Leg.ChromatinAccessibility.H-23808.DS17429.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs4129267,rs4537545	188	GSM701505
+-0.549	0.106874792051418	Fetal_Muscle_Leg	Fetal Muscle	UW.Fetal_Muscle_Leg.ChromatinAccessibility.H-24078.DS18386.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs6734238	189	GSM774242
+-0.103	0.208476759352435	Fetal_Muscle_Leg	Fetal Muscle	UW.Fetal_Muscle_Leg.ChromatinAccessibility.H-24089.DS18456.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs769449	190	GSM817179
+-0.766	0.0719913124999508	Fetal_Muscle_Leg	Fetal Muscle	UW.Fetal_Muscle_Leg.ChromatinAccessibility.H-24111.DS18471.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	191	GSM817183
+0.203	0.293169812737899	Fetal_Muscle_Leg	Fetal Muscle	UW.Fetal_Muscle_Leg.ChromatinAccessibility.H-24143.DS18844.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	192	GSM817201
+0.370	0.358600988479193	Fetal_Muscle_Leg	Fetal Muscle	UW.Fetal_Muscle_Leg.ChromatinAccessibility.H-24198.DS19158.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs4129267,rs4537545,rs6734238	193	GSM878622
+-0.419	0.131308524888485	Fetal_Muscle_Leg	Fetal Muscle	UW.Fetal_Muscle_Leg.ChromatinAccessibility.H-24218.DS19115.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs6734238	194	GSM817206
+-0.249	0.173812180579192	Fetal_Muscle_Leg	Fetal Muscle	UW.Fetal_Muscle_Leg.ChromatinAccessibility.H-24244.DS19272.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	195	GSM878626
+0.200	0.298871944013697	Fetal_Muscle_Leg	Fetal Muscle	UW.Fetal_Muscle_Leg.ChromatinAccessibility.H-24259.DS19291.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	196	GSM817213
+-0.604	0.100164640251817	Fetal_Muscle_Leg	Fetal Muscle	UW.Fetal_Muscle_Leg.ChromatinAccessibility.H-24279.DS19436.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs6734238	197	GSM878631
+0.032	0.246642333314768	Fetal_Muscle_Leg	Fetal Muscle	UW.Fetal_Muscle_Leg.ChromatinAccessibility.H-24297.DS19643.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545,rs6734238	198	GSM878637
+0.828	0.563704593839648	Fetal_Muscle_Leg	Fetal Muscle	UW.Fetal_Muscle_Leg.ChromatinAccessibility.H-24409.DS20239.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs4129267,rs4537545,rs6734238,rs769449	199	GSM878653
+-0.372	0.152223624397709	Fetal_Muscle_Lower_Limb_Skeletal	Fetal Muscle	UW.Fetal_Muscle_Lower_Limb_Skeletal.ChromatinAccessibility.H-24042.DS18174.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2075650,rs4129267,rs4537545,rs6734238	200	GSM774238
+1.092	0.685362517240691	Fetal_Muscle_Trunk	Fetal Muscle	UW.Fetal_Muscle_Trunk.ChromatinAccessibility.H-23941.DS17827.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571,rs4129267,rs4537545,rs6734238,rs769449	201	GSM701533
+-0.635	0.0927505747712443	Fetal_Muscle_Trunk	Fetal Muscle	UW.Fetal_Muscle_Trunk.ChromatinAccessibility.H-24409.DS20242.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	202	GSM878654
+-0.491	0.118044106612018	Fetal_Muscle_Trunk	Fetal Muscle	UW.Fetal_Muscle_Trunk.ChromatinAccessibility.H-24507.DS20544.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	203	GSM878664
+1.084	0.688368916941865	Fetal_Muscle_Upper_Limb_Skeletal	Fetal Muscle	UW.Fetal_Muscle_Upper_Limb_Skeletal.ChromatinAccessibility.H-23887.DS17661.twopass.merge150.wgt10.zgt2.wig	rs1160985,rs2075650,rs4129267,rs4537545,rs6734238	204	GSM701522
+-0.710	0.0833676681776242	Fetal_Muscle_Upper_Trunk	Fetal Muscle	UW.Fetal_Muscle_Upper_Trunk.ChromatinAccessibility.H-23887.DS17664.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	205	GSM774218
+-0.273	0.170851906789907	Fetal_Placenta	Fetal Placenta	UW.Fetal_Placenta.ChromatinAccessibility.H-23887.DS17639.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs13233571,rs4537545,rs6734238,rs769449	206	GSM774215
+0.990	0.6358595682894	Fetal_Placenta	Fetal Placenta	UW.Fetal_Placenta.ChromatinAccessibility.H-23914.DS17744.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs12239046,rs13233571,rs4537545,rs6734238,rs769449	207	GSM774219
+0.179	0.292175652936547	Fetal_Placenta	Fetal Placenta	UW.Fetal_Placenta.ChromatinAccessibility.H-24272.DS19391.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs13233571,rs2794520,rs4129267	208	GSM817219
+-0.522	0.109483674526706	Fetal_Placenta	Fetal Placenta	UW.Fetal_Placenta.ChromatinAccessibility.H-24409.DS20346.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs6734238	209	GSM878659
+-1.280	0.0214633010886492	Fetal_Renal_Cortex_Left	Fetal Renal Cortex	UW.Fetal_Renal_Cortex_Left.ChromatinAccessibility.H-23871.DS17550.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs7305618	210	GSM701519
+-1.284	0.022521521760582	Fetal_Renal_Cortex_Left	Fetal Renal Cortex	UW.Fetal_Renal_Cortex_Left.ChromatinAccessibility.H-24111.DS18542.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs340029	211	GSM817190
+-0.911	0.0507110274682154	Fetal_Renal_Cortex_Left	Fetal Renal Cortex	UW.Fetal_Renal_Cortex_Left.ChromatinAccessibility.H-24169.DS18931.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs6734238	212	GSM817203
+-1.862	0.00295534009699998	Fetal_Renal_Cortex_Left	Fetal Renal Cortex	UW.Fetal_Renal_Cortex_Left.ChromatinAccessibility.H-24232.DS19257.twopass.merge150.wgt10.zgt2.wig	rs13233571	213	GSM817211
+-1.747	0.00367903724815807	Fetal_Renal_Cortex_Right	Fetal Renal Cortex	UW.Fetal_Renal_Cortex_Right.ChromatinAccessibility.H-23871.DS17545.twopass.merge150.wgt10.zgt2.wig	rs13233571	214	GSM701517
+-0.563	0.105054508173271	Fetal_Renal_Cortex_Right	Fetal Renal Cortex	UW.Fetal_Renal_Cortex_Right.ChromatinAccessibility.H-24169.DS18928.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs769449	215	GSM817202
+-1.735	0.00456912452470729	Fetal_Renal_Cortex_Right	Fetal Renal Cortex	UW.Fetal_Renal_Cortex_Right.ChromatinAccessibility.H-24232.DS19254.twopass.merge150.wgt10.zgt2.wig	rs13233571	216	GSM817210
+-1.334	0.0196578874388142	Fetal_Renal_Cortex	Fetal Renal Cortex	UW.Fetal_Renal_Cortex.ChromatinAccessibility.H-23769.DS17307.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs769449	217	GSM701494
+-1.148	0.0343802037475602	Fetal_Renal_Cortex	Fetal Renal Cortex	UW.Fetal_Renal_Cortex.ChromatinAccessibility.H-23790.DS17387.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs769449	218	GSM701502
+-1.736	0.00467002446375349	Fetal_Renal_Cortex	Fetal Renal Cortex	UW.Fetal_Renal_Cortex.ChromatinAccessibility.H-23833.DS17455.twopass.merge150.wgt10.zgt2.wig	rs13233571	219	GSM701511
+-0.714	0.0765958596704051	Fetal_Renal_Cortex	Fetal Renal Cortex	UW.Fetal_Renal_Cortex.ChromatinAccessibility.H-23914.DS17756.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs7305618	220	GSM701529
+-1.613	0.00755525598332368	Fetal_Renal_Cortex	Fetal Renal Cortex	UW.Fetal_Renal_Cortex.ChromatinAccessibility.H-23941.DS17804.twopass.merge150.wgt10.zgt2.wig	rs13233571	221	GSM701532
+-0.640	0.0925324332780715	Fetal_Renal_Cortex	Fetal Renal Cortex	UW.Fetal_Renal_Cortex.ChromatinAccessibility.H-24078.DS18428.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs7305618,rs769449	222	GSM817176
+-1.552	0.00796953196575694	Fetal_Renal_Cortex	Fetal Renal Cortex	UW.Fetal_Renal_Cortex.ChromatinAccessibility.H-24259.DS19388.twopass.merge150.wgt10.zgt2.wig	rs13233571	223	GSM878629
+-0.610	0.0949635020855136	Fetal_Renal_Cortex	Fetal Renal Cortex	UW.Fetal_Renal_Cortex.ChromatinAccessibility.H-24493.DS20568.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs769449	224	GSM878667
+-0.224	0.178916519647723	Fetal_Renal_Pelvis_Left	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis_Left.ChromatinAccessibility.H-23871.DS17553.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs340029,rs7305618,rs769449	225	GSM701520
+-0.365	0.141999408449935	Fetal_Renal_Pelvis_Left	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis_Left.ChromatinAccessibility.H-24111.DS18666.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs1183910,rs13233571	226	GSM817193
+0.004	0.238527546347736	Fetal_Renal_Pelvis_Left	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis_Left.ChromatinAccessibility.H-24169.DS18964.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs13233571,rs769449,rs7979473	227	GSM817205
+-1.634	0.00555924961757815	Fetal_Renal_Pelvis_Left	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis_Left.ChromatinAccessibility.H-24232.DS19238.twopass.merge150.wgt10.zgt2.wig	rs13233571	228	GSM817209
+-0.909	0.0598866344946442	Fetal_Renal_Pelvis_Right	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis_Right.ChromatinAccessibility.H-23871.DS17548.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs13233571,rs769449	229	GSM701518
+-0.562	0.102945514084538	Fetal_Renal_Pelvis_Right	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis_Right.ChromatinAccessibility.H-24111.DS18663.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs13233571,rs4129267	230	GSM817192
+0.604	0.455705230109766	Fetal_Renal_Pelvis_Right	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis_Right.ChromatinAccessibility.H-24169.DS18961.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs13233571,rs7305618,rs769449,rs7979473	231	GSM817204
+-0.943	0.0485991362497492	Fetal_Renal_Pelvis_Right	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis_Right.ChromatinAccessibility.H-24232.DS19235.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545	232	GSM817208
+0.884	0.568824978926998	Fetal_Renal_Pelvis	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis.ChromatinAccessibility.H-23790.DS17381.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs13233571,rs4129267,rs4537545,rs769449,rs7748513	233	GSM701501
+-0.289	0.165562253741972	Fetal_Renal_Pelvis	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis.ChromatinAccessibility.H-23833.DS17451.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs1183910,rs13233571,rs769449	234	GSM701510
+-0.023	0.234988601546135	Fetal_Renal_Pelvis	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis.ChromatinAccessibility.H-23914.DS17760.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs13233571,rs2075650,rs769449,rs7979473	235	GSM774222
+-0.688	0.082975668888077	Fetal_Renal_Pelvis	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis.ChromatinAccessibility.H-24005.DS18088.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267	236	GSM774236
+-0.515	0.115512564512865	Fetal_Renal_Pelvis	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis.ChromatinAccessibility.H-24078.DS18431.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs13233571,rs7305618	237	GSM817177
+-0.037	0.227342635478791	Fetal_Renal_Pelvis	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis.ChromatinAccessibility.H-24259.DS19386.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs7305618,rs769449	238	GSM817218
+-1.382	0.0182430849606134	Fetal_Renal_Pelvis	Fetal Renal Pelvis	UW.Fetal_Renal_Pelvis.ChromatinAccessibility.H-24477.DS20448.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs769449	239	GSM878662
+-0.289	0.150226948593151	Fetal_Skin	Fetal Skin	UW.Fetal_Skin.ChromatinAccessibility.H-22337.DS10987.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs769449	240	GSM817158
+-1.451	0.0160083384470091	Fetal_Spinal_Cord	Fetal Spinal Cord	UW.Fetal_Spinal_Cord.ChromatinAccessibility.H-24111.DS18501.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267	241	GSM817189
+-0.605	0.102383650759086	Fetal_Spinal_Cord	Fetal Spinal Cord	UW.Fetal_Spinal_Cord.ChromatinAccessibility.H-24409.DS20351.twopass.merge150.wgt10.zgt2.wig	rs1160985,rs13233571,rs4537545	242	GSM878661
+-0.953	0.0490955199099056	Fetal_Spinal_Cord	Fetal Spinal Cord	UW.Fetal_Spinal_Cord.ChromatinAccessibility.H-24493.DS20530.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267	243	GSM878663
+-0.841	0.054342363515047	Fetal_Spleen	Fetal Spleen	UW.Fetal_Spleen.ChromatinAccessibility.H-23399.DS17448.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs6734238	244	GSM701509
+-0.160	0.195058019554706	Fetal_Stomach	Fetal Stomach	UW.Fetal_Stomach.ChromatinAccessibility.H-23589.DS16530.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs7305618,rs769449,rs7979473	245	GSM774202
+-0.050	0.223185369218084	Fetal_Stomach	Fetal Stomach	UW.Fetal_Stomach.ChromatinAccessibility.H-23758.DS17172.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs7305618,rs769449	246	GSM774212
+-0.754	0.0739927870746393	Fetal_Stomach	Fetal Stomach	UW.Fetal_Stomach.ChromatinAccessibility.H-23769.DS17325.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs7305618	247	GSM701498
+-1.263	0.0191796089859667	Fetal_Stomach	Fetal Stomach	UW.Fetal_Stomach.ChromatinAccessibility.H-23887.DS17659.twopass.merge150.wgt10.zgt2.wig	rs13233571	248	GSM701521
+1.415	0.848992591121719	Fetal_Stomach	Fetal Stomach	UW.Fetal_Stomach.ChromatinAccessibility.H-23914.DS17750.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2075650,rs4420065,rs7305618,rs7979473	249	GSM701528
+0.904	0.592966545414194	Fetal_Stomach	Fetal Stomach	UW.Fetal_Stomach.ChromatinAccessibility.H-23964.DS17878.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs1800961,rs4129267,rs7305618,rs769449,rs7979473	250	GSM701538
+-0.247	0.173696737348005	Fetal_Stomach	Fetal Stomach	UW.Fetal_Stomach.ChromatinAccessibility.H-24005.DS17963.twopass.merge150.wgt10.zgt2.wig	rs1183910,rs13233571,rs7305618,rs7979473	251	GSM774232
+1.378	0.815448790023177	Fetal_Stomach	Fetal Stomach	UW.Fetal_Stomach.ChromatinAccessibility.H-24078.DS18389.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs13233571,rs2847281,rs4129267,rs4537545,rs7305618,rs769449	252	GSM817173
+-1.075	0.037869552438502	Fetal_Stomach	Fetal Stomach	UW.Fetal_Stomach.ChromatinAccessibility.H-24125.DS18821.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs7305618	253	GSM817199
+-1.119	0.0342189503844651	Fetal_Stomach	Fetal Stomach	UW.Fetal_Stomach.ChromatinAccessibility.H-24401.DS20349.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs7305618	254	GSM878660
+-0.525	0.113028898661423	Fetal_Stomach	Fetal Stomach	UW.Fetal_Stomach.ChromatinAccessibility.H-24507.DS20546.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545,rs7305618	255	GSM878665
+-0.852	0.0589781292448993	Fetal_Testes	Fetal Testes	UW.Fetal_Testes.ChromatinAccessibility.H24198_H23640_H24042.DS18942.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs769449	256	GSM878617
+-0.147	0.191564932754106	Fetal_Thymus	Fetal Thymus	UW.Fetal_Thymus.ChromatinAccessibility.H-23589.DS16490.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs13233571,rs2847281	257	GSM665823
+-1.033	0.0440477827016185	Fetal_Thymus	Fetal Thymus	UW.Fetal_Thymus.ChromatinAccessibility.H-23663.DS16841.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281	258	GSM774204
+-0.576	0.0952294960418081	Fetal_Thymus	Fetal Thymus	UW.Fetal_Thymus.ChromatinAccessibility.H-23769.DS17323.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281	259	GSM701497
+-1.031	0.0403547665468222	Fetal_Thymus	Fetal Thymus	UW.Fetal_Thymus.ChromatinAccessibility.H-23833.DS17474.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs13233571	260	GSM701513
+0.168	0.280509914841	Fetal_Thymus	Fetal Thymus	UW.Fetal_Thymus.ChromatinAccessibility.H-23964.DS17875.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs6901250,rs769449	261	GSM701537
+-0.334	0.152289246312876	Fetal_Thymus	Fetal Thymus	UW.Fetal_Thymus.ChromatinAccessibility.H-23964.DS17876.twopass.merge150.wgt10.zgt2.wig	rs1160985,rs13233571,rs2847281,rs769449	262	GSM774230
+-0.431	0.142284792319201	Fetal_Thymus	Fetal Thymus	UW.Fetal_Thymus.ChromatinAccessibility.H-24078.DS18382.twopass.merge150.wgt10.zgt2.wig	rs1160985,rs1169310,rs13233571,rs4129267,rs769449	263	GSM817172
+-0.060	0.21480432197305	Fetal_Thymus	Fetal Thymus	UW.Fetal_Thymus.ChromatinAccessibility.H-24259.DS19287.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs6734238	264	GSM878627
+-0.551	0.100540978187934	Fetal_Thymus	Fetal Thymus	UW.Fetal_Thymus.ChromatinAccessibility.H-24401.DS20335.twopass.merge150.wgt10.zgt2.wig	rs12239046,rs13233571	265	GSM878656
+-0.026	0.223863451916444	Fetal_Thymus	Fetal Thymus	UW.Fetal_Thymus.ChromatinAccessibility.H-24409.DS20341.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281,rs769449	266	GSM878657
+0.219	0.297142359407626	Fibroblasts_Fetal_Skin_Abdomen	Fibroblast	UW.Fibroblasts_Fetal_Skin_Abdomen.ChromatinAccessibility.H-24259.DS19558.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	267	GSM878635
+-0.261	0.154908927552092	Fibroblasts_Fetal_Skin_Abdomen	Fibroblast	UW.Fibroblasts_Fetal_Skin_Abdomen.ChromatinAccessibility.H-24259.DS19561.twopass.merge150.wgt10.zgt2.wig	rs4129267,rs4537545	268	GSM878636
+0.826	0.525076620585534	Fibroblasts_Fetal_Skin_Back	Fibroblast	UW.Fibroblasts_Fetal_Skin_Back.ChromatinAccessibility.H-24218.DS19233.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	269	GSM878624
+-0.038	0.2102376435955	Fibroblasts_Fetal_Skin_Biceps_Left	Fibroblast	UW.Fibroblasts_Fetal_Skin_Biceps_Left.ChromatinAccessibility.H-24259.DS19857.twopass.merge150.wgt10.zgt2.wig	rs4129267,rs4537545	270	GSM878644
+-0.116	0.190054593842758	Fibroblasts_Fetal_Skin_Biceps_Left	Fibroblast	UW.Fibroblasts_Fetal_Skin_Biceps_Left.ChromatinAccessibility.H-24259.DS19867.twopass.merge150.wgt10.zgt2.wig	rs4129267,rs4537545	271	GSM878645
+0.017	0.224925379880494	Fibroblasts_Fetal_Skin_Biceps_Right	Fibroblast	UW.Fibroblasts_Fetal_Skin_Biceps_Right.ChromatinAccessibility.H-24259.DS19745.twopass.merge150.wgt10.zgt2.wig	rs4129267,rs4537545	272	GSM878642
+-0.181	0.174379867220797	Fibroblasts_Fetal_Skin_Biceps_Right	Fibroblast	UW.Fibroblasts_Fetal_Skin_Biceps_Right.ChromatinAccessibility.H-24259.DS19761.twopass.merge150.wgt10.zgt2.wig	rs4129267,rs4537545	273	GSM878643
+0.387	0.353542295013742	Fibroblasts_Fetal_Skin_Quadriceps_Left	Fibroblast	UW.Fibroblasts_Fetal_Skin_Quadriceps_Left.ChromatinAccessibility.H-24259.DS20046.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	274	GSM878648
+-0.250	0.159591844076635	Fibroblasts_Fetal_Skin_Quadriceps_Left	Fibroblast	UW.Fibroblasts_Fetal_Skin_Quadriceps_Left.ChromatinAccessibility.H-24259.DS20056.twopass.merge150.wgt10.zgt2.wig	rs4129267,rs4537545	275	GSM878649
+-0.142	0.183615038470329	Fibroblasts_Fetal_Skin_Quadriceps_Right	Fibroblast	UW.Fibroblasts_Fetal_Skin_Quadriceps_Right.ChromatinAccessibility.H-24259.DS19943.twopass.merge150.wgt10.zgt2.wig	rs4129267,rs4537545	276	GSM878646
+0.310	0.328746426574082	Fibroblasts_Fetal_Skin_Quadriceps_Right	Fibroblast	UW.Fibroblasts_Fetal_Skin_Quadriceps_Right.ChromatinAccessibility.H-24259.DS19948.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	277	GSM878647
+-0.047	0.207951586615728	Fibroblasts_Fetal_Skin_Scalp	Fibroblast	UW.Fibroblasts_Fetal_Skin_Scalp.ChromatinAccessibility.H-24259.DS19444.twopass.merge150.wgt10.zgt2.wig	rs4129267,rs4537545	278	GSM878633
+-0.040	0.209470550476975	Fibroblasts_Fetal_Skin_Scalp	Fibroblast	UW.Fibroblasts_Fetal_Skin_Scalp.ChromatinAccessibility.H-24259.DS19449.twopass.merge150.wgt10.zgt2.wig	rs4129267,rs4537545	279	GSM878634
+-0.060	0.204384522212237	Fibroblasts_Fetal_Skin_Upper_Back	Fibroblast	UW.Fibroblasts_Fetal_Skin_Upper_Back.ChromatinAccessibility.H-24259.DS19696.twopass.merge150.wgt10.zgt2.wig	rs4129267,rs4537545	280	GSM878640
+-0.238	0.160604738803797	Fibroblasts_Fetal_Skin_Upper_Back	Fibroblast	UW.Fibroblasts_Fetal_Skin_Upper_Back.ChromatinAccessibility.H-24259.DS19706.twopass.merge150.wgt10.zgt2.wig	rs4129267,rs4537545	281	GSM878641
+-0.678	0.0867356212493838	Penis_Foreskin_Fibroblast	Fibroblast	UW.Penis_Foreskin_Fibroblast_Primary_Cells.ChromatinAccessibility.skin01.DS18224.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	282	GSM774240
+0.056	0.25318862443449	Penis_Foreskin_Fibroblast	Fibroblast	UW.Penis_Foreskin_Fibroblast_Primary_Cells.ChromatinAccessibility.skin01.DS18229.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs13233571,rs4129267,rs4537545	283	GSM774241
+0.127	0.268388057965122	Penis_Foreskin_Fibroblast	Fibroblast	UW.Penis_Foreskin_Fibroblast_Primary_Cells.ChromatinAccessibility.skin02.DS18252.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	284	GSM817169
+0.008	0.233472800805072	Penis_Foreskin_Fibroblast	Fibroblast	UW.Penis_Foreskin_Fibroblast_Primary_Cells.ChromatinAccessibility.skin02.DS18256.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	285	GSM817170
+0.672	0.473967240114799	iPS_DF_4.7	IPS cell	UW.iPS_DF_4.7.ChromatinAccessibility.DS15169.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs2847281,rs4537545,rs769449	286	GSM665803
+0.096	0.264855184521417	iPS_DF_6.9	IPS cell	UW.iPS_DF_6.9.ChromatinAccessibility.DS15164.twopass.merge150.wgt10.zgt2.wig	rs1160985,rs13233571,rs2847281,rs769449	287	GSM665802
+0.035	0.24131041817301	iPS_DF_19.7	IPS cell	UW.iPS_DF_19.7.ChromatinAccessibility.DS15148.twopass.merge150.wgt10.zgt2.wig	rs2847281,rs4537545,rs769449	288	GSM665800
+-0.302	0.158260379037669	iPS_DF_19.11	IPS cell	UW.iPS_DF_19.11.ChromatinAccessibility.DS15153.twopass.merge150.wgt10.zgt2.wig	rs1169310,rs2847281,rs769449	289	GSM665801
+0.573	0.431314458712872	IMR90	Lung	UW.IMR90.ChromatinAccessibility.DS11759.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	290	GSM468792
+-0.992	0.034820993359339	IMR90	Lung	UW.IMR90.ChromatinAccessibility.DS11764.twopass.merge150.wgt10.zgt2.wig	rs4537545	291	GSM468801
+0.761	0.504877576152204	IMR90	Lung	UW.IMR90.ChromatinAccessibility.DS13219.twopass.merge150.wgt10.zgt2.wig	rs1160985,rs13233571,rs4129267,rs4537545	292	GSM530665
+0.376	0.351958647333193	IMR90	Lung	UW.IMR90.ChromatinAccessibility.DS13229.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	293	GSM530666
+-0.803	0.0615205636095481	Penis_Foreskin_Keratinocyte	Skin	UW.Penis_Foreskin_Keratinocyte_Primary_Cells.ChromatinAccessibility.skin01.DS18692.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267	294	GSM817194
+-0.580	0.0937755087771503	Penis_Foreskin_Keratinocyte	Skin	UW.Penis_Foreskin_Keratinocyte_Primary_Cells.ChromatinAccessibility.skin01.DS18695.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267	295	GSM817195
+-0.639	0.0848791123592934	Penis_Foreskin_Keratinocyte	Skin	UW.Penis_Foreskin_Keratinocyte_Primary_Cells.ChromatinAccessibility.skin02.DS18714.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267	296	GSM817196
+-0.673	0.0777896356405629	Penis_Foreskin_Keratinocyte	Skin	UW.Penis_Foreskin_Keratinocyte_Primary_Cells.ChromatinAccessibility.skin02.DS18718.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267	297	GSM817197
+-0.564	0.096358167558657	Penis_Foreskin_Melanocyte	Skin	UW.Penis_Foreskin_Melanocyte_Primary_Cells.ChromatinAccessibility.skin01.DS18590.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4537545	298	GSM774243
+-0.246	0.16869570990769	Penis_Foreskin_Melanocyte	Skin	UW.Penis_Foreskin_Melanocyte_Primary_Cells.ChromatinAccessibility.skin01.DS18601.twopass.merge150.wgt10.zgt2.wig	rs13233571,rs4129267,rs4537545	299	GSM774244
