@@ -102,7 +102,7 @@ THe number of background matching sets to pick and analyse. Default 1000.
 
 =item B<ld>
 
-Apply filter for SNPs in LD at eithr r2 >= 0.8 ("high LD"), or r2 >= 0.1 ("independent SNPs"). Specify ld 0.8, or ld 0.1. Default is to filter at r2 >= 0.8.  With ld filter specified, forge will report SNPs removed due to LD with another SNP in the list and will randomly pick one for each LD block.
+Apply filter for SNPs in LD at either r2 >= 0.8 ("high LD"), or r2 >= 0.1 ("independent SNPs"). Specify ld 0.8, or ld 0.1. Default is to filter at r2 >= 0.8.  With ld filter specified, forge will report SNPs removed due to LD with another SNP in the list and will randomly pick one for each LD block.
 
 To turn off LD filtering specify -nold
 
@@ -423,6 +423,7 @@ foreach my $cell (keys %$tissues){
 }
 
 my $tissuecount = scalar keys %tissuecount;
+
 $t1 = $t1/$tissuecount; # bonferroni correction by number of tissues
 $t2 = $t2/$tissuecount;
 
