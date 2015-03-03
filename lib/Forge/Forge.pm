@@ -227,7 +227,7 @@ sub process_bits{
     my $index = 0;
     foreach my $cell (@$cells){
         $test{'CELLS'}{$cell}{'COUNT'} = $test_cells[$index][0] if ($test_cells[$index][0]);
-        $test{'CELLS'}{$cell}{'MVPS'} = $test_cells[$index][1] if ($test_cells[$index][1]);
+        $test{'CELLS'}{$cell}{'SNPS'} = $test_cells[$index][1] if ($test_cells[$index][1]); 
         $index++;
     }
 
