@@ -40,9 +40,9 @@ bkgrdstat
 
 =head1 SUBROUTINES/METHODS
 
-=head2 process_file
+=head2 bkgrdstat
 
-Processes various file formats.
+Output stats on the background if required
 
 =cut
 
@@ -227,7 +227,7 @@ sub process_bits{
     my $index = 0;
     foreach my $cell (@$cells){
         $test{'CELLS'}{$cell}{'COUNT'} = $test_cells[$index][0] if ($test_cells[$index][0]);
-        $test{'CELLS'}{$cell}{'SNPS'} = $test_cells[$index][1] if ($test_cells[$index][1]); 
+        $test{'CELLS'}{$cell}{'SNPS'} = $test_cells[$index][1] if ($test_cells[$index][1]);
         $index++;
     }
 
